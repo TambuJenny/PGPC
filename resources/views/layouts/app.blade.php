@@ -5,13 +5,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href=".../.../css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
         <link  rel="stylesheet"href="{{asset('frontend/css/bootstrap.min.css') }}"   />
+        <link  rel="stylesheet"href="{{asset('frontend/css/app.css') }}"   />
       
         <title>PGPC</title>
     </head>
-    <body>
+    <body class="backgroundIndex">
        <div class="container">
         <div class="row">
-            <small> Eu sou o layout App.</small>
+
             @yield('content')
         </div>
        </div>
