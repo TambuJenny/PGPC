@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [LoginController::class,'login']);
+Route::get('/menu', [LoginController::class,'menu']);

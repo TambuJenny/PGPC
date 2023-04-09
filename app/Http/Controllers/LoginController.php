@@ -10,4 +10,8 @@ class LoginController extends Controller
     {
         return View('index');
     }
+    public function Menu()
+    {
+        return View('pages.menu');
+    }
 }

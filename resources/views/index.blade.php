@@ -15,20 +15,17 @@
           </div>
           <form class="col-md-8 ">
                 <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Email address</label>
+                  <label for="exampleInputEmail1" class="form-label">Endereço email</label>
                   <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label">Password</label>
+                  <label for="exampleInputPassword1" class="form-label">Senha</label>
                   <input type="password" class="form-control" id="exampleInputPassword1">
-                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                  <small><a href="" class="form-text link-offset-2 link-underline link-underline-opacity-0"> Esqueci a minha senha</a></small>
                 </div>
                 <div class="d-flex justify-content-between">
-                <div class="mb-3 form-check">
-                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="" class="form-text"> Não tenho conta, criar uma </a>
+                <button type="submit" class="btn btn-primary"> <i class="fa-solid fa-sign-in"></i> Entrar</button>
                 </div>
          </form>
     </div>
