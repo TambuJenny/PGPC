@@ -1,0 +1,11 @@
+@import "../fontawesome-free/css/all.css";
+
+
+.backgroundIndex
+{
+    background: rgb(224,224,224);
+    background: -moz-linear-gradient(248deg, rgba(224,224,224,1) 0%, rgba(75,179,227,1) 50%, rgba(75,179,227,1) 100%);
+    background: -webkit-linear-gradient(248deg, rgba(224,224,224,1) 0%, rgba(75,179,227,1) 50%, rgba(75,179,227,1) 100%);
+    background: linear-gradient(248deg, rgba(224,224,224,1) 0%, rgba(75,179,227,1) 50%, rgba(75,179,227,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e0e0e0",endColorstr="#4bb3e3",GradientType=1);
+}
