@@ -14,4 +14,8 @@ class LoginController extends Controller
     {
         return View('pages.menu');
     }
+    public function NewAccount()
+    {
+        return View('pages.newAccount');
+    }
 }
