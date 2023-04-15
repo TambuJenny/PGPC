@@ -13,14 +13,15 @@
             <small>Programa de Gestão de Processos Criminais</small>
             <hr>
           </div>
-          <form class="col-md-8 ">
+          <form class="col-md-8" action="{{route('User.Login')}}" method="POST">
+            @csrf
                 <div class="mb-3">
                   <label for="exampleInputEmail1" class="form-label">Endereço email</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
                   <label for="exampleInputPassword1" class="form-label">Senha</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1">
+                  <input type="password" name="senha" class="form-control" id="exampleInputPassword1">
                   <small><a href="" class="form-text link-offset-2 link-underline link-underline-opacity-0"> Esqueci a minha senha</a></small>
                 </div>
                 <div class="d-flex justify-content-between">
