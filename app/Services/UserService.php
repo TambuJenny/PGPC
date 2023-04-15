@@ -10,6 +10,7 @@ use App\Models\Pessoa;
 use App\Models\User;
 use App\Models\Usuario;
 use App\Services\PessoaService;
+use Illuminate\Support\Facades\DB;
 
 class UserService {
 
@@ -54,12 +55,38 @@ class UserService {
 
     public function LoginUsuario (LoginDTO $login)
     {
-        $pessoaModel = new Pessoa();
-        $pegarUsuario = $pessoaModel::find($login -> email);
+        $response = new ResponseDTO();
 
-        if (condition) {
+        $verificarDadosLogin = DB::table('pessoas')
+        -> join('usuarios', function($join){
+            $join -> on('pessoas.id','=','usuarios.id_Pessoa');
+        })
+        -> where('pessoas.email','=',$login->email)
+        -> where('usuarios.senha','=',$login ->senha)
+        -> select(
+            'pessoas.nome as Nome',
+            'pessoas.email as Email',
+            'pessoas.endereco as Endereco',
+            'pessoas.data_nascimento as DataNascimento',
+            'pessoas.telefone as Telefone',
+            'pessoas.bi as Bi'
+        )-> get();
+
+        if ($verificarDadosLogin ->count()==0) {
+           
+            $response ->message = "Email ou Senha inválido";
+            $response -> messageStatus = false;
+            $response -> status = 'error';
+
+        } else {
             
-            
+            $response ->message = "Email e Senha válido";
+            $response -> messageStatus = true;
+            $response -> status = 'sucess';
+            $response -> Data = $verificarDadosLogin;
+
         }
+        
+        return $response;
     }
 }

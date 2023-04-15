@@ -18,7 +18,7 @@
                     </div>
                 @endif
                 
-          <form action="{{route('Login.CriarConta')}}" method="POST">
+          <form action="{{route('User.CriarConta')}}" method="POST">
           @csrf
           <div class="d-flex align-items-justify ms-5">
           <div class="col-md-5">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DTO\LoginDTO;
 use Illuminate\Http\Request;
 use App\DTO\PessoaDTO;
 use App\DTO\UsuarioDTO;
@@ -11,7 +12,7 @@ use App\Services\UserService;
 
 class LoginController extends Controller
 {
-    public function Login()
+    public function Index()
     {
         return View('index');
     }
@@ -48,5 +49,22 @@ class LoginController extends Controller
             return View('index',['response' => $verificacaoDoCadastro]);
          else
             return View('pages.newAccount',['response' => $verificacaoDoCadastro]);
+    }
+
+    public function Login (Request $request)
+    {
+        $userLogin = new LoginDTO();
+        $userServices = new UserService(); 
+
+        $userLogin -> email = $request -> email;
+        $userLogin -> senha = $request ->senha;
+
+        $verificacaoDoLogin = $userServices ->LoginUsuario($userLogin);
+        
+        if ($verificacaoDoLogin ->messageStatus == true) 
+            return View('pages.menu',['response' => $verificacaoDoLogin]);
+        else
+            return View('index',['response' => $verificacaoDoLogin]);
+        
     }
 }

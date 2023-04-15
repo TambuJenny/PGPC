@@ -7,4 +7,5 @@ class ResponseDTO
     public $status;
     public $message;
     public $messageStatus;
+    public $Data;
 }
