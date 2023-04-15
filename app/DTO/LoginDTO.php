@@ -1,14 +1,14 @@
-<?php 
+<?php
 
 namespace App\DTO;
-class PessoaDTO 
+class LoginDTO
 {
-    public $id;
-    public $nome;
     public $email;
+    public $senha;
+    public $nome;
     public $endereco;
     public $data_nascimento;
     public $telefone;
     public $bi;
-
+   
 }

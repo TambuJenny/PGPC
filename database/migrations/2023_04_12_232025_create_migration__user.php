@@ -22,9 +22,9 @@ class CreateMigrationUser extends Migration
             $table->increments('id');
             $table->string('nome');
             $table->string('email')->unique();
-            $table->string('endereco')->unique();
+            $table->string('endereco');
             $table->dateTime('data_nascimento');
-            $table->integer('telefone')->unique();
+            $table->string('telefone')->unique();
             $table->string('bi')->unique();
             $table->timestamps();
         });

@@ -10,27 +10,48 @@
             <hr>
         </div>
           <div class="card-body">
+           
+                @if ( $response -> messageStatus == false )
+                    <div class="alert alert-danger  alert-dismissible fade show" role="alert">
+                     <strong>{{$response -> status }}</strong> {{$response -> message }}
+                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+                
+          <form action="{{route('Login.CriarConta')}}" method="POST">
+          @csrf
           <div class="d-flex align-items-justify ms-5">
-                <div class="col-md-8">
-                    <label class="form-label">Nome</label> 
-                    <input type="text" class="form-control">
-                    <label class="form-label mt-2">Senha</label> 
-                    <input type="password" class="form-control">
-
-                    <label class="form-label">B.I</label> 
-                    <input type="text" class="form-control">
-                    <label class="form-label mt-2">Cargo</label>
-                    <select class="form-control"> 
-                        <option>A</option>
-                        <option>B</option>
-                        <option>C</option>
-                    </select>
-                    <button class="btn mt-3 bg-primary text-white" type="submit"><i class="fa-solid fa-sign-in"></i> Criar conta</button>
+          <div class="col-md-5">
                
-                </div>
-                <div class="col-md-5 ms-3">
-                </div>
+               <label class="form-label">Nome</label> 
+               <input type="text" name="nome" required class="form-control">
+               <label class="form-label">B.I</label> 
+               <input type="text" name="bi" required class="form-control">
+               <label class="form-label">Endereço</label> 
+               <input type="text" name="endereco" class="form-control">
+               <label class="form-label mt-2">Cargo</label>
+               <select class="form-control" name="cargo"> 
+                   <option>A</option>
+                   <option>B</option>
+                   <option>C</option>
+               </select>
+               
+               <button class="btn mt-3 bg-primary text-white" type="submit"><i class="fa-solid fa-sign-in"></i> Criar conta</button>
+          
            </div>
+           <div class="col-md-5 ms-3">
+               <label class="form-label" >Senha</label> 
+               <input type="password" name="senha" required class="form-control">
+               <label class="form-label">E-mail</label> 
+               <input type="email" name="email" class="form-control">
+               <label class="form-label">Telefone</label> 
+               <input type="tel" name="telefone" class="form-control">
+               <label class="form-label mt-2">Data de Nascimento</label> 
+               <input type="date" name="data_nascimento" class="form-control">
+          
+          </div>
+           </div>
+           </form>
           </div>
           <div class="card-footer ">
 

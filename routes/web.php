@@ -17,3 +17,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [LoginController::class,'login']);
 Route::get('/menu', [LoginController::class,'menu']);
 Route::get('/newAccount', [LoginController::class,'newAccount']);
+Route::post('/CriarConta', [LoginController::class,'criarconta']) -> name('Login.CriarConta');
