@@ -1,3 +1,5 @@
+@if(session()->has('Nome') &&  session()->has('Email') && session()->has('IdUsuario'))
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,16 +16,16 @@
         <a class="navbar-brand text-white" href="#">PGPC</a>
         <div class="nav justify-content-end">
         <div class="btn-group">
-<button type="button" class="btn btn-transparent text-white"><i class="fa fa-user"></i> NomeUser</button>
+<button type="button" class="btn btn-transparent text-white"><i class="fa fa-user"></i> {{session('Nome')}}</button>
   <button type="button" class="btn btn-transparent dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="visually-hidden">Toggle Dropdown</span>
   </button>
   <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
+    <li><a class="dropdown-item text-success" href="#">Editar Perfil</a></li>
+    <li><a class="dropdown-item text-danger" href="#">Sair</a></li>
+    <li><a class="dropdown-item" href="#">Tutorial</a></li>
     <li><hr class="dropdown-divider"></li>
-    <li><a class="dropdown-item" href="#">Separated link</a></li>
+    <li><a class="dropdown-item" href="#">Doação</a></li>
   </ul>
 </div>
         </div>
@@ -47,7 +49,7 @@
                 </a>
               </li>
               <li>
-                <a href="#" class="nav-link py-3 border-bottom" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
+                <a href="{{url("/criarProcesso")}}" class="nav-link py-3 border-bottom" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Tooltip on right">
                 <i class="fa fa-drivers-license text-white"></i> 
                 <span class="visually-hidden">Icon-only</span>
                 </a>
@@ -87,3 +89,7 @@
         <script src="{{asset('frontend/js/popper.min.js') }}" crossorigin="anonymous"></script>
     </body>
 </html>
+
+@else
+{{header('Location: /index')}}
+@endif

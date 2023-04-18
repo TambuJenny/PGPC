@@ -24,3 +24,6 @@ Route::get('/criarProcesso', [ProcessoController::class,'CriarProcesso']);
 
 Route::post('/CriarConta', [LoginController::class,'criarconta']) -> name('User.CriarConta');
 Route::post('/login', [LoginController::class,'login']) -> name('User.Login');
+
+Route::post('/CriarProcessoReu', [ProcessoController::class,'CriarProcessoReu']) -> name('Processo.Create');
+
