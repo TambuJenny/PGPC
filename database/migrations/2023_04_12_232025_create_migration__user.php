@@ -63,6 +63,15 @@ class CreateMigrationUser extends Migration
             $table->string('evidencia');
             $table->timestamps();
         });
+
+        Schema::create('Vitima', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedBigInteger('id_Pessoa');
+            $table->foreign('id_Pessoa')->references('id')->on('pessoas');
+            $table->unsignedBigInteger('id_Processo');
+            $table->foreign('id_Processo')->references('id')->on('processo');
+            $table->timestamps();
+        });
     }
 
     /**

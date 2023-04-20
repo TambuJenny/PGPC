@@ -87,6 +87,7 @@
       </footer>
         <script src=" {{asset('frontend/js/bootstrap.bundle.min.js') }}" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
         <script src="{{asset('frontend/js/popper.min.js') }}" crossorigin="anonymous"></script>
+        <script src="{{asset('frontend/js/jquery.js') }}" crossorigin="anonymous"></script>
     </body>
 </html>
 

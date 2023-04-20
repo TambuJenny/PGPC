@@ -4,7 +4,7 @@ namespace App\Repository;
 
 use Illuminate\Support\Facades\DB;
 
-class ReuRespository {
+class ReuRepository {
     
     public static function FindAll()
     {

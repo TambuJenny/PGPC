@@ -87,14 +87,34 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Vítima</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <form>
-            <div class="mb-3">
-              <label for="recipient-name" class="col-form-label">Recipient:</label>
-              <input type="text" class="form-control" id="recipient-name">
+            <div class="">
+              <label for="recipient-name" class="col-form-label">Pesquisar</label>
+              <input type="text" class="form-control" id="pesquisarVitima" >
+            </div>
+            <button class="mb-3 btn btn-link text-dark" id="btnAddVitima">+ Adicionar vítima</button>
+            <div id="cadastrarVitima">
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="recipient-name" class="col-form-label">Nome Completo</label>
+                  <input type="text" class="form-control" name="nomeVitima" id="nomeVitima" >
+                  <label for="recipient-name" class="col-form-label">BI</label>
+                  <input type="text" class="form-control" name="bi" id="bi">
+                </div>
+                <div class="col-md-6">
+                  <label for="recipient-name" class="col-form-label">Telefone</label>
+                  <input type="tel" class="form-control" name="nomeVitima" id="telefone">
+                  <label for="recipient-name" class="col-form-label">Sexo</label>
+                  <select class="form-control" id="sexo"> 
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
+                </select>
+                </div>
+              </div>
             </div>
             <div class="mb-3">
               <label for="message-text" class="col-form-label">Message:</label>
