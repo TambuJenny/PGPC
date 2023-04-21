@@ -36,6 +36,7 @@ class LoginController extends Controller
 
         $pessoa -> nome = $request -> input('nome');
         $pessoa -> email = $request -> input('email');
+        $pessoa -> sexo = $request -> input('sexo');
         $pessoa -> endereco = $request -> input('endereco');
         $pessoa -> data_nascimento = $request -> input('data_nascimento');
         $pessoa -> telefone = $request -> input('telefone');
@@ -60,10 +61,12 @@ class LoginController extends Controller
         $userLogin -> senha = $request ->senha;
 
         $verificacaoDoLogin = $userServices ->LoginUsuario($userLogin);
-        
-        if ($verificacaoDoLogin ->messageStatus == true) 
-            return View('pages.menu',['response' => $verificacaoDoLogin]);
-        else
+        $dados = ['response' => $verificacaoDoLogin];
+
+        if ($verificacaoDoLogin ->messageStatus == true)
+        { 
+            return View('pages.menu',compact('verificacaoDoLogin'))->with('layouts.menu',['response' => $verificacaoDoLogin]);
+        }else
             return View('index',['response' => $verificacaoDoLogin]);
         
     }

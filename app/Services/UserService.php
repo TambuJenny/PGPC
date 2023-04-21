@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\DB;
 
 class UserService {
 
-   
     public function CriarUsuario(PessoaDTO $pessoaDTO, UsuarioDTO $usuarioDTO)
     {
         $response = new ResponseDTO();
@@ -69,7 +68,8 @@ class UserService {
             'pessoas.endereco as Endereco',
             'pessoas.data_nascimento as DataNascimento',
             'pessoas.telefone as Telefone',
-            'pessoas.bi as Bi'
+            'pessoas.bi as Bi',
+            'usuarios.id as Id'
         )-> get();
 
         if ($verificarDadosLogin ->count()==0) {
@@ -79,12 +79,14 @@ class UserService {
             $response -> status = 'error';
 
         } else {
-            
+           
+            session()->put('Nome',$verificarDadosLogin->pluck('Nome')->first());
+            session()->put('Email',$verificarDadosLogin->pluck('Email')->first());
+            session()->put('IdUsuario',$verificarDadosLogin->pluck('Id')->first());
+           
             $response ->message = "Email e Senha válido";
             $response -> messageStatus = true;
             $response -> status = 'sucess';
-            $response -> Data = $verificarDadosLogin;
-
         }
         
         return $response;

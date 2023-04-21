@@ -9,3 +9,15 @@
     background: linear-gradient(248deg, rgba(224,224,224,1) 0%, rgba(75,179,227,1) 50%, rgba(75,179,227,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e0e0e0",endColorstr="#4bb3e3",GradientType=1);
 }
+
+.visibilidade
+{
+   overflow: hidden;
+   height: 0px;
+}
+
+.visibilidade2
+{
+   overflow: hidden;
+   height: auto;
+}

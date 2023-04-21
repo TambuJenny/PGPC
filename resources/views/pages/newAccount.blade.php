@@ -29,11 +29,10 @@
                <input type="text" name="bi" required class="form-control">
                <label class="form-label">Endereço</label> 
                <input type="text" name="endereco" class="form-control">
-               <label class="form-label mt-2">Cargo</label>
-               <select class="form-control" name="cargo"> 
-                   <option>A</option>
-                   <option>B</option>
-                   <option>C</option>
+               <label class="form-label mt-2">Sexo</label>
+               <select class="form-control" name="sexo"> 
+                   <option value="Masculino">Masculino</option>
+                   <option value="Feminino">Feminino</option>
                </select>
                
                <button class="btn mt-3 bg-primary text-white" type="submit"><i class="fa-solid fa-sign-in"></i> Criar conta</button>
