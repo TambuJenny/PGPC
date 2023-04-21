@@ -1,5 +1,6 @@
 @extends('layouts.menu')
 @section('content') 
+
 <form class="mt-3" style="" method="POST" action="{{route('Processo.Create')}}">
     <div class="mb-2  ">
         <nav class="navbar bg-body-tertiary">
@@ -96,8 +97,8 @@
               <label for="recipient-name" class="col-form-label">Pesquisar</label>
               <input type="text" class="form-control" id="pesquisarVitima" >
             </div>
-            <button class="mb-3 btn btn-link text-dark" id="btnAddVitima">+ Adicionar vítima</button>
-            <div id="cadastrarVitima">
+            <button class="mb-3 btn btn-link text-dark" onclick="mostarDivCadastro()">+ Adicionar vítima</button>
+            <div id="cadastrarVitima" class="visibilidade">
               <div class="row">
                 <div class="col-md-6">
                   <label for="recipient-name" class="col-form-label">Nome Completo</label>
@@ -123,11 +124,12 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Send message</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Sair</button>
+          <button type="button" class="btn btn-primary">Cadastrar</button>
         </div>
       </div>
     </div>
   </div>
 </form>
+<script src="{{asset('frontend/js/pages/processo.js')}}" crossorigin="anonymous"></script>
 @endsection
