@@ -27,7 +27,7 @@ public function CadastrarPessoa(PessoaDTO $pessoadto)
             $id = $pessoa->id;
            
         }
-
+        var_dump($id);
         return $id;
 
     } catch (\Exception $th) {
