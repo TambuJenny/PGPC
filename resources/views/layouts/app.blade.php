@@ -11,12 +11,11 @@
     <body class="backgroundIndex">
        <div class="container">
         <div class="row">
-
             @yield('content')
         </div>
        </div>
        
-        <script src=" {{asset('frontend/js/bootstrap.bundle.min.js') }}" crossorigin="anonymous"></script>
+        <script src=" {{asset('frontend/js/bootstrap.bundle.min.js')}}" crossorigin="anonymous"></script>
         <script src="{{asset('frontend/js/popper.min.js') }}" crossorigin="anonymous"></script>
         <script src="{{asset('frontend/js/jquery.js') }}" crossorigin="anonymous"></script>
     </body>
