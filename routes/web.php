@@ -4,6 +4,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\processController;
 use App\Http\Controllers\ProcessoController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\FormProcessoController;
 use Illuminate\Support\Facades\Route;
 
 /*
