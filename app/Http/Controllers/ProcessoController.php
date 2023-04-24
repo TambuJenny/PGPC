@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Repository\CrimeRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class ProcessoController extends Controller
 {
@@ -15,6 +16,11 @@ class ProcessoController extends Controller
     }
 
     public function CriarProcessoReu (Request $request)
+    {
+        
+    }
+
+    public function CriarPeticao ()
     {
         
     }
