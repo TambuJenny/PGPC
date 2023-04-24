@@ -21,7 +21,7 @@ Route::get('/', [LoginController::class,'index']);
 Route::get('/menu', [LoginController::class,'menu']);
 Route::get('/newAccount', [LoginController::class,'newAccount']);
 Route::get('/processo', [processController::class,'processo']);
-Route::get('/editarUsuario', [UsuarioController::class,'editarUsuario']);
+Route::get('/cadastrarReu', [FormProcessoController::class,'cadastrarReu']);
 
 
 Route::get('/criarProcesso', [ProcessoController::class,'CriarProcesso']);
