@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
 {
-    public function editarUsuario(){
+    public function editarUsuario($idUser){
+        
         return view('pages.usuario.editarUsuario');
     }
 
