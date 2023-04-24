@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\processController;
 use App\Http\Controllers\ProcessoController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [LoginController::class,'index']);
 Route::get('/menu', [LoginController::class,'menu']);
 Route::get('/newAccount', [LoginController::class,'newAccount']);
+Route::get('/processo', [processController::class,'processo']);
+
 
 Route::get('/criarProcesso', [ProcessoController::class,'CriarProcesso']);
 
