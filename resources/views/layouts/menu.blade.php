@@ -16,12 +16,12 @@
         <a class="navbar-brand text-white" href="#">PGPC</a>
         <div class="nav justify-content-end">
         <div class="btn-group">
-<button type="button" class="btn btn-transparent text-white"><i class="fa fa-user"></i> {{session('Nome')}}</button>
+<button type="button" class="btn btn-transparent text-white"><i class="fa fa-user"></i>{{session('Nome')}}</button>
   <button type="button" class="btn btn-transparent dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="visually-hidden">Toggle Dropdown</span>
   </button>
   <ul class="dropdown-menu">
-    <li><a class="dropdown-item text-success" href="#">Editar Perfil</a></li>
+    <li><a class="dropdown-item text-success" href="{{url('/editarUsuario/?idUsuario='. session('IdUsuario')) }}">Editar Perfil</a></li>
     <li><a class="dropdown-item text-danger" href="#">Sair</a></li>
     <li><a class="dropdown-item" href="#">Tutorial</a></li>
     <li><hr class="dropdown-divider"></li>
