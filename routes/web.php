@@ -23,6 +23,12 @@ Route::get('/menu', [LoginController::class,'menu']);
 Route::get('/newAccount', [LoginController::class,'newAccount']);
 Route::get('/processo', [processController::class,'processo']);
 Route::get('/cadastrarReu', [FormProcessoController::class,'cadastrarReu']);
+Route::get('/cadastrarProcesso', [FormProcessoController::class,'processo']);
+Route::get('/cadastrarPeticao', [FormProcessoController::class,'peticao']);
+Route::get('/cadastrarDepoimento', [FormProcessoController::class,'depoimento']);
+Route::get('/cadastrarOReu', [FormProcessoController::class,'reu']);
+Route::get('/cadastrarVitima', [FormProcessoController::class,'depoimento']);
+Route::get('/cadastrarAutor', [FormProcessoController::class,'reu']);
 
 
 Route::get('/criarProcesso', [ProcessoController::class,'CriarProcesso']);
