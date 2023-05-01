@@ -21,7 +21,7 @@
         <hr />
         <small>Informe aqui as Informações sobre o Autor</small>
         <form>
-        <div class="form-group">
+            <div class="form-group">
                 <label for="exampleFormControlInput1" class="col-form-label">Nome</label>
                 <input type="text" class="form-control" id="exampleFormControlInput1">
             </div>
@@ -38,7 +38,7 @@
                 <input type="text" class="form-control" id="exampleFormControlInput1">
             </div>
             <div>
-            <label for="exampleFormControlInput1" class="col-form-label">Genêro</label>
+                <label for="exampleFormControlInput1" class="col-form-label">Genêro</label>
                 <select class="form-control" id="sexo">
                     <option value="Masculino">Masculino</option>
                     <option value="Feminino">Feminino</option>
@@ -73,9 +73,14 @@
                 </select>
             </div>
             -->
+            <br>
+            <div class="form-group">
+                <label for="exampleFormControlFile1">Insira a imagem</label>
+                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+            </div>
 
-           
-           
+
+
         </form>
 
     </div>

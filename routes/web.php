@@ -28,7 +28,7 @@ Route::get('/cadastrarPeticao', [FormProcessoController::class,'peticao']);
 Route::get('/cadastrarDepoimento', [FormProcessoController::class,'depoimento']);
 Route::get('/cadastrarOReu', [FormProcessoController::class,'reu']);
 Route::get('/cadastrarVitima', [FormProcessoController::class,'depoimento']);
-Route::get('/cadastrarAutor', [FormProcessoController::class,'reu']);
+Route::get('/cadastrarAutor', [FormProcessoController::class,'autor']);
 
 
 Route::get('/criarProcesso', [ProcessoController::class,'CriarProcesso']);
