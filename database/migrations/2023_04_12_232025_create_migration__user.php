@@ -17,8 +17,8 @@ class CreateMigrationUser extends Migration
             $table->id();
             $table->timestamps();
         });
-
-        Schema::create('Pessoas', function (Blueprint $table) {
+//Terminado
+        Schema::create('Pessoa', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome');
             $table->string('email')->unique();
@@ -29,22 +29,23 @@ class CreateMigrationUser extends Migration
             $table->string('bi')->unique();
             $table->timestamps();
         });
-
+        //Terminado
         Schema::create('Usuarios', function (Blueprint $table) {
             $table->increments('id');
             $table->string('senha');
             $table->unsignedBigInteger('id_Pessoa');
-            $table->foreign('id_Pessoa')->references('id')->on('Pessoas');
+            $table->foreign('id_Pessoa')->references('id')->on('Pessoa');
             $table->timestamps();
         });
+        //Terminado
         Schema::create('TipoCrime', function (Blueprint $table) {
             $table->increments('id');
             $table->string('Nome');
             $table->string('Classificacao');
             $table->timestamps();
         });
-
-        Schema::create('Reu', function (Blueprint $table) {
+        //Terminado
+        Schema::create('AutorPeticao', function (Blueprint $table){
             $table->increments('id');
             $table->string('url_imageFoto');
             $table->unsignedBigInteger('id_Pessoa');
@@ -55,6 +56,40 @@ class CreateMigrationUser extends Migration
             $table->timestamps();
         });
 
+        Schema::create('Denucia', function(Blueprint $table){
+            $table->increments('id');
+            $table->unsignedBigInteger('id_TipoCrime');
+            $table->foreign('id_TipoCrime')->references('id')->on('TipoCrime');
+            $table->unsignedBigInteger('id_Peticao');
+            $table->foreign('id_Peticao')->references('id')->on('Peticao');
+            $table->timestamps();
+        });
+
+        Schema::create('Depoimento', function(Blueprint $table){
+            $table->increments('id');
+            $table->string('Descricao');
+            $table->string('Endereco');
+            $table->unsignedBigInteger('id_Pessoa');
+            $table->foreign('id_Pessoa')->references('id')->on('Pessoa');
+            $table->unsignedBigInteger('id_peticao');
+            $table->foreign('id_Peticao')->references('id')->on('Peticao');
+            $table->timestamps();
+
+        });
+//Terminado
+        Schema::create('Reu', function (Blueprint $table) {
+            $table->integer('id');
+            $table->string('nome')->nullable();
+            $table->string('email')->nullable();
+            $table->string('endereco')->nullable();
+            $table->enum('sexo',['masculino','feminino'])->nullable();
+            $table->dateTime('data_nascimento')->nullable();
+            $table->string('telefone')->nullable();
+            $table->string('bi')->nullable();
+            $table->string('url_imageFoto');
+            $table->timestamps();
+        });
+//Terminado
         Schema::create('Processo', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
@@ -126,8 +161,9 @@ class CreateMigrationUser extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+ 
+    public function down() {
         Schema::dropIfExists('migration__user');
     }
+
 }

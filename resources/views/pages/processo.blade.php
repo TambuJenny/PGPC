@@ -20,6 +20,24 @@
     <h3><i class="fa fa-address-card"></i> <b>Processos</b> </h3>
     <hr/>
     <div class="row mt-2">
+        <h5><i>Dados do processo</i></h5>
+        <small>Informe os dados do processo </small>
+        <div class=" col-md-4 mt-3">
+            <label class="form-label">Tipo de Crime</label> 
+            <input type="text" name="tipo_crime" required class="form-control">
+            <input type="text" name="id_reu" required class="form-control"  hidden="">
+            <label class="form-label">Local do Incidente</label> 
+            <input type="text" name="local_incidente" required class="form-control">
+            <label class="form-label">Relatório</label> 
+            <input type="text" name="relatorio" class="form-control">
+        </div>
+        <div class="col-md-4 mt-3">
+            <label class="form-label">Evidencia</label> 
+               <input type="message" name="evidencia" class="form-control">
+        </div>
+    </div>
+    <div class="mt-5" style="border: 1px dashed rgb(34, 33, 33); width: auto;"></div>
+    <div class="row mt-2">
         <h5><i>Dados do Reú</i></h5>
         <small>Informações pessoais do suspeito</small>
         <div class=" col-md-4 mt-3">
@@ -41,12 +59,12 @@
         <div class="col-md-4 mt-3">
             <label class="form-label">Foto de Perfil</label> 
             <input type="file" class="form-control">
-           
         </div>
+        
     </div>
     <div class="mt-5" style="border: 1px dashed rgb(34, 33, 33); width: auto;"></div>
     <div class="row mt-5">
-        <h5><i>Dados do Crime</i></h5>
+        <h5><i>Denuncia Formal</i></h5>
         <div class="col-md-4 mt-3">
             
             <label class="form-label">Tipo de Crime</label> 
@@ -55,26 +73,18 @@
                 <option value={{$valor->id}}>{{$valor->nome}}</option>
               @endforeach
             </select>
-
-            <label class="form-label">Local do crime</label> 
-            <input type="text" name="bi" required class="form-control">
-            <label class="form-label">Data e Hora do crime</label> 
-            <input type="datetime-local" name="bi" required class="form-control">
-            <label class="form-label">Local de incidente</label> 
-            <input type="text" name="bi" required class="form-control">
-            <label class="form-label">Local de incidente</label> 
-            <input type="text" name="bi" required class="form-control">
+            <input type="text" name="id_reu" required class="form-control" hidden="">
+            <label class="form-label">Descrição do crime</label> 
+            <input type="text" name="descricao_crime" required class="form-control">
+            <label class="form-label">Data do Crime</label> 
+            <input type="datetime-local" name="data" required class="form-control">
+            <input type="text" name="id_provas" required class="form-control" hidden = "">
+            <input type="text" name="id_peticao" required class="form-control" hidden = "">
+            
+           
         </div>
         <div class="col-md-4 mt-3">
-            <label class="form-label">Vítimas</label>
-            <button class=" btn form-control btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Cadastrar Vítimas</button>
-
-            <div class="mt-2" style="overflow-x: auto">
-                <label  class="form-label"><b>Evidências coletadas durante a investigação</b></label>
-                <input type="text" required class="form-control">
-                <div id="maisEvidencia"></div>
-                <button class="btn btn-link text-dark">+ Adicionar evidencia</button>
-            </div>
+            
         </div>
         <div class="col-md-4 mt-3">
             <label class="form-label">Relatório</label>
@@ -82,7 +92,33 @@
         </div>
         
     </div>
+    <div class="mt-5" style="border: 1px dashed rgb(34, 33, 33); width: auto;"></div>
+
+    <div class="row mt-2">
+        <h5><i>Petição</i></h5>
+        <small>Informe aqui as Informações sobre a petição</small>
+        <div class=" col-md-4 mt-3">
+            <label class="form-label">Descrição do crime</label> 
+            <input type="text" name="descricao_crime" required class="form-control">
+            <label class="form-label">B.I</label> 
+            <input type="text" name="bi" required class="form-control">
+            <label class="form-label">Endereço</label> 
+            <input type="text" name="endereco" class="form-control">
+        </div>
+        <div class="col-md-4 mt-3">
+            <label class="form-label">E-mail</label> 
+               <input type="email" name="email" class="form-control">
+               <label class="form-label">Telefone</label> 
+               <input type="tel" name="telefone" class="form-control">
+               <label class="form-label ">Data de Nascimento</label> 
+               <input type="date" name="data_nascimento" class="form-control">
+        </div>
+       
+    </div>
+
 </div>
+
+
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
