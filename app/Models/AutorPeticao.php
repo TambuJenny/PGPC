@@ -9,7 +9,7 @@ class AutorPeticao extends Model
 {
     use HasFactory;
 
-    protected $table = 'Autor_peticao';
+    protected $table = 'autorpeticao';
 
     protected $fillable = 
     [
@@ -17,7 +17,5 @@ class AutorPeticao extends Model
         'id_Pessoa',
         'created_at',
         'updated_at',
-        'created_at',
-        'updated_at'
     ];
 }
