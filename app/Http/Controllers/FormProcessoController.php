@@ -12,7 +12,7 @@ class FormProcessoController extends Controller
 {
    
     public function processo(){
-        return view('pages.FormulariosProcesso.formProcesso');
+        return view('pages.FormulariosProcesso.formProcesso',['idprocesso'=> ProcessoService::PegarUltimoId('processo')]);
      }
 
      public function peticao()
@@ -42,7 +42,7 @@ class FormProcessoController extends Controller
       ];
 
 
-      return view('pages.FormulariosProcesso.formVitima', $valorRetornado);
+      return redirect('pages.FormulariosProcesso.formVitima', $valorRetornado);
      }
 
      public function reu(){
@@ -57,6 +57,6 @@ class FormProcessoController extends Controller
         return view('pages.FormulariosProcesso.formAutor');
      }
      public function vitima(){
-        return view('pages.FormulariosProcesso.formVitima');
+        return view('pages.FormulariosProcesso.formVitima',['idprocesso'=> ProcessoService::PegarUltimoId('processo')]);
      }
 }
