@@ -104,10 +104,10 @@ class CreateMigrationUser extends Migration
         Schema::create('Vitima', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedBigInteger('id_pessoa');
-            $table->unsignedBigInteger('id_DenunciaQueixaCrime');
+            $table->unsignedBigInteger('id_peticao');
             
+            $table->foreign('id_peticao')->references('id')->on('peticao');
             $table->foreign('id_Pessoa')->references('id')->on('pessoa');
-            $table->foreign('id_DenunciaQueixaCrime')->references('id')->on('DenunciaQueixaCrime');
             $table->timestamps();
         });
 

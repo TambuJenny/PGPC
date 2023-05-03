@@ -3,7 +3,7 @@
 
 
 
-<form class="mt-5 mb-5" method="POST" action="{{route('processo.cadastro')}}">
+<form class="mt-5 mb-5" method="POST" action="{{route('processo.peticao')}}">
         @csrf
     <div class="mb-2  ">
         <nav class="navbar bg-body-tertiary">
@@ -30,8 +30,7 @@
        
         <hr />
         <small>Informe aqui as Informações sobre a petição</small>
-        <form class="ms-5">
-        
+        <form class="ms-5">      
         
         <div class="d-flex align-items-justify mt-4 ">
           <div class="col-md-5">  

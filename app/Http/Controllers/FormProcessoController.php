@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\DTO\PeticaoDTO;
+use App\DTO\VitimaDTO;
 use App\Http\Controllers\Controller;
 use App\Services\PeticaoService;
 use App\Services\ProcessoService;
+use App\Services\VitimaService;
 use Illuminate\Http\Request;
+use Symfony\Component\VarDumper\VarDumper;
 
 class FormProcessoController extends Controller
 {
@@ -41,8 +44,9 @@ class FormProcessoController extends Controller
          'idPeticao' =>  $idPeticao
       ];
 
+      $queryString = "/vitima?idpeticao=".$idPeticao;
 
-      return redirect('pages.FormulariosProcesso.formVitima', $valorRetornado);
+      return redirect($queryString,302);
      }
 
      public function reu(){
@@ -56,7 +60,25 @@ class FormProcessoController extends Controller
      public function autor(){
         return view('pages.FormulariosProcesso.formAutor');
      }
-     public function vitima(){
-        return view('pages.FormulariosProcesso.formVitima',['idprocesso'=> ProcessoService::PegarUltimoId('processo')]);
+     public function vitima(Request $request){
+
+        return view('pages.FormulariosProcesso.formVitima',['idprocesso'=> ProcessoService::PegarUltimoId('processo'),'idpeticao'=>$request->query('idpeticao')]);
+     }
+     public function CadastrarVitima(Request $request )
+     {
+         $vitimadto = new VitimaDTO();
+         $vitimaService = new VitimaService ();
+
+         $vitimadto -> nome = $request -> input('nome');
+         $vitimadto -> email = $request -> input('email');
+         $vitimadto -> sexo = $request -> input('sexo');
+         $vitimadto -> endereco = $request -> input('endereco');
+         $vitimadto -> data_nascimento = $request -> input('data_nascimento');
+         $vitimadto -> telefone = $request -> input('telefone');
+         $vitimadto -> bi = $request -> input('bi'); 
+         $vitimadto -> id_peticao = $request -> input('id_peticao'); 
+         
+         $idPeticao = $vitimaService -> CriarVitima($vitimadto);
+         return view('pages.FormulariosProcesso.formVitima',['idprocesso'=> ProcessoService::PegarUltimoId('processo')]);
      }
 }

@@ -27,7 +27,7 @@ Route::get('/cadastrarProcesso', [FormProcessoController::class,'processo']);
 Route::get('/cadastrarPeticao', [FormProcessoController::class,'peticao']);
 Route::get('/cadastrarDepoimento', [FormProcessoController::class,'depoimento']);
 Route::get('/cadastrarOReu', [FormProcessoController::class,'reu']);
-Route::get('/cadastrarVitima', [FormProcessoController::class,'depoimento']);
+Route::get('/cadastrarVitima', [FormProcessoController::class,'vitima']);
 Route::get('/cadastrarAutor', [FormProcessoController::class,'autor']);
 Route::get('/editarUsuario', [UsuarioController::class,'EditarUsuario']);
 
@@ -37,7 +37,9 @@ Route::get('/criarProcesso', [ProcessoController::class,'CriarProcesso']);
 Route::post('/CriarConta', [LoginController::class,'criarconta']) -> name('User.CriarConta');
 Route::post('/login', [LoginController::class,'login']) -> name('User.Login');
 Route::post('/editarUsuario', [UsuarioController::class,'editar']) -> name('User.Edit');
-Route::post('/cadastrarPeticao', [FormProcessoController::class,'CadastrarPeticao']) -> name('processo.cadastro');
+Route::post('/cadastrarPeticao', [FormProcessoController::class,'CadastrarPeticao']) -> name('processo.peticao');
+Route::post('/cadastrarVitima', [FormProcessoController::class,'CadastrarVitima']) -> name('processo.vitima');
+
 
 
 Route::post('/CriarProcessoReu', [ProcessoController::class,'CriarProcessoReu']) -> name('Processo.Create');

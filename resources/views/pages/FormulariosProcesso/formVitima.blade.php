@@ -1,8 +1,10 @@
 @extends('layouts.menu')
 @section('content')
 
-<form class="mt-3" style="" method="POST" action="{{route('Processo.Create')}}">
-    <div class="mb-2  ">
+@if(isset($valorRetornado->idPeticao))
+
+@endif
+<div class="mb-2 ">
         <nav class="navbar bg-body-tertiary">
             <div class="container-fluid">
                 <a class="navbar-brand"><i class="fa fa-bars" aria-hidden="true"></i></a>
@@ -15,69 +17,45 @@
                 </div>
             </div>
         </nav>
-    </div>
-    <div class=" card p-4 col-md-12">
+</div>
+
+<form class="card ps-4 col-md-12 mt-3" method="POST" action="{{route('processo.vitima')}}">
+    <div class=" ">
         <h3><i class="fa fa-address-card"></i> <b>Cadastro da Vítima</b> </h3>
         <hr />
         <small>Informe aqui as Informações sobre a Vítima</small>
-        <form>
-        <div class="form-group">
-                <label for="exampleFormControlInput1" class="col-form-label">Nome</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1">
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlInput1" class="col-form-label">Número do B.I</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1">
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlInput1" class="col-form-label">Email</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1">
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlInput1" class="col-form-label">Endereço</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1">
-            </div>
-            <div>
-            <label for="exampleFormControlInput1" class="col-form-label">Genêro</label>
-                <select class="form-control" id="sexo">
-                    <option value="Masculino">Masculino</option>
-                    <option value="Feminino">Feminino</option>
+
+                
+        <div class="d-flex align-items-justify mt-4 ">
+          <div class="col-md-5">  
+               <label class="form-label">Nome</label> 
+               <input type="text" name="nome" required class="form-control">
+               <label class="form-label">B.I</label> 
+               <input type="text" name="bi" required class="form-control">
+
+               <label class="form-label">Endereço</label> 
+               <input type="text" name="endereco" class="form-control">
+               <label class="form-label mt-2">Sexo</label>
+               <select class="form-control" name="sexo"> 
+                   <option value="Masculino">Masculino</option>
+                   <option value="Feminino">Feminino</option>
                 </select>
-            </div>
-
-            <div class="form-group">
-                <label for="exampleFormControlInput1" class="col-form-label">Telefone</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1">
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlInput1" class="col-form-label">Contato</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1">
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlInput1" class="col-form-label">Data de nascimento</label>
-                <input type="date" class="form-control" id="exampleFormControlInput1">
-            </div>
-
-            <!--
-                <div class="form-group">
-                <label for="exampleFormControlSelect1">Example select</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                    <option>1</option> 
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="exampleFormControlSelect2">Example multiple select</label>
-                <select multiple class="form-control" id="exampleFormControlSelect2">
-                    <option>1</option>
-                </select>
-            </div>
-            -->
-
-           
-        </form>
-
-    </div>
+          
+           </div>
+           <div class="col-md-5 ms-3">
+               <label class="form-label">E-mail</label> 
+               <input type="email" name="email" class="form-control">
+               <label class="form-label">Telefone</label> 
+               <input type="tel" name="telefone" class="form-control">
+               <label class="form-label mt-2">Data de Nascimento</label> 
+               <input type="date" name="data_nascimento" class="form-control">
+               <label class="form-label mt-2">N Petição</label>
+               <input type="text" value="{{$idpeticao}}" disabled name="id_peticao" class="form-control">
+          
+          </div>
+        </div>
+       
+        <button class="col-md-2 mt-4 btn bg-primary text-white" type="submit"><i class="fa-solid fa-sign-in"></i> Cadastrar Peticao</button>
 
     </div>
 
