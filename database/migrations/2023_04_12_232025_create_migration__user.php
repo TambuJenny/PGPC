@@ -45,16 +45,6 @@ class CreateMigrationUser extends Migration
             $table->timestamps();
         });
         //Terminado
-        Schema::create('AutorPeticao', function (Blueprint $table){
-            $table->increments('id');
-            $table->string('url_imageFoto');
-            $table->unsignedBigInteger('id_Pessoa');
-            $table->unsignedBigInteger('id_DenunciaQueixaCrime');
-            
-            $table->foreign('id_Pessoa')->references('id')->on('Pessoas');
-            $table->foreign('id_DenunciaQueixaCrime')->references('id')->on('DenunciaQueixaCrime');
-            $table->timestamps();
-        });
 
         Schema::create('Denucia', function(Blueprint $table){
             $table->increments('id');
@@ -99,14 +89,14 @@ class CreateMigrationUser extends Migration
         Schema::create('AutorPeticao', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedBigInteger('id_Pessoa');
-            $table->foreign('id_Pessoa')->references('id')->on('pessoas');
+            $table->foreign('id_Pessoa')->references('id')->on('pessoa');
             $table->timestamps();
         });
 
         Schema::create('Peticao', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('descricaoCrime');
             $table->unsignedBigInteger('id_autorPeticao');
-            
             $table->foreign('id_autorPeticao')->references('id')->on('Autorpeticao');
             $table->timestamps();
         });
@@ -114,10 +104,10 @@ class CreateMigrationUser extends Migration
         Schema::create('Vitima', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedBigInteger('id_pessoa');
-            $table->unsignedBigInteger('id_DenunciaQueixaCrime');
+            $table->unsignedBigInteger('id_peticao');
             
-            $table->foreign('id_Pessoa')->references('id')->on('pessoas');
-            $table->foreign('id_DenunciaQueixaCrime')->references('id')->on('DenunciaQueixaCrime');
+            $table->foreign('id_peticao')->references('id')->on('peticao');
+            $table->foreign('id_Pessoa')->references('id')->on('pessoa');
             $table->timestamps();
         });
 

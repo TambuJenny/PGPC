@@ -9,16 +9,16 @@ class ReuRepository {
     public static function FindAll()
     {
         $query = DB::table('Reu')
-        ->join('pessoas',function($join){
-            $join -> on('pessoas.id','=','reu.id_Pessoa');
+        ->join('pessoa',function($join){
+            $join -> on('pessoa.id','=','reu.id_Pessoa');
         })
-        ->where('pessoas.id','=','reu.id_Pessoa')
+        ->where('pessoa.id','=','reu.id_Pessoa')
         ->select(
-            'pessoas.nome',
-            'pessoas.bi',
-            'pessoas.endereco',
-            'pessoas.data_nascimento',
-            'pessoas.telefone',
+            'pessoa.nome',
+            'pessoa.bi',
+            'pessoa.endereco',
+            'pessoa.data_nascimento',
+            'pessoa.telefone',
             'reu.url_imageFoto'
         )->get();
 
@@ -28,16 +28,16 @@ class ReuRepository {
     public static function FindbyId($id)
     {
         $query = DB::table('Reu')
-        ->join('pessoas',function($join){
-            $join -> on('pessoas.id','=','reu.id_Pessoa');
+        ->join('pessoa',function($join){
+            $join -> on('pessoa.id','=','reu.id_Pessoa');
         })
         ->where('reu.id_Pessoa','=',$id)
         ->select(
-            'pessoas.nome',
-            'pessoas.bi',
-            'pessoas.endereco',
-            'pessoas.data_nascimento',
-            'pessoas.telefone',
+            'pessoa.nome',
+            'pessoa.bi',
+            'pessoa.endereco',
+            'pessoa.data_nascimento',
+            'pessoa.telefone',
             'reu.url_imageFoto'
         )->get();
         return $query;
