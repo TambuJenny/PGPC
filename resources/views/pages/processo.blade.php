@@ -1,13 +1,8 @@
 @extends('layouts.menu')
 @section('content') 
 
-<div class="d-flex justify-content-center">
-  
-</div>
-<div class=" card mt-5">
 
-<div class="mt-5 mb-5 "> 
-
+<div class="mt-5">
 <div class="row">
 
 <div class="col-md-4">
@@ -44,8 +39,6 @@
     <a href="#" class="card-link">Another link</a>
   </div>
 </div>
-</div>
-
 </div>
 
 </div>

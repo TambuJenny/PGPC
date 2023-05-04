@@ -40,11 +40,8 @@ class FormProcessoController extends Controller
 
       $idPeticao = $peticaoService ->CadastrarPeticao($peticao);
 
-      $valorRetornado = [
-         'idPeticao' =>  $idPeticao
-      ];
 
-      $queryString = "/vitima?idpeticao=".$idPeticao;
+      $queryString = "/cadastrarVitima?idpeticao=".$idPeticao;
 
       return redirect($queryString,302);
      }
@@ -60,7 +57,8 @@ class FormProcessoController extends Controller
      public function autor(){
         return view('pages.FormulariosProcesso.formAutor');
      }
-     public function vitima(Request $request){
+     public function vitima(Request $request)
+     {
 
         return view('pages.FormulariosProcesso.formVitima',['idprocesso'=> ProcessoService::PegarUltimoId('processo'),'idpeticao'=>$request->query('idpeticao')]);
      }
@@ -76,9 +74,11 @@ class FormProcessoController extends Controller
          $vitimadto -> data_nascimento = $request -> input('data_nascimento');
          $vitimadto -> telefone = $request -> input('telefone');
          $vitimadto -> bi = $request -> input('bi'); 
+        
          $vitimadto -> id_peticao = $request -> input('id_peticao'); 
-         
-         $idPeticao = $vitimaService -> CriarVitima($vitimadto);
-         return view('pages.FormulariosProcesso.formVitima',['idprocesso'=> ProcessoService::PegarUltimoId('processo')]);
+      
+         $vitima = $vitimaService -> CriarVitima($vitimadto);
+
+         return view('pages.FormulariosProcesso.formVitima',['idprocesso'=> ProcessoService::PegarUltimoId('processo'),'idpeticao'=>$request->query('idpeticao')]);
      }
 }

@@ -20,13 +20,14 @@
 </div>
 
 <form class="card ps-4 col-md-12 mt-3" method="POST" action="{{route('processo.vitima')}}">
+@csrf
     <div class=" ">
-        <h3><i class="fa fa-address-card"></i> <b>Cadastro da Vítima</b> </h3>
+        <h3 class="mt-3"><i class="fa fa-address-card"></i> <b>Cadastro da Vítima</b> </h3>
         <hr />
         <small>Informe aqui as Informações sobre a Vítima</small>
 
                 
-        <div class="d-flex align-items-justify mt-4 ">
+        <div class=" row d-flex align-items-justify mt-4 ">
           <div class="col-md-5">  
                <label class="form-label">Nome</label> 
                <input type="text" name="nome" required class="form-control">
@@ -50,18 +51,19 @@
                <label class="form-label mt-2">Data de Nascimento</label> 
                <input type="date" name="data_nascimento" class="form-control">
                <label class="form-label mt-2">N Petição</label>
-               <input type="text" value="{{$idpeticao}}" disabled name="id_peticao" class="form-control">
-          
+               <input type="hidden" value={{$idpeticao}}  name="id_peticao" class="form-control">
+               <input type="" value={{$idpeticao}}  name="teste" class="form-control">
+
           </div>
         </div>
        
-        <button class="col-md-2 mt-4 btn bg-primary text-white" type="submit"><i class="fa-solid fa-sign-in"></i> Cadastrar Peticao</button>
+        <button class="col-md-2 mt-4  mb-4  btn bg-primary text-white" type="submit"><i class="fa-solid fa-sign-in"></i> Cadastrar vítima</button>
 
     </div>
 
+</form>
 
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -69,8 +71,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
-                        <div class="">
+                <div class="">
                             <label for="recipient-name" class="col-form-label">Pesquisar</label>
                             <input type="text" class="form-control" id="pesquisarVitima">
                         </div>
@@ -81,7 +82,7 @@
                                     <label for="recipient-name" class="col-form-label">Nome Completo</label>
                                     <input type="text" class="form-control" name="nomeVitima" id="nomeVitima">
                                     <label for="recipient-name" class="col-form-label">BI</label>
-                                    <input type="text" class="form-control" name="bi" id="bi">
+                                    <input type="text" class="form-control" name="" id="bi">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="recipient-name" class="col-form-label">Telefone</label>
@@ -98,7 +99,6 @@
                             <label for="message-text" class="col-form-label">Message:</label>
                             <textarea class="form-control" id="message-text"></textarea>
                         </div>
-                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Sair</button>
@@ -107,6 +107,5 @@
             </div>
         </div>
     </div>
-</form>
 <script src="{{asset('frontend/js/pages/processo.js')}}" crossorigin="anonymous"></script>
 @endsection
