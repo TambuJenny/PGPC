@@ -11,7 +11,7 @@
                 <div class="d-flex" role="search">
 
                     <button class="btn btn-link " style="text-decoration: none" type="submit"> <i class="fa fa-file-pdf" aria-hidden="true"></i> GerarPdf</button>
-                    <button class="btn btn-link " style="text-decoration: none" type="submit"><i class="fa fa-list" aria-hidden="true"></i> Listar</button>
+                    <button class="btn btn-link " style="text-decoration: none" type="submit" id="listar"><i class="fa fa-list" aria-hidden="true"></i> Listar</button>
                     <button class="btn btn-link " style="text-decoration: none" type="submit"><i class="fa fa-upload" aria-hidden="true"></i> Cadastrar</button>
 
                 </div>
@@ -51,17 +51,35 @@
                <label class="form-label mt-2">Data de Nascimento</label> 
                <input type="date" name="data_nascimento" class="form-control">
                <label class="form-label mt-2">N Petição</label>
-               <input type="hidden" value={{$idpeticao}}  name="id_peticao" class="form-control">
+               <input type="hidden" value={{$idpeticao}}  name="id_peticao">
                <input type="" value={{$idpeticao}}  name="teste" class="form-control">
 
           </div>
         </div>
        
+       <div class="">
         <button class="col-md-2 mt-4  mb-4  btn bg-primary text-white" type="submit"><i class="fa-solid fa-sign-in"></i> Cadastrar vítima</button>
-
+        <a class="col-md-2 mt-4  mb-4  btn bg-success text-white" href="" ><i class="fa-solid fa-sign-in"></i> Cadastrar Reu</a>
+       </div>
     </div>
 
 </form>
+
+<div class="card mt-5 " id="vitimaLista">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nome</th>
+      <th scope="col">BI</th>
+      <th scope="col">Telefone</th>
+    </tr>
+  </thead>
+  <tbody id='tableValue'>
+    
+  </tbody>
+</table>
+</div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -107,5 +125,68 @@
             </div>
         </div>
     </div>
-<script src="{{asset('frontend/js/pages/processo.js')}}" crossorigin="anonymous"></script>
+<script src="{{asset('frontend/js/pages/processo.js')}}"></script>
+<script src="{{asset('frontend/js/jquery.js') }}" ></script>
+<script>
+    function mostarDivCadastro() {
+
+var divCadastro = document.getElementById('cadastrarVitima');
+//alert(divCadastro.classList.contains("visibilidade"));
+
+
+if (divCadastro.classList.contains("visibilidade")) {
+    divCadastro.classList.add("visibilidade2");
+    divCadastro.classList.remove("visibilidade");
+}
+else {
+    divCadastro.classList.add("visibilidade");
+    divCadastro.classList.remove("visibilidade2");
+}
+
+}
+
+jQuery('document').ready(()=>{
+
+    $.ajax({
+        type: "GET",
+        url: "api/buscarvitima/{{$idpeticao}}",
+        contentType: "application/json; charset=utf-8",
+        beforeSend : function ()
+        {
+
+        },
+        success: function (response) {
+            setData(response);
+        }
+    });
+});
+
+function setData(response)
+{
+    let table = "";
+
+    response.forEach(element => {
+        console.log(element);
+
+        table += `<tr>
+                 <th scope="row">1</th>
+                 <td>${element.nome}</td>
+                 <td>${element.bi}</td>
+                 <td>${element.telefone}</td>
+            </tr>`
+    });
+
+    $('#tableValue').html(table);
+}
+
+$('#listar').click(()=>{
+
+    if($('#vitimaLista').hasClass(".visibilidade"))
+        $('#vitimaLista').remove('visibilidade');
+    else
+        $('#vitimaLista').addClass('visibilidade');
+
+});
+
+</script>
 @endsection

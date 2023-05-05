@@ -1,7 +1,9 @@
 <?php
 
+use App\DTO\Request\BuscarTodasVitimasRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller\FormProcessoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +19,5 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/buscarvitima/{idpeticao}', 'App\Http\Controllers\FormProcessoController@BuscarTodasvitimas');

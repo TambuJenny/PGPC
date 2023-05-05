@@ -3,10 +3,12 @@
 namespace App\Services;
 
 
+use App\DTO\Response\BuscarTodasVitimasResponse;
 use App\DTO\VitimaDTO;
 use App\Models\Pessoa;
 use App\Models\Vitima;
 use App\Repository\UsuarioRepository;
+use App\Repository\VitimaRepository;
 
 use function PHPUnit\Framework\isNull;
 
@@ -20,7 +22,7 @@ class VitimaService
         var_dump('entrou!');
         $pessoa = new Pessoa;
 
-        if ($vitimaDTO !=null) {
+        if ($vitimaDTO != null) {
             $pessoa = new Pessoa();
             $vitima = new Vitima();
 
@@ -29,7 +31,7 @@ class VitimaService
             if ($verificarExistePessoa->count() > 0) {
 
                 $idPessoa = $verificarExistePessoa->pluck('Id')[0];
-                var_dump('entrou:'. $idPessoa);
+                var_dump('entrou:' . $idPessoa);
 
             } else {
                 $pessoa->nome = $vitimaDTO->nome;
@@ -47,9 +49,28 @@ class VitimaService
             $vitima->save();
 
             return $vitima->id;
-        }else
-        {
+        } else {
             var_dump('fodeuuuuuu');
         }
+    }
+
+    public function BuscarTodasVitimas($idPeticao)
+    {
+        $query = VitimaRepository::FindByIdPeticao($idPeticao);
+        $resposta = [];
+            
+        foreach ($query as $key) {
+            $respostaquery = new BuscarTodasVitimasResponse();
+            
+            $respostaquery -> bi = $key ->bi;
+            $respostaquery -> id_peticao = $key ->id_peticao;
+            $respostaquery -> nome = $key->nome;
+            $respostaquery -> telefone = $key->telefone;
+            $respostaquery -> id_vitima = $key->id_vitima;
+            
+            $resposta[] =  $respostaquery;
+
+        }
+        return $resposta;
     }
 }

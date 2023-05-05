@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\DTO\BuscarTodasVitimasDTO;
 use App\DTO\PeticaoDTO;
+use App\DTO\Request\BuscarTodasVitimasRequest;
 use App\DTO\VitimaDTO;
 use App\Http\Controllers\Controller;
 use App\Services\PeticaoService;
@@ -79,6 +81,14 @@ class FormProcessoController extends Controller
       
          $vitima = $vitimaService -> CriarVitima($vitimadto);
 
-         return view('pages.FormulariosProcesso.formVitima',['idprocesso'=> ProcessoService::PegarUltimoId('processo'),'idpeticao'=>$request->query('idpeticao')]);
+         $queryString = "/cadastrarVitima?idpeticao=". $vitimadto -> id_peticao;
+         return redirect($queryString,302);
+     }
+
+     public function BuscarTodasvitimas ( $idpeticao ) 
+     {
+         $vitimaService = new VitimaService ();  
+         $returnjson = $vitimaService -> BuscarTodasVitimas($idpeticao);
+         return response()->json($returnjson);
      }
 }

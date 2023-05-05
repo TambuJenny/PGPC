@@ -77,10 +77,10 @@
             </div>
           </div>
       </div>
-      
+        <script src="{{asset('frontend/js/jquery.js') }}" crossorigin="anonymous"></script>
         <script src=" {{asset('frontend/js/bootstrap.bundle.min.js') }}" crossorigin="anonymous"></script>
         <script src="{{asset('frontend/js/popper.min.js') }}" crossorigin="anonymous"></script>
-        <script src="{{asset('frontend/js/jquery.js') }}" crossorigin="anonymous"></script>
+      
     </body>
  
 </html>

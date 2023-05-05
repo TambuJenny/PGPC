@@ -26,7 +26,7 @@ Route::get('/cadastrarReu', [FormProcessoController::class,'reu']);
 Route::get('/cadastrarProcesso', [FormProcessoController::class,'processo']);
 Route::get('/cadastrarPeticao', [FormProcessoController::class,'peticao']);
 Route::get('/cadastrarDepoimento', [FormProcessoController::class,'depoimento']);
-Route::get('/cadastrarOReu', [FormProcessoController::class,'reu']);
+Route::get('/cadastrarReu', [FormProcessoController::class,'reu']);
 Route::get('/cadastrarVitima', [FormProcessoController::class,'vitima']);
 Route::get('/cadastrarAutor', [FormProcessoController::class,'autor']);
 Route::get('/editarUsuario', [UsuarioController::class,'EditarUsuario']);
