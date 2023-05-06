@@ -23,7 +23,7 @@ Equipe constituido por 4 elementos que são.
 - Programas necessárias :
 - WAMP OU XAMP
 - COMPOSER
-- PHP 8 OU superior
+- PHP 6 > 
 - VsCode ou outro editor de código.
 
 #### Banco de dados:
