@@ -4,20 +4,7 @@
 @if(isset($valorRetornado->idPeticao))
 
 @endif
-<div class="mb-2 ">
-        <nav class="navbar bg-body-tertiary">
-            <div class="container-fluid">
-                <a class="navbar-brand"><i class="fa fa-bars" aria-hidden="true"></i></a>
-                <div class="d-flex" role="search">
 
-                    <button class="btn btn-link " style="text-decoration: none" type="submit"> <i class="fa fa-file-pdf" aria-hidden="true"></i> GerarPdf</button>
-                    <button class="btn btn-link " style="text-decoration: none" type="submit" id="listar"><i class="fa fa-list" aria-hidden="true"></i> Listar</button>
-                    <button class="btn btn-link " style="text-decoration: none" type="submit"><i class="fa fa-upload" aria-hidden="true"></i> Cadastrar</button>
-
-                </div>
-            </div>
-        </nav>
-</div>
 
 <form class="card ps-4 col-md-12 mt-3" method="POST" action="{{route('processo.vitima')}}">
 @csrf

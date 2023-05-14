@@ -29,18 +29,8 @@ class UsuarioRepository
     public static function FindByBI($bi)
     {
         $verificarDadosLogin = DB::table('pessoa')
-            ->join('usuarios', function ($join) {
-                $join->on('pessoa.id', '=', 'usuarios.id_Pessoa');
-            })
             ->where('pessoa.bi', '=', $bi)
             ->select(
-                'pessoa.nome as Nome',
-                'pessoa.email as Email',
-                'pessoa.sexo as Sexo',
-                'pessoa.endereco as Endereco',
-                'pessoa.data_nascimento as DataNascimento',
-                'pessoa.telefone as Telefone',
-                'pessoa.bi as Bi',
                 'pessoa.id as Id'
             )->get();
 

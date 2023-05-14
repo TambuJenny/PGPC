@@ -9,7 +9,9 @@ use App\Models\Pessoa;
 use App\Models\Vitima;
 use App\Repository\UsuarioRepository;
 use App\Repository\VitimaRepository;
+use PhpParser\Node\Expr\Throw_;
 
+use TheSeer\Tokenizer\Exception;
 use function PHPUnit\Framework\isNull;
 
 class VitimaService
@@ -31,7 +33,6 @@ class VitimaService
             if ($verificarExistePessoa->count() > 0) {
 
                 $idPessoa = $verificarExistePessoa->pluck('Id')[0];
-                var_dump('entrou:' . $idPessoa);
 
             } else {
                 $pessoa->nome = $vitimaDTO->nome;
@@ -50,7 +51,9 @@ class VitimaService
 
             return $vitima->id;
         } else {
-            var_dump('fodeuuuuuu');
+
+            throw new Exception("Error Processing Request", 1);
+            
         }
     }
 
