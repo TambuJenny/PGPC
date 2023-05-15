@@ -12,7 +12,13 @@ class Vitima extends Model
 
     protected $fillable = [
         'id',
-        'id_pessoa',
-        'id_peticao'
+        'nome',
+        'email',
+        'sexo',
+        'endereco',
+        'data_nascimento',
+        'telefone',
+        'bi',
+        'url_imageFoto'
     ];
 }

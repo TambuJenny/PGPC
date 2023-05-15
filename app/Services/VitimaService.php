@@ -66,6 +66,7 @@ class VitimaService
             $respostaquery = new BuscarTodasVitimasResponse();
             
             $respostaquery -> bi = $key ->bi;
+            $respostaquery -> id = $key ->id;
             $respostaquery -> id_peticao = $key ->id_peticao;
             $respostaquery -> nome = $key->nome;
             $respostaquery -> telefone = $key->telefone;

@@ -80,7 +80,7 @@
             <span class="nav-link">Navigation</span>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="index.html">
+            <a href ="{{url("/criarProcesso")}}" class="nav-link" href="index.html">
               <span class="menu-icon">
                 <i class="mdi mdi-speedometer"></i>
               </span>
@@ -376,73 +376,6 @@
         <!-- main-panel ends -->
       </div>
     </div>
-
-    <nav class="navbar sticky-top navbar-expand-lg bg-primary">
-      <div class="container-fluid">
-        <a class="navbar-brand text-white" href="#">PGPC</a>
-        <div class="nav justify-content-end">
-        <div class="btn-group">
-        <button type="button" class="btn btn-transparent text-white"><i class="fa fa-user"></i>{{session('Nome')}}</button>
-          <button type="button" class="btn btn-transparent dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-            <span class="visually-hidden">Toggle Dropdown</span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item text-success" href="{{url('/editarUsuario/?idUsuario='.session('IdUsuario')) }}">Editar Perfil</a></li>
-            <li><a class="dropdown-item text-danger" href="#">Sair</a></li>
-            <li><a class="dropdown-item" href="#">Tutorial</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Doação</a></li>
-          </ul>
-        </div>
-        </div>
-          <!-- Example split danger button   -->
-
-      </div>
-    </nav>
-      <div class=" ">
-          <div  class="d-flex flex-column flex-shrink-0 bg-primary" style="width: 4.5rem;height:100%;position: fixed; ">
-            <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
-              <li class="nav-item mt-5">
-                <a href="#" class="nav-link active py-3 border-bottom" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Tooltip on right">
-                <i class="fa fa-balance-scale text-white"></i> 
-                <span class="visually-hidden">Icon-only</span>
-                </a>
-              </li>
-              <li >
-                <a href="#" class="nav-link active py-3 border-bottom" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Tooltip on right">
-                  <i class="fa fa-user-secret text-white" aria-hidden="true"></i>
-                <span class="visually-hidden">Icon-only</span>
-                </a>
-              </li>
-              <li>
-                <a href="{{url("/criarProcesso")}}" class="nav-link py-3 border-bottom" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Tooltip on right">
-                <i class="fa fa-drivers-license text-white"></i> 
-                <span class="visually-hidden">Icon-only</span>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link py-3 border-bottom" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
-                  <svg class="bi" width="24" height="24" role="img" aria-label="Orders"><use xlink:href="#table"></use></svg>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link py-3 border-bottom" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Products">
-                  <svg class="bi" width="24" height="24" role="img" aria-label="Products"><use xlink:href="#grid"></use></svg>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link py-3 border-bottom" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
-                  <svg class="bi" width="24" height="24" role="img" aria-label="Customers"><use xlink:href="#people-circle"></use></svg>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div class="container">
-            <div class="row">
-             
-            </div>
-          </div>
-      </div>
         <script src="{{asset('frontend/js/jquery.js')}}" crossorigin="anonymous"></script>
         <script src="{{asset('frontend/js/bootstrap.bundle.min.js')}}" crossorigin="anonymous"></script>
         <script src="{{asset('frontend/js/popper.min.js')}}" crossorigin="anonymous"></script>

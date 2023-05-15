@@ -33,6 +33,7 @@ class VitimaRepository
         ->where('vitima.id_peticao','=',$idpeticao)
         ->select(
             'pessoa.nome',
+            'pessoa.id',
             'pessoa.bi',
             'pessoa.telefone',
             'vitima.id_peticao',

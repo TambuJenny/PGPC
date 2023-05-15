@@ -5,12 +5,17 @@ namespace App\Http\Controllers;
 use App\DTO\BuscarTodasVitimasDTO;
 use App\DTO\PeticaoDTO;
 use App\DTO\Request\BuscarTodasVitimasRequest;
+use App\DTO\Request\DepoimentoRequest;
+use App\DTO\ReuDTO;
 use App\DTO\VitimaDTO;
 use App\Http\Controllers\Controller;
+use App\Models\Depoimento;
 use App\Services\PeticaoService;
 use App\Services\ProcessoService;
+use App\Services\ReuService;
 use App\Services\VitimaService;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\VarDumper\VarDumper;
 
 class FormProcessoController extends Controller
@@ -52,6 +57,28 @@ class FormProcessoController extends Controller
    public function reu()
    {
       return view('pages.FormulariosProcesso.formReu');
+   }
+
+   public function CadastrarReu(Request $request)
+   {
+      $reuDTO = new ReuDTO();
+      $reuService = new ReuService();
+
+      $reuDTO->nome = $request->input('nome');
+      $reuDTO->email = $request->input('email');
+      $reuDTO->sexo = $request->input('sexo');
+      $reuDTO->endereco = $request->input('endereco');
+      $reuDTO->data_nascimento = $request->input('data_nascimento');
+      $reuDTO->telefone = $request->input('telefone');
+      $reuDTO->bi = $request->input('bi');
+      $reuDTO->id_peticao = $request->input('id_peticao');
+      $reuDTO->url_imageFoto = $request->file('fotoReu')->store('caminho/da/pasta');
+
+      $vitima = $reuService->CadastrarReu($reuDTO);
+
+      $queryString = "/cadastrarVitima?idpeticao=" . $reuDTO->id_peticao;
+
+      return redirect($queryString, 302);
    }
 
    public function depoimento()
@@ -96,8 +123,18 @@ class FormProcessoController extends Controller
       return response()->json($returnjson);
    }
 
-   public function Teste ()
+   public function Cadastrardepoimento (Request $request)
    {
-      
+         $depoimento = new Depoimento();
+
+         $depoimento ->Descricao = $request -> depoimento;
+         $depoimento ->id_pessoa = $request -> id_pessoa;
+         $depoimento ->Endereco = "teste";
+         $depoimento ->id_peticao = $request -> id_peticao;
+         $depoimento -> save();
+
+         return response()->json(['mensagem' => 'Depoimento cadastrado com sucesso!'], Response::HTTP_OK);
+
    }
+
 }

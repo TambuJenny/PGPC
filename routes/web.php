@@ -39,6 +39,7 @@ Route::post('/login', [LoginController::class,'login']) -> name('User.Login');
 Route::post('/editarUsuario', [UsuarioController::class,'editar']) -> name('User.Edit');
 Route::post('/cadastrarPeticao', [FormProcessoController::class,'CadastrarPeticao']) -> name('processo.peticao');
 Route::post('/cadastrarVitima', [FormProcessoController::class,'CadastrarVitima']) -> name('processo.vitima');
+Route::post('/cadastrarReu', [FormProcessoController::class,'CadastrarReu']) -> name('processo.reu');
 
 
 
