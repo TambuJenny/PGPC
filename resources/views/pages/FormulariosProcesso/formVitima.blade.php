@@ -40,14 +40,13 @@
                <input type="date" name="data_nascimento" class="form-control">
                <label class="form-label mt-2">N Petição</label>
                <input type="hidden" value={{$idpeticao}}  name="id_peticao">
-               <input type="" value={{$idpeticao}}  name="teste" class="form-control">
 
           </div>
         </div>
        
        <div class="">
         <button class="col-md-2 mt-4  mb-4  btn bg-primary text-white" type="submit"><i class="fa-solid fa-sign-in"></i> Cadastrar vítima</button>
-        <a class="col-md-2 mt-4  mb-4  btn bg-success text-white" href="{{url("/cadastrarReu")}}" ><i class="fa-solid fa-sign-in"></i> Cadastrar Reu</a>
+        <a class="col-md-2 mt-4  mb-4  btn bg-success text-white" href="{{url("/cadastrarReu?idpeticao=$idpeticao")}}" ><i class="fa-solid fa-sign-in"></i> Cadastrar Reu</a>
        </div>
 
 </form>

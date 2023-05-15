@@ -23,20 +23,21 @@ class ReuService {
             $reu -> data_nascimento = $request->data_nascimento;
             $reu -> endereco = $request->endereco;
             $reu -> telefone = $request->telefone;
+            $reu -> sexo = $request->sexo;
             $reu -> bi = $request->bi;
             $reu -> email = $request->email;
             $reu -> id_peticao = $request->id_peticao;
-            $reu -> url_imageFoto = $request->url_imageFoto;
-            
-            $retorno = $reu ->save();
+            $reu -> url_imageFoto = $request->url_imageFoto;  
+            $reu ->save();
 
-            $id = $request->id;
+            $id = $reu->id;
         }
 
         return $id;
 
     } catch (\Exception $th) {
 
+        var_dump($th);
         $response = new ResponseDTO();
 
         $response ->message = $th -> getMessage();

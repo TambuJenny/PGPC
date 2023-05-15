@@ -38,7 +38,7 @@
                     <label class="input-group-text" for="inputGroupFile01">Upload</label>
                     <input type="file" class="form-control" name="fotoReu" id="inputGroupFile01">
                 </div>
-
+                <input type="hidden" value={{$idpeticao}}  name="id_peticao">
           </div>
         </div>
        

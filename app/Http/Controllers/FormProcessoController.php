@@ -54,15 +54,23 @@ class FormProcessoController extends Controller
       return redirect($queryString, 302);
    }
 
-   public function reu()
+   public function reu(Request $request)
    {
-      return view('pages.FormulariosProcesso.formReu');
+
+      return view('pages.FormulariosProcesso.formReu', ['idpeticao' => $request->query('idpeticao')]);
    }
 
    public function CadastrarReu(Request $request)
    {
       $reuDTO = new ReuDTO();
       $reuService = new ReuService();
+
+      $caminhoimg = "sem foto";
+
+      if ($request->hasFile('fotoReu')) {
+
+         $caminhoimg = $request->file('fotoReu')->store('C:/img');
+      }
 
       $reuDTO->nome = $request->input('nome');
       $reuDTO->email = $request->input('email');
@@ -72,13 +80,19 @@ class FormProcessoController extends Controller
       $reuDTO->telefone = $request->input('telefone');
       $reuDTO->bi = $request->input('bi');
       $reuDTO->id_peticao = $request->input('id_peticao');
-      $reuDTO->url_imageFoto = $request->file('fotoReu')->store('caminho/da/pasta');
+      $reuDTO->url_imageFoto = $caminhoimg;
 
-      $vitima = $reuService->CadastrarReu($reuDTO);
+      $reuService->CadastrarReu($reuDTO);
 
-      $queryString = "/cadastrarVitima?idpeticao=" . $reuDTO->id_peticao;
+      $dados = [
+         "messafe" => "Reu Cadastrado com sucesso",
+         "nome" => $reuDTO->nome,
+         "bi" => $reuDTO->bi
+      ];
 
-      return redirect($queryString, 302);
+      $queryString = "/cadastrarReu?idpeticao=" . $reuDTO->id_peticao;
+
+      return redirect($queryString, 302)->with('dados', $dados);
    }
 
    public function depoimento()
@@ -113,7 +127,8 @@ class FormProcessoController extends Controller
       $vitima = $vitimaService->CriarVitima($vitimadto);
 
       $queryString = "/cadastrarVitima?idpeticao=" . $vitimadto->id_peticao;
-      return redirect($queryString, 302);
+
+      return redirect($queryString, 302)->with('idpeticao', $vitimadto->id_peticao);
    }
 
    public function BuscarTodasvitimas($idpeticao)
@@ -123,18 +138,17 @@ class FormProcessoController extends Controller
       return response()->json($returnjson);
    }
 
-   public function Cadastrardepoimento (Request $request)
+   public function Cadastrardepoimento(Request $request)
    {
-         $depoimento = new Depoimento();
+      $depoimento = new Depoimento();
 
-         $depoimento ->Descricao = $request -> depoimento;
-         $depoimento ->id_pessoa = $request -> id_pessoa;
-         $depoimento ->Endereco = "teste";
-         $depoimento ->id_peticao = $request -> id_peticao;
-         $depoimento -> save();
+      $depoimento->Descricao = $request->depoimento;
+      $depoimento->id_pessoa = $request->id_pessoa;
+      $depoimento->Endereco = "teste";
+      $depoimento->id_peticao = $request->id_peticao;
+      $depoimento->save();
 
-         return response()->json(['mensagem' => 'Depoimento cadastrado com sucesso!'], Response::HTTP_OK);
-
+      return response()->json(['mensagem' => 'Depoimento cadastrado com sucesso!'], Response::HTTP_OK);
    }
 
 }
