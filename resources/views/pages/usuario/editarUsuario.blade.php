@@ -1,19 +1,5 @@
 @extends('layouts.menu')
 @section('content') 
-    <div class="mb-2  ">
-        <nav class="navbar bg-body-tertiary">
-            <div class="container-fluid">
-              <a class="navbar-brand"><i class="fa fa-bars" aria-hidden="true"></i></a>
-              <div class="d-flex" role="search">
-               
-                <button class="btn btn-link " style="text-decoration: none" type="submit"> <i class="fa fa-file-pdf" aria-hidden="true"></i> GerarPdf</button>
-                <button class="btn btn-link " style="text-decoration: none" type="submit"><i class="fa fa-list" aria-hidden="true"></i> Listar</button>
-                <button class="btn btn-link " style="text-decoration: none"  type="submit"><i class="fa fa-upload" aria-hidden="true"></i> Cadastrar</button>
-               
-              </div>
-            </div>
-          </nav>
-    </div>
 <div class=" card p-4 col-md-12 mb-5">
     <h3><i class="fas fa-tools"></i> <b>Usuário/</b><i>Editar</i></h3>
     <hr/>
@@ -21,7 +7,7 @@
            
                
                 
-          <form action="{{route('User.Edit')}}" method="POST">
+<form action="{{route('User.Edit')}}" method="POST">
           @csrf
           <div class="d-flex align-items-justify ms-5">
           <div class="col-md-5">

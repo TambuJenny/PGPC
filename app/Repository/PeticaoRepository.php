@@ -4,7 +4,7 @@ namespace App\Repository;
 
 use Illuminate\Support\Facades\DB;
 
-class ReuRepository {
+class PeticaoRepository {
     
     public static function FindAll()
     {
@@ -28,19 +28,19 @@ class ReuRepository {
     public static function FindbyIdPeticao($id)
     {
         $query = DB::table('Reu')
-        ->join('peticao',function($join){
-            $join -> on('peticao.id','=','reu.id_peticao');
+        ->join('pessoa',function($join){
+            $join -> on('pessoa.id','=','reu.id_Pessoa');
         })
         ->where('reu.id_peticao','=',$id)
         ->select(
-            'reu.nome',
-            'reu.bi',
-            'reu.endereco',
-            'reu.data_nascimento',
-            'reu.telefone',
+            'pessoa.nome',
+            'pessoa.bi',
+            'pessoa.endereco',
+            'pessoa.data_nascimento',
+            'pessoa.telefone',
             'reu.url_imageFoto'
         )->get();
-
+        
         return $query;
     }
 }

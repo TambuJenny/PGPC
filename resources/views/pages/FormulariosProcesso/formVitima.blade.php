@@ -1,89 +1,75 @@
 @extends('layouts.menu')
 @section('content')
 
-<form class="mt-3" style="" method="POST" action="{{route('Processo.Create')}}">
-    <div class="mb-2  ">
-        <nav class="navbar bg-body-tertiary">
-            <div class="container-fluid">
-                <a class="navbar-brand"><i class="fa fa-bars" aria-hidden="true"></i></a>
-                <div class="d-flex" role="search">
+@if(isset($valorRetornado->idPeticao))
 
-                    <button class="btn btn-link " style="text-decoration: none" type="submit"> <i class="fa fa-file-pdf" aria-hidden="true"></i> GerarPdf</button>
-                    <button class="btn btn-link " style="text-decoration: none" type="submit"><i class="fa fa-list" aria-hidden="true"></i> Listar</button>
-                    <button class="btn btn-link " style="text-decoration: none" type="submit"><i class="fa fa-upload" aria-hidden="true"></i> Cadastrar</button>
+@endif
 
-                </div>
-            </div>
-        </nav>
-    </div>
-    <div class=" card p-4 col-md-12">
-        <h3><i class="fa fa-address-card"></i> <b>Cadastro da Vítima</b> </h3>
+
+<form class="card  ps-4 col-md-12 mt-3" method="POST" action="{{route('processo.vitima')}}">
+@csrf
+
+        <h3 class="mt-3"><i class="fa fa-address-card"></i> <b>Cadastro da Vítima</b> </h3>
         <hr />
         <small>Informe aqui as Informações sobre a Vítima</small>
-        <form>
-        <div class="form-group">
-                <label for="exampleFormControlInput1" class="col-form-label">Nome</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1">
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlInput1" class="col-form-label">Número do B.I</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1">
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlInput1" class="col-form-label">Email</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1">
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlInput1" class="col-form-label">Endereço</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1">
-            </div>
-            <div>
-            <label for="exampleFormControlInput1" class="col-form-label">Genêro</label>
-                <select class="form-control" id="sexo">
-                    <option value="Masculino">Masculino</option>
-                    <option value="Feminino">Feminino</option>
-                </select>
-            </div>
 
-            <div class="form-group">
-                <label for="exampleFormControlInput1" class="col-form-label">Telefone</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1">
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlInput1" class="col-form-label">Contato</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1">
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlInput1" class="col-form-label">Data de nascimento</label>
-                <input type="date" class="form-control" id="exampleFormControlInput1">
-            </div>
+                
+        <div class=" row d-flex align-items-justify mt-4 ">
+          <div class="col-md-5">  
+               <label class="form-label">Nome</label> 
+               <input type="text" name="nome" required class="form-control">
+               <label class="form-label">B.I</label> 
+               <input type="text" name="bi" required class="form-control">
 
-            <!--
-                <div class="form-group">
-                <label for="exampleFormControlSelect1">Example select</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                    <option>1</option> 
+               <label class="form-label">Endereço</label> 
+               <input type="text" name="endereco" class="form-control">
+               <label class="form-label mt-2">Sexo</label>
+               <select class="form-control" name="sexo"> 
+                   <option value="Masculino">Masculino</option>
+                   <option value="Feminino">Feminino</option>
                 </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="exampleFormControlSelect2">Example multiple select</label>
-                <select multiple class="form-control" id="exampleFormControlSelect2">
-                    <option>1</option>
-                </select>
-            </div>
-            -->
-
+          
+           </div>
            
-        </form>
+           <div class="col-md-5 ms-3">
+               <label class="form-label">E-mail</label> 
+               <input type="email" name="email" class="form-control">
+               <label class="form-label">Telefone</label> 
+               <input type="tel" name="telefone" class="form-control">
+               <label class="form-label mt-2">Data de Nascimento</label> 
+               <input type="date" name="data_nascimento" class="form-control">
+               <label class="form-label mt-2">N Petição</label>
+               <input type="hidden" value={{$idpeticao}}  name="id_peticao">
 
-    </div>
+          </div>
+        </div>
+       
+       <div class="">
+        <button class="col-md-2 mt-4  mb-4  btn bg-primary text-white" type="submit"><i class="fa-solid fa-sign-in"></i> Cadastrar vítima</button>
+        <a class="col-md-2 mt-4  mb-4  btn bg-success text-white" href="{{url("/cadastrarReu?idpeticao=$idpeticao")}}" ><i class="fa-solid fa-sign-in"></i> Cadastrar Reu</a>
+       </div>
 
-    </div>
+</form>
 
+<div class="card mt-5 " id="vitimaLista">
+<div id="cadastradoAlert" class="mt-2"></div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nome</th>
+      <th scope="col">BI</th>
+      <th scope="col">Telefone</th>
+      <th scope="col">Opção</th>
+    </tr>
+  </thead>
+  <tbody id='tableValue'>
+    
+  </tbody>
+</table>
+</div>
 
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -91,44 +77,113 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
-                        <div class="">
-                            <label for="recipient-name" class="col-form-label">Pesquisar</label>
-                            <input type="text" class="form-control" id="pesquisarVitima">
-                        </div>
-                        <button class="mb-3 btn btn-link text-dark" onclick="mostarDivCadastro()">+ Adicionar vítima</button>
-                        <div id="cadastrarVitima" class="visibilidade">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="recipient-name" class="col-form-label">Nome Completo</label>
-                                    <input type="text" class="form-control" name="nomeVitima" id="nomeVitima">
-                                    <label for="recipient-name" class="col-form-label">BI</label>
-                                    <input type="text" class="form-control" name="bi" id="bi">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="recipient-name" class="col-form-label">Telefone</label>
-                                    <input type="tel" class="form-control" name="nomeVitima" id="telefone">
-                                    <label for="recipient-name" class="col-form-label">Sexo</label>
-                                    <select class="form-control" id="sexo">
-                                        <option value="Masculino">Masculino</option>
-                                        <option value="Feminino">Feminino</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
+
                         <div class="mb-3">
-                            <label for="message-text" class="col-form-label">Message:</label>
-                            <textarea class="form-control" id="message-text"></textarea>
+                            <label for="message-text" class="col-form-label">Depoimento:</label>
+                            <textarea required placeholder="Escreva o depoimento da vítima." class="form-control" id="msg-depoimento"></textarea>
                         </div>
-                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Sair</button>
-                    <button type="button" class="btn btn-primary">Cadastrar</button>
+                    <button type="button" class="btn btn-primary" onclick="CadastrarDepoimento()">+ Cadastrar</button>
                 </div>
             </div>
         </div>
-    </div>
-</form>
-<script src="{{asset('frontend/js/pages/processo.js')}}" crossorigin="anonymous"></script>
+
+</div>
+<script src="{{asset('frontend/js/pages/processo.js')}}"></script>
+<script src="{{asset('frontend/js/jquery.js') }}" ></script>
+<script>
+    function mostarDivCadastro() {
+
+var divCadastro = document.getElementById('cadastrarVitima');
+//alert(divCadastro.classList.contains("visibilidade"));
+
+
+if (divCadastro.classList.contains("visibilidade")) {
+    divCadastro.classList.add("visibilidade2");
+    divCadastro.classList.remove("visibilidade");
+}
+else {
+    divCadastro.classList.add("visibilidade");
+    divCadastro.classList.remove("visibilidade2");
+}
+
+}
+
+jQuery('document').ready(()=>{
+
+    $.ajax({
+        type: "GET",
+        url: "api/buscarvitima/{{$idpeticao}}",
+        contentType: "application/json; charset=utf-8",
+        beforeSend : function ()
+        {
+
+        },
+        success: function (response) {
+            setData(response);
+        }
+    });
+});
+
+function setData(response)
+{
+    let table = "";
+
+    response.forEach(element => {
+        table += `<tr>
+                 <th scope="row">1</th>
+                 <td>${element.nome}</td>
+                 <td>${element.bi}</td>
+                 <td>${element.telefone}</td>
+                 <td><button type="button" onclick= "pegarIDPessoa(${element.id})" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" data-idpessoa = "${element.id}">Depoimento</button></td>
+            </tr>`
+    });
+
+    $('#tableValue').html(table);
+}
+
+    var getIdPessoa = 0;
+
+function pegarIDPessoa (id)
+{
+    getIdPessoa = id;
+}
+
+function CadastrarDepoimento()
+{
+
+    const params = new URLSearchParams(window.location.search);
+
+        var objetoDepoimento = {
+            depoimento:$('#msg-depoimento').val(),
+            id_pessoa:getIdPessoa,
+            id_peticao: params.get('idpeticao')
+        }
+
+    $.ajax({
+        type: "POST",
+        url: "api/cadastrardepoimento",
+        contentType: "application/json; charset=utf-8",
+        data : JSON.stringify(objetoDepoimento),
+        dataType:'json',
+        beforeSend : function ()
+        {
+            
+        },
+        success: function (response) {
+
+          var alertCard = `
+          <div class="alert alert-warning alert-dismissible fade show  ms-5 me-5" role="alert">
+                <strong>Depoimento</strong> ${response.mensagem}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>`;
+            
+                $('#cadastradoAlert').html(alertCard);
+        }
+    });
+}
+
+</script>
 @endsection

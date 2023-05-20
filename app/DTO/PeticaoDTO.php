@@ -2,9 +2,9 @@
 
 namespace App\DTO;
 
-class PeticaoDTO
+class PeticaoDTO extends PessoaDTO
 {
     public $Id;
     public $DescricaoCrime;
-    public $Id_Autor;
+    public $Id_AutorPeticao;
 }

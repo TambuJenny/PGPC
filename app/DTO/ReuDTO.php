@@ -2,9 +2,8 @@
 
 namespace App\DTO;
 
-class ReuDTO 
+class ReuDTO extends PessoaDTO
 {
-    public $id;
-    public $idPessoa;
-    public $urlImage;
+    public $url_imageFoto;
+    public $id_peticao;
 }
