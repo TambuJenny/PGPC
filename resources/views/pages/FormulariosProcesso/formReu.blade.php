@@ -2,7 +2,7 @@
 @section('content')
 
 
-<form class="card text-white ps-4 col-md-12 mt-3" method="POST" action="{{route('processo.reu')}}">
+<form class="card ps-4 col-md-12 mt-3" method="POST" action="{{route('processo.reu')}}">
 @csrf
     <div class=" ">
         <h3 class="mt-3"><i class="fa fa-address-card"></i> <b>Cadastro do Reu</b> </h3>
@@ -44,10 +44,62 @@
        
        <div class="">
         <button class="col-md-2 mt-4  mb-4  btn bg-primary text-white" type="submit"><i class="fa-solid fa-sign-in"></i> Cadastrar Reu</button>
+        <button class="col-md-2 mt-4  mb-4  btn bg-success text-white" type="submit"><i class="fa-solid fa-sign-in"></i>Finalizar</button>
        </div>
     </div>
 
 </form>
 
+<div class="card mt-5 " id="vitimaLista">
+<div id="cadastradoAlert" class="mt-2"></div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nome</th>
+      <th scope="col">BI</th>
+      <th scope="col">Telefone</th>
+    </tr>
+  </thead>
+  <tbody id='tableValue'>
+    
+  </tbody>
+</table>
+</div>
+
 <script src="{{asset('frontend/js/pages/processo.js')}}" crossorigin="anonymous"></script>
+<script src="{{asset('frontend/js/jquery.js') }}" ></script>
+<script>
+
+jQuery('document').ready(()=>{
+
+$.ajax({
+    type: "GET",
+    url: "api/listarReus/{{$idpeticao}}",
+    contentType: "application/json; charset=utf-8",
+    beforeSend : function ()
+    {
+
+    },
+    success: function (response) {
+        setData(response);
+    }
+});
+});
+
+function setData(response)
+{
+let table = "";
+
+response.forEach(element => {
+    table += `<tr>
+             <td>${element.nome}</td>
+             <td>${element.bi}</td>
+             <td>${element.telefone}</td>
+        </tr>`
+});
+
+$('#tableValue').html(table);
+}
+
+</script>
 @endsection

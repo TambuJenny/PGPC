@@ -6,7 +6,7 @@
 @endif
 
 
-<form class="card text-white ps-4 col-md-12 mt-3" method="POST" action="{{route('processo.vitima')}}">
+<form class="card  ps-4 col-md-12 mt-3" method="POST" action="{{route('processo.vitima')}}">
 @csrf
 
         <h3 class="mt-3"><i class="fa fa-address-card"></i> <b>Cadastro da Vítima</b> </h3>
@@ -67,6 +67,7 @@
     
   </tbody>
 </table>
+</div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">

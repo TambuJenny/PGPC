@@ -9,17 +9,25 @@ use Illuminate\Support\Facades\DB;
 class ProcessoService
 {
 
-    public function CriarProcesso(ProcessoDTO $request)
+    public function CriarProcesso( $idPeticao)
     {
-        if (!is_null($request)) {
-            $model = new Processo();
-            $model->id_Reu = $request->idReu;
-            $model->id_TipoCrime = $request->idTipoCrime;
-            $model->Datahora = $request->dataHora;
-            $model->localInicidente = $request->localIncidente;
-            $model->relatorio = $request->relatorio;
-            $model->evidencia = $request->evidencia;
-            $model->save();
+        if (!is_null($idPeticao)) {
+            $query = DB::table('processo')
+            ->join('peticao',function($join){
+                $join -> on('depoimento.id_peticao','=','reu.id_Pessoa');
+            })
+            ->join('depoimento',function($join){
+                $join -> on('depoimento.id_peticao','=','reu.id_Pessoa');
+            })
+            ->where('reu.id_peticao','=',$idPeticao)
+            ->select(
+                'pessoa.nome',
+                'pessoa.bi',
+                'pessoa.endereco',
+                'pessoa.data_nascimento',
+                'pessoa.telefone',
+                'reu.url_imageFoto'
+            )->get();
         }
     }
 
@@ -28,5 +36,6 @@ class ProcessoService
         $ultimo_id = DB::table($value)->latest()->value('id');
         return $ultimo_id == null ? 1 :$ultimo_id;
     }
+    
 
 }

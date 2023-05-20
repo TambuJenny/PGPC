@@ -21,4 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/buscarvitima/{idpeticao}', 'App\Http\Controllers\FormProcessoController@BuscarTodasvitimas');
+Route::get('/listarReus/{idpeticao}', 'App\Http\Controllers\FormProcessoController@ListarReus');
 Route::post('/cadastrardepoimento', 'App\Http\Controllers\FormProcessoController@Cadastrardepoimento');

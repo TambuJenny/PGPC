@@ -1,5 +1,9 @@
 @if(session()->has('Nome') &&  session()->has('Email') && session()->has('IdUsuario'))
 
+{{
+  $IdUsuario = session()->get('IdUsuario')
+}}
+
 <!DOCTYPE html>
 <html>
     <header>
@@ -171,8 +175,8 @@
             <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../assets/images/logo-mini.svg" alt="logo"></a>
           </div>
           <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
-            <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-              <span class="mdi mdi-menu"></span>
+            <button class="primary-text navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+             <span class="fa fa-bars "></span>
             </button>
             <ul class="navbar-nav w-100">
               <li class="nav-item w-100">
@@ -289,7 +293,7 @@
                     </div>
                   </a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
+                  <a href="{{url("/editarUsuario?idUsuario=$IdUsuario")}}" class="dropdown-item preview-item">
                     <div class="preview-thumbnail">
                       <div class="preview-icon bg-dark rounded-circle">
                         <i class="mdi mdi-settings text-danger"></i>
@@ -327,7 +331,7 @@
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
                   <h6 class="p-3 mb-0">Profile</h6>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
+                  <a href="{{url("/editarUsuario?idUsuario=$IdUsuario")}}" class="dropdown-item preview-item">
                     <div class="preview-thumbnail">
                       <div class="preview-icon bg-dark rounded-circle">
                         <i class="mdi mdi-settings text-success"></i>
@@ -338,14 +342,14 @@
                     </div>
                   </a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
+                  <a href="{{url("/logout")}}" class="dropdown-item preview-item">
                     <div class="preview-thumbnail">
                       <div class="preview-icon bg-dark rounded-circle">
                         <i class="mdi mdi-logout text-danger"></i>
                       </div>
                     </div>
                     <div class="preview-item-content">
-                      <p class="preview-subject mb-1">Log out</p>
+                      <p  class="preview-subject mb-1">Log out</p>
                     </div>
                   </a>
                   <div class="dropdown-divider"></div>
@@ -400,5 +404,7 @@
 </html>
 
 @else
-{{header('Location: /index')}}
+<script>
+  location.href = '/';
+</script>
 @endif

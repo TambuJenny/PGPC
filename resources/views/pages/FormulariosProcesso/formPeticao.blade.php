@@ -39,7 +39,6 @@
                <input type="tel" name="telefone" class="form-control">
                <label class="form-label mt-2">Data de Nascimento</label> 
                <input type="date" name="data_nascimento" class="form-control">
-          
           </div>
         </div>
             <div class="form-group">

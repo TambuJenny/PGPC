@@ -30,6 +30,8 @@ Route::get('/cadastrarReu', [FormProcessoController::class,'reu']);
 Route::get('/cadastrarVitima', [FormProcessoController::class,'vitima']);
 Route::get('/cadastrarAutor', [FormProcessoController::class,'autor']);
 Route::get('/editarUsuario', [UsuarioController::class,'EditarUsuario']);
+Route::get('/listarProcesso', [FormProcessoController::class,'ListarProcesso']);
+Route::get('/logout', [LoginController::class,'Logout']);
 
 Route::get('/criarProcesso', [ProcessoController::class,'CriarProcesso']);
 

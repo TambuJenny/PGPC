@@ -10,6 +10,7 @@ use App\DTO\ReuDTO;
 use App\DTO\VitimaDTO;
 use App\Http\Controllers\Controller;
 use App\Models\Depoimento;
+use App\Repository\ReuRepository;
 use App\Services\PeticaoService;
 use App\Services\ProcessoService;
 use App\Services\ReuService;
@@ -90,9 +91,20 @@ class FormProcessoController extends Controller
          "bi" => $reuDTO->bi
       ];
 
-      $queryString = "/cadastrarReu?idpeticao=" . $reuDTO->id_peticao;
+      $queryString = "/editar?idpeticao=" . $reuDTO->id_peticao;
 
       return redirect($queryString, 302)->with('dados', $dados);
+   }
+
+   public function ListarReus($idpeticao)
+   {
+         $response = ReuRepository::FindbyIdPeticao($idpeticao);
+         return response()->json($response);
+   }
+
+   public function CadastrarProcesso (Request $request)
+   {
+
    }
 
    public function depoimento()
@@ -138,6 +150,20 @@ class FormProcessoController extends Controller
       return response()->json($returnjson);
    }
 
+   public function ListarProcesso ()
+   {
+      return view('pages.FormulariosProcesso.formProcessoLista');
+   }
+
+   public function EditarProcesso ()
+   {
+
+   }
+
+   public function ListarTodosProcesso(Request $request)
+   {
+
+   }
    public function Cadastrardepoimento(Request $request)
    {
       $depoimento = new Depoimento();
