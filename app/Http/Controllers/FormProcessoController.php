@@ -10,6 +10,8 @@ use App\DTO\ReuDTO;
 use App\DTO\VitimaDTO;
 use App\Http\Controllers\Controller;
 use App\Models\Depoimento;
+use App\Models\Processo;
+use App\Models\TipoCrime;
 use App\Repository\ReuRepository;
 use App\Services\PeticaoService;
 use App\Services\ProcessoService;
@@ -91,7 +93,7 @@ class FormProcessoController extends Controller
          "bi" => $reuDTO->bi
       ];
 
-      $queryString = "/editar?idpeticao=" . $reuDTO->id_peticao;
+      $queryString = "/cadastrarVitima?idpeticao=" . $reuDTO->id_peticao;
 
       return redirect($queryString, 302)->with('dados', $dados);
    }
@@ -102,7 +104,18 @@ class FormProcessoController extends Controller
          return response()->json($response);
    }
 
+
    public function CadastrarProcesso (Request $request)
+   {
+         $modelo = new Processo();
+         $modelo -> id_peticao = $request-> id_peticao;
+         $modelo->save();
+
+         return Response()->json($modelo->id);
+
+   }
+
+   public function CadastrarQueixaCrime (Request $request)
    {
 
    }
@@ -137,7 +150,7 @@ class FormProcessoController extends Controller
       $vitimadto->id_peticao = $request->input('id_peticao');
 
       $vitima = $vitimaService->CriarVitima($vitimadto);
-
+      
       $queryString = "/cadastrarVitima?idpeticao=" . $vitimadto->id_peticao;
 
       return redirect($queryString, 302)->with('idpeticao', $vitimadto->id_peticao);
@@ -148,6 +161,14 @@ class FormProcessoController extends Controller
       $vitimaService = new VitimaService();
       $returnjson = $vitimaService->BuscarTodasVitimas($idpeticao);
       return response()->json($returnjson);
+   }
+
+   public function BuscarTodosTipoCrimes ()
+   {
+      $model = new TipoCrime();
+      $pegarTipoCrimes = $model ->get();
+
+      return response() -> json($pegarTipoCrimes);
    }
 
    public function ListarProcesso ()

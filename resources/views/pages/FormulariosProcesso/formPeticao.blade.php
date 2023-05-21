@@ -1,7 +1,27 @@
 @extends('layouts.menu')
 @section('content')
 
+<nav aria-label="...">
+  <ul class="pagination">
+    <li class="page-item disabled">
+      <span class="page-link">Previous</span>
+    </li>
 
+    <li class="page-item active">
+        <a class="page-link" >Peticao</a>
+    </li>
+    <li class="page-item " aria-current="page">
+      <span class="page-link bg-white">2</span>
+    </li>
+    <li class="page-item">
+        <a class="page-link bg-white" href="#">3</a>
+    </li>
+
+    <li class="page-item">
+      <a class="page-link bg-white" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
 
 <form class="card p-4 col-12" method="POST" action="{{route('processo.peticao')}}">
         @csrf

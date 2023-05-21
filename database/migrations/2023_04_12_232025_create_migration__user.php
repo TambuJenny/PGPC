@@ -85,6 +85,9 @@ class CreateMigrationUser extends Migration
         //Terminado
         Schema::create('Processo', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedBigInteger('id_Peticao');
+            $table->foreign('id_Peticao')->references('id')->on('Peticao');
+            
             $table->timestamps();
         });
 

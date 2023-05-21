@@ -364,7 +364,7 @@
         </nav>
         <!-- partial -->
         <div class="main-panel">
-          <div class="content-wrapper">
+          <div class="">
           @yield('content')
           </div>
           <!-- content-wrapper ends -->
