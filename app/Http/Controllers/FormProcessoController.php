@@ -112,12 +112,11 @@ class FormProcessoController extends Controller
          $modelo->save();
 
          return Response()->json($modelo->id);
-
    }
 
    public function CadastrarQueixaCrime (Request $request)
    {
-
+         
    }
 
    public function depoimento()
@@ -150,7 +149,7 @@ class FormProcessoController extends Controller
       $vitimadto->id_peticao = $request->input('id_peticao');
 
       $vitima = $vitimaService->CriarVitima($vitimadto);
-      
+
       $queryString = "/cadastrarVitima?idpeticao=" . $vitimadto->id_peticao;
 
       return redirect($queryString, 302)->with('idpeticao', $vitimadto->id_peticao);

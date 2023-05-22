@@ -6,6 +6,14 @@
 @endif
 
 <div  data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0" >
+
+<div class="loading d-none" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; background: #ffffffdb; z-index: 1; font-size: 1.7rem; color: #6F6F6F;  justify-content: center; align-items: center;">
+        <div class="text-center" style=" margin-top: 20em;">
+            <i class="fas fa-circle-notch fa-spin"></i>
+            <h5><strong>Aguarde a configuração da revistoria.</strong></h5>
+        </div>
+    </div>
+
 <form class="card  ps-4 col-md-12 mt-3" method="POST" action="{{route('processo.vitima')}}">
 @csrf
 
@@ -140,7 +148,7 @@
 </table>
 </div>
 
-<button class="col-md-2 mt-4  mb-4  btn bg-success text-white" type="submit"><i class="fa-solid fa-sign-in"></i>Finalizar</button>
+<button class="col-md-2 mt-4  mb-4  btn bg-success text-white" id="finalizarProcesso" type="submit"><i class="fa-solid fa-sign-in"></i>Finalizar</button>
 
 </div>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -168,11 +176,12 @@
 <script src="{{asset('frontend/js/pages/processo.js')}}"></script>
 <script src="{{asset('frontend/js/jquery.js') }}" ></script>
 <script>
+
+const params = new URLSearchParams(window.location.search);
     function mostarDivCadastro() {
 
 var divCadastro = document.getElementById('cadastrarVitima');
 //alert(divCadastro.classList.contains("visibilidade"));
-
 
 if (divCadastro.classList.contains("visibilidade")) {
     divCadastro.classList.add("visibilidade2");
@@ -214,6 +223,40 @@ jQuery('document').ready(()=>{
 });
 });
 
+var reuExiste = false;
+
+$("#finalizarProcesso").click(()=>{
+    
+    var object = {
+        id_peticao : params.get('idpeticao')
+    }
+
+    if (reuExiste) {
+        
+        $.ajax({
+        type: "POST",
+        url: "api/cadastrarprocesso",
+        contentType: "application/json; charset=utf-8",
+        data : JSON.stringify(object),
+        beforeSend : function ()
+        {
+                var getLoadingDiv =  $(".loading");
+               
+                if (!getLoadingDiv.hasClass('d-none')) 
+                    getLoadingDiv.remove('d-none');
+
+        },
+        success: function (response) {
+           location.href = '/listarProcesso';
+        }
+    });
+    }else
+    {
+
+    }
+
+});
+
 function setDataReus(response)
 {
 let table = "";
@@ -223,6 +266,7 @@ response.forEach(element => {
              <td>${element.nome}</td>
              <td>${element.bi}</td>
         </tr>`
+    reuExiste = true;
 });
 
 $('#tableValueReu').html(table);
@@ -257,9 +301,6 @@ function pegarIDPessoa (id)
 
 function CadastrarDepoimento()
 {
-
-    const params = new URLSearchParams(window.location.search);
-
         var objetoDepoimento = {
             depoimento:$('#msg-depoimento').val(),
             id_pessoa:getIdPessoa,
