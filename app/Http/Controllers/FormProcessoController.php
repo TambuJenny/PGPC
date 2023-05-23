@@ -116,7 +116,7 @@ class FormProcessoController extends Controller
 
    public function CadastrarQueixaCrime (Request $request)
    {
-         
+
    }
 
    public function depoimento()
@@ -175,9 +175,9 @@ class FormProcessoController extends Controller
       return view('pages.FormulariosProcesso.formProcessoLista');
    }
 
-   public function EditarProcesso ()
+   public function CadastrarAdvogado (Request $request)
    {
-
+      
    }
 
    public function ListarTodosProcesso(Request $request)

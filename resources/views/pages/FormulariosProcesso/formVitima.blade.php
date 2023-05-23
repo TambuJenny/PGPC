@@ -283,7 +283,10 @@ function setData(response)
                  <td>${element.nome}</td>
                  <td>${element.bi}</td>
                  <td>${element.telefone}</td>
-                 <td><button type="button" onclick= "pegarIDPessoa(${element.id})" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" data-idpessoa = "${element.id}">Depoimento</button></td>
+                 <td>
+                    <button type="button" onclick= "pegarIDPessoa(${element.id})" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" data-idpessoa = "${element.id}">+ Depoimento</button>
+                    <button type="button" onclick= "pegarIDPessoa(${element.id})" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" data-idpessoa = "${element.id}">+ Advogado</button>
+                 </td>
             </tr>`
     });
 

@@ -21,11 +21,11 @@ class CreateMigrationUser extends Migration
         Schema::create('Pessoa', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('endereco');
             $table->enum('Sexo', ['masculino', 'feminino']);
             $table->dateTime('data_nascimento');
-            $table->string('telefone')->unique();
+            $table->string('telefone');
             $table->string('bi')->unique();
             $table->timestamps();
         });
@@ -37,6 +37,16 @@ class CreateMigrationUser extends Migration
             $table->foreign('id_Pessoa')->references('id')->on('Pessoa');
             $table->timestamps();
         });
+
+        Schema::create('Advogado', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('nia');
+            $table->unsignedBigInteger('id_Pessoa');
+            $table->foreign('id_Pessoa')->references('id')->on('Pessoa');
+            $table->timestamps();
+        });
+
+        
         //Terminado
         Schema::create('TipoCrime', function (Blueprint $table) {
             $table->increments('id');
@@ -78,6 +88,8 @@ class CreateMigrationUser extends Migration
             $table->string('bi')->nullable();
             $table->string('url_imageFoto');
             $table->unsignedBigInteger('id_peticao');
+            $table->unsignedBigInteger('id_advogado')->nullable();
+            $table->foreign('id_advogado')->references('id')->on('Advogado');
 
             $table->foreign('id_peticao')->references('id')->on('peticao');
             $table->timestamps();
@@ -111,6 +123,9 @@ class CreateMigrationUser extends Migration
             $table->increments('id');
             $table->unsignedBigInteger('id_pessoa');
             $table->unsignedBigInteger('id_peticao');
+
+            $table->unsignedBigInteger('id_advogado')->nullable();
+            $table->foreign('id_advogado')->references('id')->on('Advogado');
 
             $table->foreign('id_peticao')->references('id')->on('peticao');
             $table->foreign('id_Pessoa')->references('id')->on('pessoa');
