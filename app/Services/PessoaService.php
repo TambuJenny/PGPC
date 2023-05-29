@@ -7,7 +7,7 @@ use App\DTO\ResponseDTO;
 use App\Models\Pessoa;
 use App\Repository\UsuarioRepository;
 
-class PessoaService {
+class pessoaService {
 
 public function CadastrarPessoa(PessoaDTO $pessoadto)
 {
@@ -28,7 +28,6 @@ public function CadastrarPessoa(PessoaDTO $pessoadto)
             $id = $pessoa->id;
            
         }
-        var_dump($id);
         return $id;
 
     } catch (\Exception $th) {

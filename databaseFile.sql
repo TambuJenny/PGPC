@@ -98,8 +98,8 @@ CREATE TABLE IF NOT EXISTS `personal_access_tokens` (
 /*!40000 ALTER TABLE `personal_access_tokens` DISABLE KEYS */;
 /*!40000 ALTER TABLE `personal_access_tokens` ENABLE KEYS */;
 
--- A despejar estrutura para tabela pgpc.pessoas
-CREATE TABLE IF NOT EXISTS `pessoas` (
+-- A despejar estrutura para tabela pgpc.pessoa
+CREATE TABLE IF NOT EXISTS `pessoa` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nome` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -111,16 +111,16 @@ CREATE TABLE IF NOT EXISTS `pessoas` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `pessoas_email_unique` (`email`),
-  UNIQUE KEY `pessoas_telefone_unique` (`telefone`),
-  UNIQUE KEY `pessoas_bi_unique` (`bi`)
+  UNIQUE KEY `pessoa_email_unique` (`email`),
+  UNIQUE KEY `pessoa_telefone_unique` (`telefone`),
+  UNIQUE KEY `pessoa_bi_unique` (`bi`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- A despejar dados para tabela pgpc.pessoas: 1 rows
-/*!40000 ALTER TABLE `pessoas` DISABLE KEYS */;
-INSERT INTO `pessoas` (`id`, `nome`, `email`, `endereco`, `Sexo`, `data_nascimento`, `telefone`, `bi`, `created_at`, `updated_at`) VALUES
+-- A despejar dados para tabela pgpc.pessoa: 1 rows
+/*!40000 ALTER TABLE `pessoa` DISABLE KEYS */;
+INSERT INTO `pessoa` (`id`, `nome`, `email`, `endereco`, `Sexo`, `data_nascimento`, `telefone`, `bi`, `created_at`, `updated_at`) VALUES
 	(1, 'Teste', 'teste@gmail.com', 'Rua 17', 'masculino', '2023-04-29 00:00:00', '+55922209032', '243564yu893456789', '2023-04-18 02:45:05', '2023-04-18 02:45:05');
-/*!40000 ALTER TABLE `pessoas` ENABLE KEYS */;
+/*!40000 ALTER TABLE `pessoa` ENABLE KEYS */;
 
 -- A despejar estrutura para tabela pgpc.processo
 CREATE TABLE IF NOT EXISTS `processo` (

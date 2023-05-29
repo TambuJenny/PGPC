@@ -1,7 +1,9 @@
 <?php
 
+use App\DTO\Request\BuscarTodasVitimasRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller\FormProcessoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +19,14 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/buscarvitima/{idpeticao}', 'App\Http\Controllers\FormProcessoController@BuscarTodasvitimas');
+Route::get('/listarReus/{idpeticao}', 'App\Http\Controllers\FormProcessoController@ListarReus');
+Route::get('/buscarDepoimentoVitima', 'App\Http\Controllers\FormProcessoController@BuscarDepoimentoVitima');
+Route::get('/buscarProcessos', 'App\Http\Controllers\ProcessoController@BuscarProcesso');
+Route::get('/buscarTipoCrimes', 'App\Http\Controllers\ProcessoController@BuscarTipoCrime');
+
+
+Route::post('/cadastrardepoimento', 'App\Http\Controllers\FormProcessoController@Cadastrardepoimento');
+Route::post('/cadastrarprocesso', 'App\Http\Controllers\FormProcessoController@CadastrarProcesso');
+Route::post('/cadastraradvogado', 'App\Http\Controllers\FormProcessoController@CadastrarAdvogado');

@@ -9,37 +9,39 @@ class ReuRepository {
     public static function FindAll()
     {
         $query = DB::table('Reu')
-        ->join('pessoas',function($join){
-            $join -> on('pessoas.id','=','reu.id_Pessoa');
+        ->join('pessoa',function($join){
+            $join -> on('pessoa.id','=','reu.id_Pessoa');
         })
-        ->where('pessoas.id','=','reu.id_Pessoa')
+        ->where('pessoa.id','=','reu.id_Pessoa')
         ->select(
-            'pessoas.nome',
-            'pessoas.bi',
-            'pessoas.endereco',
-            'pessoas.data_nascimento',
-            'pessoas.telefone',
+            'pessoa.nome',
+            'pessoa.bi',
+            'pessoa.endereco',
+            'pessoa.data_nascimento',
+            'pessoa.telefone',
             'reu.url_imageFoto'
         )->get();
 
         return $query;
     }
 
-    public static function FindbyId($id)
+    public static function FindbyIdPeticao($id)
     {
         $query = DB::table('Reu')
-        ->join('pessoas',function($join){
-            $join -> on('pessoas.id','=','reu.id_Pessoa');
+        ->join('peticao',function($join){
+            $join -> on('peticao.id','=','reu.id_peticao');
         })
-        ->where('reu.id_Pessoa','=',$id)
+        ->where('reu.id_peticao','=',$id)
         ->select(
-            'pessoas.nome',
-            'pessoas.bi',
-            'pessoas.endereco',
-            'pessoas.data_nascimento',
-            'pessoas.telefone',
+            'reu.nome',
+            'reu.id',
+            'reu.bi',
+            'reu.endereco',
+            'reu.data_nascimento',
+            'reu.telefone',
             'reu.url_imageFoto'
         )->get();
+
         return $query;
     }
 }

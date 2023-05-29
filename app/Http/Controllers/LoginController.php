@@ -8,12 +8,20 @@ use App\DTO\PessoaDTO;
 use App\DTO\UsuarioDTO;
 use App\DTO\ResponseDTO;
 use App\Services\UserService;
-
+use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
 {
     public function Index()
     {
+        $nome =  session()->get('Nome');
+        $email =  session()->get('Email');
+        $idusuario =  session()->get('IdUsuario');
+
+        if (isset($nome) && isset($email) && isset($idusuario))
+            return View('pages.menu');
+
+
         return View('index');
     }
     public function Menu()
@@ -68,6 +76,14 @@ class LoginController extends Controller
             return View('pages.menu',compact('verificacaoDoLogin'))->with('layouts.menu',['response' => $verificacaoDoLogin]);
         }else
             return View('index',['response' => $verificacaoDoLogin]);
-        
+    }
+
+    public function Logout ()
+    {
+        session()->remove('Nome');
+        session()->remove('Email');
+        session()->remove('IdUsuario');
+
+        return redirect('/',302);
     }
 }

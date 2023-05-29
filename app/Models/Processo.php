@@ -13,11 +13,6 @@ class Processo extends Model
 
     protected $fillable = [
         'id',
-        'id_reu',
-        'id_TipoCrime',
-        'DataHora',
-        'localinicidente',
-        'relatorio',
-        'evidencia'
+        'id_Peticao',
     ];
 }

@@ -9,14 +9,14 @@ class Peticao extends Model
 {
     use HasFactory;
 
-    protected $table="Peticao";
+    protected $table="peticao";
 
-    protected $fillable = [
+    protected $fillable = 
+    [
         'id',
-        'descricaoCrime',
         'id_autorPeticao',
+        'descricaoCrime',
         'created_at',
         'updated_at'
     ];
-
 }

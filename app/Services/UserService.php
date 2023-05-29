@@ -10,7 +10,7 @@ use App\Models\Pessoa;
 use App\Models\User;
 use App\Models\Usuario;
 use App\Repository\UsuarioRepository;
-use App\Services\PessoaService;
+use App\Services\pessoaService;
 use Illuminate\Support\Facades\DB;
 
 class UserService
@@ -20,7 +20,7 @@ class UserService
     {
         $response = new ResponseDTO();
         try {
-            $pessoaService = new PessoaService();
+            $pessoaService = new pessoaService();
             $usuarioModel = new Usuario();
 
             $pessoaId = $pessoaService->CadastrarPessoa($pessoaDTO);
@@ -57,19 +57,19 @@ class UserService
     {
         $response = new ResponseDTO();
 
-        $verificarDadosLogin = DB::table('pessoas')
+        $verificarDadosLogin = DB::table('pessoa')
             ->join('usuarios', function ($join) {
-                $join->on('pessoas.id', '=', 'usuarios.id_Pessoa');
+                $join->on('pessoa.id', '=', 'usuarios.id_Pessoa');
             })
-            ->where('pessoas.email', '=', $login->email)
+            ->where('pessoa.email', '=', $login->email)
             ->where('usuarios.senha', '=', $login->senha)
             ->select(
-                'pessoas.nome as Nome',
-                'pessoas.email as Email',
-                'pessoas.endereco as Endereco',
-                'pessoas.data_nascimento as DataNascimento',
-                'pessoas.telefone as Telefone',
-                'pessoas.bi as Bi',
+                'pessoa.nome as Nome',
+                'pessoa.email as Email',
+                'pessoa.endereco as Endereco',
+                'pessoa.data_nascimento as DataNascimento',
+                'pessoa.telefone as Telefone',
+                'pessoa.bi as Bi',
                 'usuarios.id as Id'
             )->get();
 
@@ -119,7 +119,7 @@ class UserService
     {
         $response = new ResponseDTO();
         try {
-            $pessoaService = new PessoaService();
+            $pessoaService = new pessoaService();
             $userId = $pessoaService->EditarPessoa($pessoaDTO);
 
             $usuarioModel = Usuario::find( $userId);
