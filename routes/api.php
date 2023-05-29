@@ -1,9 +1,7 @@
 <?php
 
-use App\DTO\Request\BuscarTodasVitimasRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Controller\FormProcessoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +23,8 @@ Route::get('/listarReus/{idpeticao}', 'App\Http\Controllers\FormProcessoControll
 Route::get('/buscarDepoimentoVitima', 'App\Http\Controllers\FormProcessoController@BuscarDepoimentoVitima');
 Route::get('/buscarProcessos', 'App\Http\Controllers\ProcessoController@BuscarProcesso');
 Route::get('/buscarTipoCrimes', 'App\Http\Controllers\ProcessoController@BuscarTipoCrime');
+Route::get('/buscarTodosReus', 'App\Http\Controllers\ReuController@GetAllReu');
+Route::get('/buscarTodasVitimas', 'App\Http\Controllers\VitimasController@GetAllVitima');
 
 
 Route::post('/cadastrardepoimento', 'App\Http\Controllers\FormProcessoController@Cadastrardepoimento');

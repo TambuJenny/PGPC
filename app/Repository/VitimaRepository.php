@@ -43,6 +43,34 @@ class VitimaRepository
         return $query;
     }
 
+    public static function FindAllVitima()
+    {
+        $query = DB::table('pessoa')
+        ->join('vitima',function($join){
+            $join -> on('pessoa.id','=','vitima.id_pessoa');
+        })
+        ->join('peticao',function($join){
+            $join -> on('peticao.id','=','vitima.id_peticao');
+        })->join('Processo',function($join){
+            $join -> on('processo.id_Peticao','=','peticao.id');
+        })
+        
+        ->select(
+            'pessoa.nome',
+            'peticao.id as idPeticao',
+            'pessoa.id as idPessoa',
+            'pessoa.bi',
+            'pessoa.endereco',
+            'pessoa.data_nascimento',
+            'pessoa.telefone',
+            'vitima.id_peticao',
+            'vitima.id as id_vitima',
+            'Processo.nome as nomeProcesso'
+        )->get();
+
+        return $query;
+    }
+
     public static function FindVitimaDepoimento($idPessoa,$idpeticao)
     {
         $query = DB::table('pessoa')

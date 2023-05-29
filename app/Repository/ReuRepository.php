@@ -9,17 +9,21 @@ class ReuRepository {
     public static function FindAll()
     {
         $query = DB::table('Reu')
-        ->join('pessoa',function($join){
-            $join -> on('pessoa.id','=','reu.id_Pessoa');
+        ->join('Peticao',function($join){
+            $join -> on('peticao.id','=','reu.id_peticao');
+        })->join('Processo',function($join){
+            $join -> on('processo.id_Peticao','=','peticao.id');
         })
-        ->where('pessoa.id','=','reu.id_Pessoa')
         ->select(
-            'pessoa.nome',
-            'pessoa.bi',
-            'pessoa.endereco',
-            'pessoa.data_nascimento',
-            'pessoa.telefone',
-            'reu.url_imageFoto'
+            'reu.nome',
+            'reu.bi',
+            'reu.endereco',
+            'reu.data_nascimento',
+            'reu.telefone',
+            'reu.url_imageFoto',
+            'reu.id as idReu',
+            'Processo.nome as nomeProcesso',
+            'peticao.id as idPeticao'
         )->get();
 
         return $query;
