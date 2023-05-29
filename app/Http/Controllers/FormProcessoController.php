@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DTO\AdvogadoDTO;
 use App\DTO\BuscarTodasVitimasDTO;
 use App\DTO\PeticaoDTO;
 use App\DTO\Request\BuscarTodasVitimasRequest;
@@ -13,11 +14,16 @@ use App\Models\Depoimento;
 use App\Models\Processo;
 use App\Models\TipoCrime;
 use App\Repository\ReuRepository;
+use App\Repository\VitimaRepository;
+use App\Services\AdvogadoService;
 use App\Services\PeticaoService;
 use App\Services\ProcessoService;
 use App\Services\ReuService;
 use App\Services\VitimaService;
+use Carbon\Carbon;
+use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Date;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\VarDumper\VarDumper;
 
@@ -109,6 +115,8 @@ class FormProcessoController extends Controller
    {
          $modelo = new Processo();
          $modelo -> id_peticao = $request-> id_peticao;
+         $modelo -> nome = $request-> nome;
+         $modelo -> id_tipoCrime = $request-> id_tipoCrime;
          $modelo->save();
 
          return Response()->json($modelo->id);
@@ -177,20 +185,39 @@ class FormProcessoController extends Controller
 
    public function CadastrarAdvogado (Request $request)
    {
-      
+      $advogadoService = new AdvogadoService ();
+      $advogadoDto = new AdvogadoDTO ();
+
+      $advogadoDto ->bi = $request ->bi;
+      $advogadoDto ->telefone = !isset($request ->telefone) ? "####" : $request ->telefone;
+      $advogadoDto ->nome = $request ->nome;
+      $advogadoDto ->nia = $request ->nia;
+      $advogadoDto ->email =  !isset($request ->email) ? "####" : $request ->email;
+      $advogadoDto ->sexo = $request ->sexo;
+      $advogadoDto ->endereco = !isset($request ->endereco) ? "####" : $request ->endereco;
+      $advogadoDto ->data_nascimento = !isset($request ->data_nascimento) ? Carbon::now(): $request ->data_nascimento;
+      $advogadoDto ->id_reu = $request ->id_reu;
+      $advogadoDto ->id_peticao = $request ->id_peticao;
+      $advogadoDto ->id_vitima = $request ->id_vitima;
+     
+      return Response()->json($advogadoService ->CadastrarAdvogado($advogadoDto)); 
    }
 
-   public function ListarTodosProcesso(Request $request)
+   public function BuscarDepoimentoVitima(Request $request)
    {
-
+      return Response()->json(VitimaRepository::FindVitimaDepoimento(
+         $request -> header("idpessoa"),
+         $request -> header("idpeticao") 
+      ));
    }
    public function Cadastrardepoimento(Request $request)
    {
       $depoimento = new Depoimento();
 
       $depoimento->Descricao = $request->depoimento;
-      $depoimento->id_pessoa = $request->id_pessoa;
-      $depoimento->Endereco = "teste";
+      $depoimento->id_pessoa = !isset($request->id_pessoa) ? -1 : $request->id_pessoa;
+      $depoimento->id_reu = !isset($request->id_reu) ? -1 : $request->id_reu;
+      $depoimento->Endereco = "#####";
       $depoimento->id_peticao = $request->id_peticao;
       $depoimento->save();
 

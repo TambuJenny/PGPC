@@ -24,7 +24,7 @@ class CreateMigrationUser extends Migration
             $table->string('email');
             $table->string('endereco');
             $table->enum('Sexo', ['masculino', 'feminino']);
-            $table->dateTime('data_nascimento');
+            $table->dateTime('data_nascimento') ->nullable();
             $table->string('telefone');
             $table->string('bi')->unique();
             $table->timestamps();

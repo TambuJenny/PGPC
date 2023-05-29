@@ -10,58 +10,70 @@ use App\Models\Pessoa;
 use App\Models\Reu;
 use App\Models\Vitima;
 use App\Repository\UsuarioRepository;
+use Illuminate\Support\Facades\DB;
 
-class AdvogadoService {
-
-public function CadastrarAdvogado (AdvogadoDTO $request )
+class AdvogadoService
 {
-    if($request != null)
+
+    public function CadastrarAdvogado(AdvogadoDTO $request)
     {
-        $pessoa = new PessoaDTO;
-        $advogadoModel = new Advogado();
-        $pessoaServico = new pessoaService();
+        try {
+            if ($request != null) {
 
-        $pessoa -> nome = $request-> nome;
-        $pessoa -> data_nascimento = $request->data_nascimento;
-        $pessoa -> endereco = $request->endereco;
-        $pessoa -> telefone = $request->telefone;
-        $pessoa -> bi = $request->bi;
-        $pessoa -> email = $request->email;
+                $pessoa = new PessoaDTO;
+                $advogadoModel = new Advogado();
+                $pessoaServico = new pessoaService();
 
-        $idPessoa =  $pessoaServico ->CadastrarPessoa($pessoa);
-        
-        $advogadoModel -> nia = $request ->nia;
-        $advogadoModel -> id_pessoa = $request ->$idPessoa;
-        $advogadoModel ->save();
+                $pessoa->nome = $request->nome;
+                $pessoa->data_nascimento = $request->data_nascimento;
+                $pessoa->endereco = $request->endereco;
+                $pessoa->telefone = $request->telefone;
+                $pessoa->bi = $request->bi;
+                $pessoa->email = $request->email;
 
-        $id_advogado = $advogadoModel -> id;
+                $idPessoa = $pessoaServico->CadastrarPessoa($pessoa);
 
-        if ($request ->id_reu != null && $request ->id_vitima == null ) 
-        {
-           $reuModel =Reu::find($request ->id_reu -> pluck('IdReu')->first());
-           $reuModel -> id_advogado = $id_advogado;
-           $reuModel ->save();
+                $advogadoModel->nia = $request->nia;
+                $advogadoModel->id_pessoa = $idPessoa;
+                $advogadoModel->save();
 
-        }else if($request ->id_reu == null && $request ->id_vitima == null)  {
+                $id_advogado = $advogadoModel->id;
 
-           $reuModel =Vitima::find($request ->id_vitima -> pluck('IdVitima')->first());
-           $reuModel -> id_advogado = $id_advogado;
-           $reuModel ->save();
-        } else if (isset($request ->id_peticao))
-        {
-                
+                if ($request->id_reu != 0 && $request->id_vitima == 0) {
+                    $reuModel = Reu::find($request->id_reu);
+                    $reuModel->id_advogado = $id_advogado;
+                    $reuModel->save();
+
+                } else if ($request->id_reu == 0 && $request->id_vitima != 0) {
+                    $reuModel = Vitima::find($request->id_vitima);
+                    $reuModel->id_advogado = $id_advogado;
+                    $reuModel->save();
+                } else if ($request->id_reu == 0 && $request->id_vitima == 0) {
+                    $reuModel = Vitima::find($request->id_vitima);
+                    $reuModel->id_advogado = $id_advogado;
+                    $reuModel->save();
+
+                    $reuModel = Reu::find($request->id_reu);
+                    $reuModel->id_advogado = $id_advogado;
+                    $reuModel->save();
+                }
+
+                $mensagem = "Advogado Cadastrado com sucesso.";
+
+                return $mensagem;
+            }
+        } catch (\Throwable $th) {
+            $mensagem =  $th ->getMessage(). $th ->getLine()  ;
+            return $mensagem;
         }
 
-        $id= $advogadoModel ->id;
-
-        return $id;
     }
 
-}
+    public function BuscarAdvogado()
+    {
 
-public function  BuscarAdvogados ()
-{
+    }
 
-}
+    
 
 }

@@ -34,6 +34,7 @@ class ReuRepository {
         ->where('reu.id_peticao','=',$id)
         ->select(
             'reu.nome',
+            'reu.id',
             'reu.bi',
             'reu.endereco',
             'reu.data_nascimento',
