@@ -186,8 +186,7 @@ INSERT INTO `tipocrime` (`id`, `Nome`, `created_at`, `updated_at`) VALUES
 	(15, 'Crime ambiental', NULL, NULL),
 	(16, 'Contrabando', NULL, NULL),
 	(17, 'Pirataria', NULL, NULL),
-	(18, 'Pirataria', NULL, NULL),
-	(19, 'Violência doméstica', NULL, NULL);
+	(18, 'Violência doméstica', NULL, NULL);
 /*!40000 ALTER TABLE `tipocrime` ENABLE KEYS */;
 
 -- A despejar estrutura para tabela pgpc.users

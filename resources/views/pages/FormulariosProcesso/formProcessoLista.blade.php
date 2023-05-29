@@ -5,13 +5,13 @@
 <div class="card col-md-12">
     <div class="card-body">
     <div class="card-title">
-        <h3 style="color: black;"><i class="fas fa-tools " style="color: black;"></i> <b>Usuário/</b><i>Editar</i></h3>
+        <h3 style="color: black;"><i class="fas fa-tools " style="color: black;"></i> <b>Processo</b></h3>
         <ul class="mb-4 nav nav-underline " style="font-size: 1em;">
-            <li class="nav-item" style="font-size: 1em;">
-              <a class="nav-link " style="font-size: 0.8em;" href="{{url("/cadastrarPeticao")}}"> Processos</a>
-            </li>
             <li class="nav-item" >
               <a class="nav-link active" style="font-size: 0.8em;"  href="{{url("/listarProcesso")}}">Listar Processos</a>
+            </li>
+            <li class="nav-item" >
+              <a class="nav-link" style="font-size: 0.8em;"  href="{{url("/cadastrarPeticao")}}">Novo Processo</a>
             </li>
         </ul>
     </div>
