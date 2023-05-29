@@ -31,62 +31,13 @@
           <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="frontend/img/logo-mini.svg" alt="logo" /></a>
         </div>
         <ul class="nav">
-          <li class="nav-item profile">
-            <div class="profile-desc">
-              <div class="profile-pic">
-                <div class="count-indicator">
-                  <img class="img-xs rounded-circle " src="assets/images/faces/face15.jpg" alt="">
-                  <span class="count bg-success"></span>
-                </div>
-                <div class="profile-name">
-                  <h5 class="mb-0 font-weight-normal">{{session('Nome')}}</h5>
-                  <span>PGPC</span>
-                </div>
-              </div>
-              <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
-              <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list" aria-labelledby="profile-dropdown">
-                <a href="#" class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-dark rounded-circle">
-                      <i class="mdi mdi-settings text-primary"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content">
-                    <p class="preview-subject ellipsis mb-1 text-small">Account settings</p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-dark rounded-circle">
-                      <i class="mdi mdi-onepassword  text-info"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content">
-                    <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-dark rounded-circle">
-                      <i class="mdi mdi-calendar-today text-success"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content">
-                    <p class="preview-subject ellipsis mb-1 text-small">To-do list</p>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </li>
-          <li class="nav-item nav-category">
+        
             
           </li>
           <li class="nav-item menu-items">
             <a class="nav-link" href="index.html">
               <span class="menu-icon">
-                <i class="fa fa-ban"></i>
+              <i class="fa-solid fa-chart-line"></i>
               </span>
               <span class="menu-title">Dashboard</span>
             </a>
@@ -94,24 +45,16 @@
           <li class="nav-item menu-items">
             <a href ="{{url("/listarProcesso")}}" class="nav-link" href="index.html">
               <span class="menu-icon">
-                <i class="mdi mdi-laptop"></i>
+              <i class="fa-solid fa-scale-balanced"></i>
               </span>
               <span class="menu-title">Processo</span>
               <i class="menu-arrow"></i>
             </a>
           </li>
           <li class="nav-item menu-items">
-          <a href ="{{url("/cadastrarPeticao")}}" class="nav-link" href="index.html">
-              <span class="menu-icon">
-                <i class="mdi mdi-playlist-play"></i>
-              </span>
-              <span class="menu-title">Petição</span>
-            </a>
-          </li>
-          <li class="nav-item menu-items">
           <a href ="{{url("/Reu")}}" class="nav-link" href="index.html">
               <span class="menu-icon">
-                <i class="mdi mdi-table-large"></i>
+              <i class="fa fa-user"></i>
               </span>
               <span class="menu-title">Réu</span>
             </a>
@@ -119,7 +62,7 @@
           <li class="nav-item menu-items">
           <a href ="{{url("/vitima")}}" class="nav-link" href="index.html">
               <span class="menu-icon">
-                <i class="mdi mdi-chart-bar"></i>
+              <i class="fa fa-users"></i>
               </span>
               <span class="menu-title">Vítimas</span>
             </a>
@@ -127,7 +70,7 @@
           <li class="nav-item menu-items">
             <a class="nav-link" href="pages/icons/mdi.html">
               <span class="menu-icon">
-                <i class="mdi mdi-contacts"></i>
+                <i class="fa fa-user-tie"></i>
               </span>
               <span class="menu-title">Advogados</span>
             </a>
@@ -257,7 +200,7 @@
                   <a href="{{url("/editarUsuario?idUsuario=$IdUsuario")}}" class="dropdown-item preview-item">
                     <div class="preview-thumbnail">
                       <div class="preview-icon bg-dark rounded-circle">
-                        <i class="mdi mdi-settings text-danger"></i>
+                      <i class="fa fa-user"></i>
                       </div>
                     </div>
                     <div class="preview-item-content">
@@ -286,7 +229,7 @@
                 <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                   <div class="navbar-profile">
                     <p class="mb-0 d-none d-sm-block navbar-profile-name">{{session('Nome')}}</p>
-                    <i class="fa fa-user-o"></i>
+                    <i class="fa fa-user"></i>
                   </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
