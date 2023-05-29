@@ -5,7 +5,10 @@ use App\Http\Controllers\processController;
 use App\Http\Controllers\ProcessoController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\FormProcessoController;
+use App\Http\Controllers\ReuController;
+use App\Http\Controllers\VitimasController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -32,8 +35,11 @@ Route::get('/cadastrarAutor', [FormProcessoController::class,'autor']);
 Route::get('/editarUsuario', [UsuarioController::class,'EditarUsuario']);
 Route::get('/listarProcesso', [FormProcessoController::class,'ListarProcesso']);
 Route::get('/logout', [LoginController::class,'Logout']);
+Route::get('/Reu', [ReuController::class,'ListarReu']);
+Route::get('/vitima', [VitimasController::class,'ListarVitima']);
 
 Route::get('/criarProcesso', [ProcessoController::class,'CriarProcesso']);
+
 
 
 Route::post('/CriarConta', [LoginController::class,'criarconta']) -> name('User.CriarConta');

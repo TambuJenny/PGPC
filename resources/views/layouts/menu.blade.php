@@ -109,7 +109,7 @@
             </a>
           </li>
           <li class="nav-item menu-items">
-          <a href ="{{url("/cadastrarReu")}}" class="nav-link" href="index.html">
+          <a href ="{{url("/Reu")}}" class="nav-link" href="index.html">
               <span class="menu-icon">
                 <i class="mdi mdi-table-large"></i>
               </span>
@@ -117,7 +117,7 @@
             </a>
           </li>
           <li class="nav-item menu-items">
-          <a href ="{{url("/cadastrarVitima")}}" class="nav-link" href="index.html">
+          <a href ="{{url("/vitima")}}" class="nav-link" href="index.html">
               <span class="menu-icon">
                 <i class="mdi mdi-chart-bar"></i>
               </span>
