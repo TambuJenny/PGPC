@@ -7576,7 +7576,9 @@ a {
   background-color: transparent; }
   a:hover {
     color: #0056b3;
-    text-decoration: underline; }
+    text-decoration: none; 
+    
+  }
 
 a:not([href]):not([class]) {
   color: inherit;
@@ -12805,12 +12807,12 @@ a.close.disabled {
   vertical-align: text-top !important; }
 
 .bg-primary {
-  background-color: #0090e7 !important; }
+  background-color: #8f5fe8 !important; }
 
 a.bg-primary:hover, a.bg-primary:focus,
 button.bg-primary:hover,
 button.bg-primary:focus {
-  background-color: #0070b4 !important; }
+  background-color: #8f5fe8 !important; }
 
 .bg-secondary {
   background-color: #e4eaec !important; }
@@ -20913,15 +20915,15 @@ div.tagsinput {
       background: #aab2bd;
       color: #6c7293; }
     .sidebar .nav .menu-items:nth-child(5n+1) .nav-link .menu-icon i {
-      color: #0090e7; }
+      color: #8f5fe8; }
     .sidebar .nav .menu-items:nth-child(5n+2) .nav-link .menu-icon i {
-      color: #00d25b; }
+      color: #8f5fe8; }
     .sidebar .nav .menu-items:nth-child(5n+3) .nav-link .menu-icon i {
       color: #8f5fe8; }
     .sidebar .nav .menu-items:nth-child(5n+4) .nav-link .menu-icon i {
-      color: #ffab00; }
+      color: #8f5fe8; }
     .sidebar .nav .menu-items:nth-child(5n+5) .nav-link .menu-icon i {
-      color: #fc424a; }
+      color: #8f5fe8; }
 
 /* style for off-canvas menu*/
 @media screen and (max-width: 991px) {

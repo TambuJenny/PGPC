@@ -37,6 +37,8 @@ Route::get('/listarProcesso', [FormProcessoController::class,'ListarProcesso']);
 Route::get('/logout', [LoginController::class,'Logout']);
 Route::get('/Reu', [ReuController::class,'ListarReu']);
 Route::get('/vitima', [VitimasController::class,'ListarVitima']);
+Route::get('/pesquisa', 'SeuController@metodoDePesquisa')->name('nome_da_rota');
+
 
 Route::get('/criarProcesso', [ProcessoController::class,'CriarProcesso']);
 

@@ -27,7 +27,7 @@
     <div class="container-scroller">
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-          <a class="sidebar-brand brand-logo" href="index.html"><img src="frontend/img/logo.svg" alt="logo" /></a>
+          <a class="sidebar-brand brand-logo" href="index.html"><i class="fa-sharp fa-solid fa-scale-balanced"></i>&nbsp;&nbsp;PGPC</a>
           <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="frontend/img/logo-mini.svg" alt="logo" /></a>
         </div>
         <ul class="nav">
@@ -92,7 +92,8 @@
             <ul class="navbar-nav w-100">
               <li class="nav-item w-100">
                 <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-                  <input type="text" class="form-control" placeholder="Pesquisar Processos">
+                <input type="text" name="pesquisa" placeholder="Pesquisar processo">
+                <button type="submit">Pesquisar</button>
                 </form>
               </li>
             </ul>
