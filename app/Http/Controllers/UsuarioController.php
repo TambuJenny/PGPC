@@ -89,4 +89,14 @@ class UsuarioController extends Controller
     public function ApagarUsuario(){
         
     }
+
+    public function GetAllUsuario ()
+    {
+       
+    }
+
+    public function ListarUsuario ()
+    {
+        return view('pages.usuario.ListarUsuario');
+    }
 }

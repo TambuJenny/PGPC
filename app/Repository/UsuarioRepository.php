@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\DB;
 
 class UsuarioRepository
 {
+
+   
     public static function FindById($idUsuario)
     {
         $verificarDadosLogin = DB::table('pessoa')

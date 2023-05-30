@@ -60,13 +60,22 @@
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="pages/icons/mdi.html">
+          <a href ="{{url("/listarAdvogado")}}" class="nav-link" href="index.html">
               <span class="menu-icon">
-                <i class="fa fa-user-tie"></i>
+              <i class="fa fa-users"></i>
               </span>
-              <span class="menu-title">Advogados</span>
+              <span class="menu-title">Advogado</span>
             </a>
           </li>
+          <li class="nav-item menu-items">
+          <a href ="{{url("/listarUsuario")}}" class="nav-link" href="index.html">
+              <span class="menu-icon">
+              <i class="fa fa-users"></i>
+              </span>
+              <span class="menu-title">Usuário</span>
+            </a>
+          </li>
+          
           
         </ul>
       </nav>
