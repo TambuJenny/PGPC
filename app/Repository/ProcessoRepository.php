@@ -32,5 +32,4 @@ class ProcessoRepository {
         return $query;
     }
 
-   
 }

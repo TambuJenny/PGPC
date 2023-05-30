@@ -73,7 +73,7 @@ class LoginController extends Controller
 
         if ($verificacaoDoLogin ->messageStatus == true)
         { 
-            return View('pages.menu',compact('verificacaoDoLogin'))->with('layouts.menu',['response' => $verificacaoDoLogin]);
+            return View('pages.FormulariosProcesso.formProcessoLista',compact('verificacaoDoLogin'))->with('layouts.menu',['response' => $verificacaoDoLogin]);
         }else
             return View('index',['response' => $verificacaoDoLogin]);
     }

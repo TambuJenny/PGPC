@@ -35,14 +35,6 @@
             
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="index.html">
-              <span class="menu-icon">
-              <i class="fa-solid fa-chart-line"></i>
-              </span>
-              <span class="menu-title">Dashboard</span>
-            </a>
-          </li>
-          <li class="nav-item menu-items">
             <a href ="{{url("/listarProcesso")}}" class="nav-link" href="index.html">
               <span class="menu-icon">
               <i class="fa-solid fa-scale-balanced"></i>
@@ -89,14 +81,14 @@
             <button class="primary-text navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
              <span class="fa fa-bars "></span>
             </button>
-            <ul class="navbar-nav w-100">
+           <!-- <ul class="navbar-nav w-100">
               <li class="nav-item w-100">
                 <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
                 <input type="text" name="pesquisa" placeholder="Pesquisar processo">
                 <button type="submit">Pesquisar</button>
                 </form>
               </li>
-            </ul>
+            </ul>-->
             <ul class="navbar-nav navbar-nav-right">
               <li class="nav-item dropdown d-none d-lg-block">
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="createbuttonDropdown">

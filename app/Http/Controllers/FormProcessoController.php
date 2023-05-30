@@ -110,12 +110,6 @@ class FormProcessoController extends Controller
          return response()->json($response);
    }
 
-   public function PesquisarProcesso(Request $request)
-   {
-         $response = ReuRepository::FindbyIdPeticao($request);
-         return response()->json($request);
-   }
-
 
    public function CadastrarProcesso (Request $request)
    {
