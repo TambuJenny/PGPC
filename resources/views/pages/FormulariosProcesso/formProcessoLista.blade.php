@@ -79,7 +79,7 @@ function setDataReus(response)
                  <td>
                         <center>
                         <button type="button" onclick= "PegarIdReu(${element.id})" class="btn badge badge-danger" > <i class="fa fa-pen-to-square"></i></button>
-                        <button type="button" onclick= "PegarIdReu(${element.id})" class="btn badge badge-success"><i class="fa fa-eye"></i></button>
+                        <a class="btn badge badge-success" href="/listarProcessos?idpeticao=${element.idPeticao}"><i class="fa fa-eye"></i></a>
 
                         </center>
                  </td>

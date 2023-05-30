@@ -490,9 +490,6 @@ function buscarDepoimentoVitima (idPessoa,idPeticao)
     });  
 }
 
-
-
-
 function cadastrarAdvogado (idPeticao)
 {
         var objAdvogado = {

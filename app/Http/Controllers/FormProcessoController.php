@@ -110,6 +110,11 @@ class FormProcessoController extends Controller
          return response()->json($response);
    }
 
+   public function ListarProcessos(Request $request)
+   {
+        return view("Pages.FormulariosProcesso.visualizarProcesso");
+   }
+
 
    public function CadastrarProcesso (Request $request)
    {
