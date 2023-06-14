@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Services\AdvogadoService;
 
 
-class AdvogadoCotroller extends Controller
+class AdvogadoController extends Controller
 {
     public function GetAllAdvogado ()
     {
