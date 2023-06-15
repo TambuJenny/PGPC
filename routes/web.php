@@ -5,6 +5,7 @@ use App\Http\Controllers\processController;
 use App\Http\Controllers\ProcessoController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\FormProcessoController;
+use App\Http\Controllers\AdvogadoCotroller;
 use App\Http\Controllers\ReuController;
 use App\Http\Controllers\VitimasController;
 use Illuminate\Support\Facades\Route;

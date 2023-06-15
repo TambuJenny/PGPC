@@ -22,6 +22,7 @@ class UserService
         try {
             $pessoaService = new pessoaService();
             $usuarioModel = new Usuario();
+            $usuarioModel = new Usuario();
 
             $pessoaId = $pessoaService->CadastrarPessoa($pessoaDTO);
             $usuarioModel->senha = $usuarioDTO->senha;
