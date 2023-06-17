@@ -3,13 +3,13 @@
 <div class="card col-md-12">
     <div class="card-body">
     <div class="card-title">
-        <h3 style="color: black;"><i class="fas fa-chalkboard-teacher " style="color: black;"></i> <b>Advogado</b></h3>
+        <h3 style="color: black;"><i class="fas fa-chalkboard-teacher " style="color: black;"></i> <b>Juiz</b></h3>
         <ul class="mb-4 nav nav-underline " style="font-size: 1em;">
             <li class="nav-item" >
-              <a class="nav-link active" style="font-size: 0.8em;"  href="{{url("/listarAdvogado")}}">Listar Advogados</a>
+              <a class="nav-link active" style="font-size: 0.8em;"  href="{{url("/listarJulgamento")}}">Julgamentos em andamento</a>
             </li>
             <li class="nav-item" >
-              <a class="nav-link" style="font-size: 0.8em;"  href="{{url("/cadastrarPeticao")}}">Novo Advogado</a>
+              <a class="nav-link" style="font-size: 0.8em;"  href="{{url("/marcarJulgamento")}}">Marcar Julgamento</a>
             </li>
         </ul>
       </div>
@@ -19,13 +19,11 @@
            <thead>
              <tr>
               <th scope="row">Id</th>
-               <th>Nome</th>
-               <th>BI</th>
-               <th>Email</th>
-               <th>Telefone</th>
-               <th>Sexo</th>
-               <th>Nº de Ident. do Advogado</th>
-               <th scope="row" >Advogado</th>
+               <th>Data de ínicio</th>
+               <th>Data do fim</th>
+               <th>Processo</th>
+               <th>Tribunal</th>
+               <th scope="row" >Juiz</th>
              </tr>
            </thead>
            <tbody id="tableValue">

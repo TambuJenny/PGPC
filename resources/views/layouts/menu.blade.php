@@ -68,6 +68,22 @@
             </a>
           </li>
           <li class="nav-item menu-items">
+          <a href ="{{url("/listarJuiz")}}" class="nav-link" href="index.html">
+              <span class="menu-icon">
+              <i class="fa fa-users"></i>
+              </span>
+              <span class="menu-title">Juiz</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
+          <a href ="{{url("/listarJulgamento")}}" class="nav-link" href="index.html">
+              <span class="menu-icon">
+              <i class="fa fa-users"></i>
+              </span>
+              <span class="menu-title">Julgamento</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
           <a href ="{{url("/listarUsuario")}}" class="nav-link" href="index.html">
               <span class="menu-icon">
               <i class="fa fa-users"></i>
