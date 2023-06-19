@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\DTO\PessoaDTO;
 use App\DTO\ResponseDTO;
 use App\DTO\UsuarioDTO;
+use App\Helper\ControloNivelAcesso;
 use App\Http\Controllers\Controller;
 use App\Services\UserService;
 use Facade\FlareClient\View;
@@ -92,11 +93,18 @@ class UsuarioController extends Controller
 
     public function GetAllUsuario ()
     {
-       
+        $usuarioService = new UserService () ;
+
+         return (ControloNivelAcesso::verificarAcessoCliente(ControloNivelAcesso::pegarDadoClienteLogado(),"all"))?
+             response()->json($usuarioService->BuscarTodosUsuario()) :
+             response()->json(["error"=>"Acesso Negado"],404);
     }
 
     public function ListarUsuario ()
     {
-        return view('pages.usuario.ListarUsuario');
+        $usuarioService = new UserService () ;
+
+        return (ControloNivelAcesso::verificarAcessoCliente(ControloNivelAcesso::pegarDadoClienteLogado(),"all")) ? 
+        view('pages.usuario.ListarUsuario',["allUsuarios" => [$usuarioService->BuscarTodosUsuario()] ]) : view('pages.AcessoNegado');
     }
 }

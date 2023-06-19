@@ -28,6 +28,26 @@ class UsuarioRepository
             return $verificarDadosLogin;
     }
 
+    public static function FindAll()
+    {
+        $verificarDadosLogin = DB::table('pessoa')
+            ->join('usuarios', function ($join) {
+                $join->on('pessoa.id', '=', 'usuarios.id_Pessoa');
+            })
+            ->select(
+                'pessoa.nome as Nome',
+                'pessoa.email as Email',
+                'pessoa.sexo as Sexo',
+                'pessoa.endereco as Endereco',
+                'pessoa.data_nascimento as DataNascimento',
+                'pessoa.telefone as Telefone',
+                'pessoa.bi as Bi',
+                'usuarios.id as Id'
+            )->get();
+
+            return $verificarDadosLogin;
+    }
+
     public static function FindByBI($bi)
     {
         $verificarDadosLogin = DB::table('pessoa')
