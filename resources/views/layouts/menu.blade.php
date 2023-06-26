@@ -46,7 +46,7 @@
           <li class="nav-item menu-items">
           <a href ="{{url("/Reu")}}" class="nav-link" href="index.html">
               <span class="menu-icon">
-              <i class="fa fa-user"></i>
+              <i class="fa-solid fa-user-tie-hair"></i>
               </span>
               <span class="menu-title">Réu</span>
             </a>
@@ -70,7 +70,7 @@
           <li class="nav-item menu-items">
           <a href ="{{url("/listarJuiz")}}" class="nav-link" href="index.html">
               <span class="menu-icon">
-              <i class="fa fa-users"></i>
+              <i class="fa-duotone fa-user-secret fa-2xs"></i>
               </span>
               <span class="menu-title">Juiz</span>
             </a>
@@ -78,7 +78,7 @@
           <li class="nav-item menu-items">
           <a href ="{{url("/listarJulgamento")}}" class="nav-link" href="index.html">
               <span class="menu-icon">
-              <i class="fa fa-users"></i>
+              <i class="fa-solid fa-gavel"></i>
               </span>
               <span class="menu-title">Julgamento</span>
             </a>

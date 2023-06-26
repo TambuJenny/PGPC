@@ -18,4 +18,11 @@ class JuizController extends Controller
         return view('pages.Juiz.listarJuiz');
     }
 
+    public function CadastrarJuiz ()
+    {
+        return view('pages.Juiz.cadastrarJuiz');
+    }
+
+
+
 }

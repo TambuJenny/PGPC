@@ -9,7 +9,7 @@
               <a class="nav-link active" style="font-size: 0.8em;"  href="{{url("/listarJuiz")}}">Listar Juiz</a>
             </li>
             <li class="nav-item" >
-              <a class="nav-link" style="font-size: 0.8em;"  href="{{url("/cadastrarPeticao")}}">Novo Juiz</a>
+              <a class="nav-link" style="font-size: 0.8em;"  href="{{url("/cadastrarJuiz")}}">Novo Juiz</a>
             </li>
         </ul>
       </div>
@@ -18,14 +18,13 @@
       <table class="table">
            <thead>
              <tr>
-              <th scope="row">Id</th>
+
                <th>Nome</th>
                <th>BI</th>
                <th>Email</th>
                <th>Telefone</th>
                <th>Sexo</th>
                <th>Nº de Ident. do Juiz</th>
-               <th scope="row" >Juiz</th>
              </tr>
            </thead>
            <tbody id="tableValue">
@@ -42,7 +41,7 @@
 <script src="{{asset('frontend/js/pages/processo.js')}}" crossorigin="anonymous"></script>
 <script>
   
-   /*jQuery("Document").ready(()=>{
+   jQuery("Document").ready(()=>{
 
     $.ajax({
         type: "GET",
@@ -81,6 +80,6 @@
         }
     });
 
-  });*/
+  });
 </script>
 @endsection
