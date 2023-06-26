@@ -37,7 +37,6 @@ class FormProcessoController extends Controller
 
    public function peticao()
    {
-
       return view('pages.FormulariosProcesso.formPeticao', ['idprocesso' => ProcessoService::PegarUltimoId('processo')]);
    }
 

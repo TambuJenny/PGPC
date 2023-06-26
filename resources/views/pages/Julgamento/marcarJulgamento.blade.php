@@ -24,8 +24,11 @@
           <div class="col-md-5">  
                <label class="form-label mt-2">Data de ínicio</label> 
                <input type="date" name="data_nascimento" class="form-control">
-               <label class="form-label mt-2">Data do fim</label> 
-               <input type="date" name="data_nascimento" class="form-control">
+               <label class="form-label mt-2">Juiz</label>
+               <select class="form-control" name="sexo"> 
+                   <option value="Masculino">António João</option>
+                   <option value="Feminino">Miguel Paulo</option>
+                </select>
           
            </div>
 
@@ -37,8 +40,8 @@
                 </select>
                 <label class="form-label mt-2">Tribunal</label>
                <select class="form-control" name="sexo"> 
-                   <option value="Masculino">Comarca de Viana</option>
-                   <option value="Feminino">Comarca do São Paulo</option>
+                   <option value="Masculino">Tribunal de Viana</option>
+                   <option value="Feminino">Tribunal do São Paulo</option>
                 </select>
           </div>
            

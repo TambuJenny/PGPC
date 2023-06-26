@@ -14,6 +14,7 @@ class ProcessoController extends Controller
     public function CriarProcesso ()
     {
         $pegarTodosTiposCrime = CrimeRepository::BuscarTodosTipoCrimes();
+        
         return view('pages.processo')->with('pegarTodosTiposCrime', $pegarTodosTiposCrime);
     }
 
