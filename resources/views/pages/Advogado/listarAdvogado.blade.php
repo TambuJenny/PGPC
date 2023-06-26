@@ -29,7 +29,15 @@
              </tr>
            </thead>
            <tbody id="tableValue">
-                <div id="contentReu"></div>
+           @foreach($allAdvogado as $usuarios)
+                 <th scope="row">{{$usuarios -> id}}</th>
+                 <td>{{$usuarios-> nome}}</td>
+                 <td>{{$usuarios-> bi}}</td>
+                 <td>{{$usuarios-> email}}</td>
+                 <td>{{$usuarios-> sexo}}</td>
+                 <td>{{$usuarios-> telefone}}</td>
+                 <td>{{$usuarios-> data_nascimento}}</td>
+              @endforeach
            </tbody>
        </table>
    </div>                   

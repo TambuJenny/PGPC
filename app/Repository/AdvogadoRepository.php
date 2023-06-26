@@ -14,7 +14,14 @@ class AdvogadoRepository {
         ->select(
             'pessoa.nome',
             'pessoa.id',
-            'pessoa.bi'
+            'pessoa.email as Email',
+            'pessoa.sexo as Sexo',
+            'pessoa.endereco as Endereco',
+            'pessoa.data_nascimento as DataNascimento',
+            'pessoa.bi',
+            'pessoa.telefone',
+            'advogado.nia',
+            'advogado.id as idAdvogado'
         )->get();
 
         return $query;

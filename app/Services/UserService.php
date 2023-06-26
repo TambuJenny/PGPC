@@ -22,6 +22,7 @@ class UserService
         try {
             $pessoaService = new pessoaService();
             $usuarioModel = new Usuario();
+            $usuarioModel = new Usuario();
 
             $pessoaId = $pessoaService->CadastrarPessoa($pessoaDTO);
             $usuarioModel->senha = $usuarioDTO->senha;
@@ -97,6 +98,28 @@ class UserService
     {
         try {
             $pegarDadosUsuario = UsuarioRepository::FindById($idUsuario);
+            $pessoaDto = new PessoaDTO();
+
+            $pessoaDto->bi = $pegarDadosUsuario->pluck('Bi')->first();
+            $pessoaDto->email = $pegarDadosUsuario->pluck('Email')->first();
+            $pessoaDto->data_nascimento = $pegarDadosUsuario->pluck('DataNascimento')->first();
+            $pessoaDto->endereco = $pegarDadosUsuario->pluck('Endereco')->first();
+            $pessoaDto->nome = $pegarDadosUsuario->pluck('Nome')->first();
+            $pessoaDto->sexo = $pegarDadosUsuario->pluck('Sexo')->first();
+            $pessoaDto->telefone = $pegarDadosUsuario->pluck('Telefone')->first();
+            $pessoaDto->id = $pegarDadosUsuario->pluck('Id')->first();
+                
+            return $pessoaDto;
+
+        } catch (\Throwable $th) {
+
+        }
+    }
+
+    public function BuscarTodosUsuario()
+    {
+        try {
+            $pegarDadosUsuario = UsuarioRepository::FindAll();
             $pessoaDto = new PessoaDTO();
 
             $pessoaDto->bi = $pegarDadosUsuario->pluck('Bi')->first();

@@ -9,6 +9,7 @@ use App\Models\Advogado;
 use App\Models\Pessoa;
 use App\Models\Reu;
 use App\Models\Vitima;
+use App\Repository\AdvogadoRepository;
 use App\Repository\UsuarioRepository;
 use Illuminate\Support\Facades\DB;
 
@@ -71,7 +72,26 @@ class AdvogadoService
 
     public function BuscarAdvogado()
     {
+        try {
+            $pegarDadosUsuario = AdvogadoRepository::FindAllAdvogados();
+            $pessoaDto = new AdvogadoDTO();
 
+            $pessoaDto->bi = $pegarDadosUsuario->pluck('bi')->first();
+            $pessoaDto->email = $pegarDadosUsuario->pluck('Email')->first();
+            $pessoaDto->data_nascimento = $pegarDadosUsuario->pluck('DataNascimento')->first();
+            $pessoaDto->endereco = $pegarDadosUsuario->pluck('Endereco')->first();
+            $pessoaDto->nome = $pegarDadosUsuario->pluck('nome')->first();
+            $pessoaDto->sexo = $pegarDadosUsuario->pluck('Sexo')->first();
+            $pessoaDto->telefone = $pegarDadosUsuario->pluck('telefone')->first();
+            $pessoaDto->id = $pegarDadosUsuario->pluck('idAdvogado')->first();
+            $pessoaDto->nia = $pegarDadosUsuario->pluck('nia')->first();
+            $pessoaDto->id_pessoa = $pegarDadosUsuario->pluck('id')->first();
+                
+            return $pessoaDto;
+
+        } catch (\Throwable $th) {
+
+        }
     }
 
     
