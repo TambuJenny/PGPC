@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helper\ControloNivelAcesso;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,10 @@ class JuizController extends Controller
 
     public function ListarJuiz ()
     {
-        return view('pages.Juiz.listarJuiz');
+        /*$advogadoService = new JuizService();
+        return ControloNivelAcesso::verificarAcessoCliente(ControloNivelAcesso::pegarDadoClienteLogado(),"advogado") ?
+        view('pages.Juiz.listarJuiz',["allAdvogado"=>[$advogadoService ->BuscarAdvogado()]]): 
+        view('pages.AcessoNegado'); */
     }
 
     public function CadastrarJuiz ()

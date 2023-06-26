@@ -280,7 +280,7 @@
         </nav>
         <!-- partial -->
         <div class="main-panel">
-          <div class="">
+          <div class="" style="overflow-y: scroll;">
           @yield('content')
           </div>
           <!-- content-wrapper ends -->

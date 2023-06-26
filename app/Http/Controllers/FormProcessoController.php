@@ -9,6 +9,7 @@ use App\DTO\Request\BuscarTodasVitimasRequest;
 use App\DTO\Request\DepoimentoRequest;
 use App\DTO\ReuDTO;
 use App\DTO\VitimaDTO;
+use App\Helper\ControloNivelAcesso;
 use App\Http\Controllers\Controller;
 use App\Models\Depoimento;
 use App\Models\Processo;
@@ -222,5 +223,10 @@ class FormProcessoController extends Controller
 
       return response()->json(['mensagem' => 'Depoimento cadastrado com sucesso!'], Response::HTTP_OK);
    }
+
+   public function DetalhesProcessos (Request $request)
+   {
+        return ControloNivelAcesso ::verificarAcessoCliente(ControloNivelAcesso::pegarDadoClienteLogado(),"all") ?   View ('Pages.FormulariosProcesso.DetalhesProcesso'):  View ('Pages.AcessoNegado');
+   } 
 
 }

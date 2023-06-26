@@ -21,7 +21,6 @@ CREATE DATABASE IF NOT EXISTS `pgpc` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `pgpc`;
 
 -- A despejar estrutura para tabela pgpc.advogado
-DROP TABLE IF EXISTS `advogado`;
 CREATE TABLE IF NOT EXISTS `advogado` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nia` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -46,7 +45,6 @@ INSERT INTO `advogado` (`id`, `nia`, `id_Pessoa`, `created_at`, `updated_at`) VA
 /*!40000 ALTER TABLE `advogado` ENABLE KEYS */;
 
 -- A despejar estrutura para tabela pgpc.autorpeticao
-DROP TABLE IF EXISTS `autorpeticao`;
 CREATE TABLE IF NOT EXISTS `autorpeticao` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_Pessoa` bigint(20) unsigned NOT NULL,
@@ -67,7 +65,6 @@ INSERT INTO `autorpeticao` (`id`, `id_Pessoa`, `created_at`, `updated_at`) VALUE
 /*!40000 ALTER TABLE `autorpeticao` ENABLE KEYS */;
 
 -- A despejar estrutura para tabela pgpc.denucia
-DROP TABLE IF EXISTS `denucia`;
 CREATE TABLE IF NOT EXISTS `denucia` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_TipoCrime` bigint(20) unsigned NOT NULL,
@@ -85,7 +82,6 @@ DELETE FROM `denucia`;
 /*!40000 ALTER TABLE `denucia` ENABLE KEYS */;
 
 -- A despejar estrutura para tabela pgpc.denunciaqueixacrime
-DROP TABLE IF EXISTS `denunciaqueixacrime`;
 CREATE TABLE IF NOT EXISTS `denunciaqueixacrime` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `descricaoCrime` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -108,7 +104,6 @@ DELETE FROM `denunciaqueixacrime`;
 /*!40000 ALTER TABLE `denunciaqueixacrime` ENABLE KEYS */;
 
 -- A despejar estrutura para tabela pgpc.depoimento
-DROP TABLE IF EXISTS `depoimento`;
 CREATE TABLE IF NOT EXISTS `depoimento` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `Descricao` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -136,7 +131,6 @@ INSERT INTO `depoimento` (`id`, `Descricao`, `Endereco`, `id_Pessoa`, `id_petica
 /*!40000 ALTER TABLE `depoimento` ENABLE KEYS */;
 
 -- A despejar estrutura para tabela pgpc.failed_jobs
-DROP TABLE IF EXISTS `failed_jobs`;
 CREATE TABLE IF NOT EXISTS `failed_jobs` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `uuid` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -154,8 +148,23 @@ DELETE FROM `failed_jobs`;
 /*!40000 ALTER TABLE `failed_jobs` DISABLE KEYS */;
 /*!40000 ALTER TABLE `failed_jobs` ENABLE KEYS */;
 
+-- A despejar estrutura para tabela pgpc.juiz
+CREATE TABLE IF NOT EXISTS `juiz` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `nij` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_Pessoa` bigint(20) unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `advogado_id_pessoa_foreign` (`id_Pessoa`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- A despejar dados para tabela pgpc.juiz: 0 rows
+DELETE FROM `juiz`;
+/*!40000 ALTER TABLE `juiz` DISABLE KEYS */;
+/*!40000 ALTER TABLE `juiz` ENABLE KEYS */;
+
 -- A despejar estrutura para tabela pgpc.migrations
-DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE IF NOT EXISTS `migrations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -175,7 +184,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
 -- A despejar estrutura para tabela pgpc.migration__user
-DROP TABLE IF EXISTS `migration__user`;
 CREATE TABLE IF NOT EXISTS `migration__user` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -189,7 +197,6 @@ DELETE FROM `migration__user`;
 /*!40000 ALTER TABLE `migration__user` ENABLE KEYS */;
 
 -- A despejar estrutura para tabela pgpc.nivelacesso
-DROP TABLE IF EXISTS `nivelacesso`;
 CREATE TABLE IF NOT EXISTS `nivelacesso` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nivel` varchar(30) NOT NULL,
@@ -207,7 +214,6 @@ INSERT INTO `nivelacesso` (`id`, `nivel`, `acesso`) VALUES
 /*!40000 ALTER TABLE `nivelacesso` ENABLE KEYS */;
 
 -- A despejar estrutura para tabela pgpc.password_resets
-DROP TABLE IF EXISTS `password_resets`;
 CREATE TABLE IF NOT EXISTS `password_resets` (
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -221,7 +227,6 @@ DELETE FROM `password_resets`;
 /*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
 
 -- A despejar estrutura para tabela pgpc.personal_access_tokens
-DROP TABLE IF EXISTS `personal_access_tokens`;
 CREATE TABLE IF NOT EXISTS `personal_access_tokens` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `tokenable_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -243,7 +248,6 @@ DELETE FROM `personal_access_tokens`;
 /*!40000 ALTER TABLE `personal_access_tokens` ENABLE KEYS */;
 
 -- A despejar estrutura para tabela pgpc.pessoa
-DROP TABLE IF EXISTS `pessoa`;
 CREATE TABLE IF NOT EXISTS `pessoa` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nome` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -281,7 +285,6 @@ INSERT INTO `pessoa` (`id`, `nome`, `email`, `endereco`, `Sexo`, `data_nasciment
 /*!40000 ALTER TABLE `pessoa` ENABLE KEYS */;
 
 -- A despejar estrutura para tabela pgpc.peticao
-DROP TABLE IF EXISTS `peticao`;
 CREATE TABLE IF NOT EXISTS `peticao` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `descricaoCrime` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -303,7 +306,6 @@ INSERT INTO `peticao` (`id`, `descricaoCrime`, `id_autorPeticao`, `created_at`, 
 /*!40000 ALTER TABLE `peticao` ENABLE KEYS */;
 
 -- A despejar estrutura para tabela pgpc.processo
-DROP TABLE IF EXISTS `processo`;
 CREATE TABLE IF NOT EXISTS `processo` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_Peticao` bigint(20) unsigned NOT NULL,
@@ -325,7 +327,6 @@ INSERT INTO `processo` (`id`, `id_Peticao`, `created_at`, `updated_at`, `id_tipo
 /*!40000 ALTER TABLE `processo` ENABLE KEYS */;
 
 -- A despejar estrutura para tabela pgpc.prova
-DROP TABLE IF EXISTS `prova`;
 CREATE TABLE IF NOT EXISTS `prova` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `urlFile` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -349,7 +350,6 @@ DELETE FROM `prova`;
 /*!40000 ALTER TABLE `prova` ENABLE KEYS */;
 
 -- A despejar estrutura para tabela pgpc.reu
-DROP TABLE IF EXISTS `reu`;
 CREATE TABLE IF NOT EXISTS `reu` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nome` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -380,7 +380,6 @@ INSERT INTO `reu` (`id`, `nome`, `email`, `endereco`, `sexo`, `data_nascimento`,
 /*!40000 ALTER TABLE `reu` ENABLE KEYS */;
 
 -- A despejar estrutura para tabela pgpc.tipocrime
-DROP TABLE IF EXISTS `tipocrime`;
 CREATE TABLE IF NOT EXISTS `tipocrime` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `Nome` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -416,7 +415,6 @@ INSERT INTO `tipocrime` (`id`, `Nome`, `Classificacao`, `created_at`, `updated_a
 /*!40000 ALTER TABLE `tipocrime` ENABLE KEYS */;
 
 -- A despejar estrutura para tabela pgpc.users
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -436,7 +434,6 @@ DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 -- A despejar estrutura para tabela pgpc.usuarios
-DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `senha` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -453,11 +450,10 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 DELETE FROM `usuarios`;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
 INSERT INTO `usuarios` (`id`, `senha`, `id_Pessoa`, `created_at`, `updated_at`, `idNivelAcesso`) VALUES
-	(1, '2345', 1, '2023-04-18 00:45:05', '2023-04-18 00:45:05', 3);
+	(1, '2345', 1, '2023-04-18 00:45:05', '2023-04-18 00:45:05', 1);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 
 -- A despejar estrutura para tabela pgpc.vitima
-DROP TABLE IF EXISTS `vitima`;
 CREATE TABLE IF NOT EXISTS `vitima` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_pessoa` bigint(20) unsigned NOT NULL,
