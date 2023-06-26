@@ -37,7 +37,6 @@ Route::get('/cadastrarVitima', [FormProcessoController::class,'vitima']);
 Route::get('/listarProcessos', [FormProcessoController::class,'ListarProcessos']);
 Route::get('/cadastrarAutor', [FormProcessoController::class,'autor']);
 Route::get('/editarUsuario', [UsuarioController::class,'EditarUsuario']);
-Route::get('/listarProcesso', [FormProcessoController::class,'ListarProcesso']);
 Route::get('/logout', [LoginController::class,'Logout']);
 Route::get('/Reu', [ReuController::class,'ListarReu']);
 Route::get('/listarUsuario', [UsuarioController::class,'ListarUsuario']);
@@ -47,7 +46,10 @@ Route::get('/listarJulgamento', [JulgamentoController::class,'ListarJulgamento']
 Route::get('/marcarJulgamento', [JulgamentoController::class,'MarcarJulgamento']);
 Route::get('/vitima', [VitimasController::class,'ListarVitima']);
 Route::get('/pesquisa', 'SeuController@metodoDePesquisa')->name('nome_da_rota');
-
+Route::get('/pesquisa', 'SeuController@metodoDePesquisa')->name('nome_da_rota');
+Route::get('/detalhesProcesso', [FormProcessoController::class,'DetalhesProcessos'])->name('nome_da_rota');
+Route::get('/listarProcesso', [FormProcessoController::class,'ListarProcesso']);
+Route::get('/listarProcesso', [FormProcessoController::class,'ListarProcesso']);
 
 Route::get('/criarProcesso', [ProcessoController::class,'CriarProcesso']);
 

@@ -78,7 +78,7 @@ function setDataReus(response)
                  <td>${element.tipoCrime}</td>
                  <td>
                         <center>
-                          <a class="btn badge badge-success" href="/listarProcessos?idpeticao=${element.idPeticao}"><i class="fa fa-eye"></i></a>
+                          <a class="btn badge badge-success" href="/detalhesProcesso?idpeticao=${element.idPeticao}"><i class="fa fa-eye"></i></a>
                         </center>
                  </td>
             </tr>`
