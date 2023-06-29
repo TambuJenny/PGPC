@@ -9,7 +9,7 @@
               <a class="nav-link active" style="font-size: 0.8em;"  href="{{url("/listarJuiz")}}">Listar Juiz</a>
             </li>
             <li class="nav-item" >
-              <a class="nav-link" style="font-size: 0.8em;"  href="{{url("/cadastrarPeticao")}}">Novo Juiz</a>
+              <a class="nav-link" style="font-size: 0.8em;"  href="{{url("/novoJuiz")}}">Novo Juiz</a>
             </li>
         </ul>
       </div>
@@ -25,12 +25,23 @@
                <th>Telefone</th>
                <th>Sexo</th>
                <th>Nº de Ident. do Juiz</th>
-               <th scope="row" >Juiz</th>
              </tr>
            </thead>
-           <tbody id="tableValue">
-                <div id="contentReu"></div>
-           </tbody>
+            @if(isset($allJuiz))
+              <tbody id="tableValue">
+                @foreach($allJuiz as $usuarios)
+                      <th scope="row">{{$usuarios -> id}}</th>
+                      <td>{{$usuarios-> nome}}</td>
+                      <td>{{$usuarios-> bi}}</td>
+                      <td>{{$usuarios-> email}}</td>
+                      <td>{{$usuarios-> telefone}}</td>
+                      <td>{{$usuarios-> sexo}}</td>
+                      <td>{{$usuarios-> nij}}</td>
+                 @endforeach
+          </tbody>
+            @else 
+              <h3>Nenhum Juiz cadastrado</h3>
+            @endif
        </table>
    </div>                   
 </div>   

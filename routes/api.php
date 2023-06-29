@@ -30,3 +30,6 @@ Route::get('/buscarTodasVitimas', 'App\Http\Controllers\VitimasController@GetAll
 Route::post('/cadastrardepoimento', 'App\Http\Controllers\FormProcessoController@Cadastrardepoimento');
 Route::post('/cadastrarprocesso', 'App\Http\Controllers\FormProcessoController@CadastrarProcesso');
 Route::post('/cadastraradvogado', 'App\Http\Controllers\FormProcessoController@CadastrarAdvogado');
+Route::post('/cadastrarjuiz', 'App\Http\Controllers\JuizController@AddJuiz');
+Route::post('/udpadeusuarioestado', 'App\Http\Controllers\UsuarioController@UpdateUserioEstado');
+Route::post('/Updateuserionivelacesso', 'App\Http\Controllers\UsuarioController@UpdateUserioEstado');

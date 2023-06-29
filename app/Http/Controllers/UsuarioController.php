@@ -7,9 +7,13 @@ use App\DTO\ResponseDTO;
 use App\DTO\UsuarioDTO;
 use App\Helper\ControloNivelAcesso;
 use App\Http\Controllers\Controller;
+use App\Models\Nivelacesso;
+use App\Models\Usuario;
 use App\Services\UserService;
+use Facade\FlareClient\Http\Response;
 use Facade\FlareClient\View;
 use Illuminate\Http\Request;
+use Psy\Util\Json;
 
 class UsuarioController extends Controller
 {
@@ -87,9 +91,32 @@ class UsuarioController extends Controller
         }
     }
 
-    public function ApagarUsuario(){
+    public function UpdateUserioEstado(Request $request)
+    {
+        $usuario = Usuario::find($request->idUsuario);
+        $usuario -> estado = $request -> estado;
+        $valor = $usuario ->save();
         
+        $obj =[
+            'response'=> $valor
+        ];
+
+        return Response ()->json($obj);
     }
+
+    public function UpdateUserioNivelAcesso(Request $request)
+    {
+        $usuario = Usuario::find($request->idUsuario);
+        $usuario -> idNivelAcesso = $request -> idNivelAcesso;
+        $valor = $usuario ->save();
+        
+        $obj =[
+            'response'=> $valor
+        ];
+
+        return Response ()->json($obj);
+    }
+
 
     public function GetAllUsuario ()
     {
@@ -103,8 +130,9 @@ class UsuarioController extends Controller
     public function ListarUsuario ()
     {
         $usuarioService = new UserService () ;
+        $getAllNivelAcesso = Nivelacesso::all();
 
         return (ControloNivelAcesso::verificarAcessoCliente(ControloNivelAcesso::pegarDadoClienteLogado(),"all")) ? 
-        view('pages.usuario.ListarUsuario',["allUsuarios" => [$usuarioService->BuscarTodosUsuario()] ]) : view('pages.AcessoNegado');
+        view('pages.usuario.ListarUsuario',["allUsuarios" => [$usuarioService->BuscarTodosUsuario()],"allNivelAcesso"=>$getAllNivelAcesso ]) : view('pages.AcessoNegado');
     }
 }

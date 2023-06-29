@@ -50,6 +50,7 @@ Route::get('/pesquisa', 'SeuController@metodoDePesquisa')->name('nome_da_rota');
 Route::get('/detalhesProcesso', [FormProcessoController::class,'DetalhesProcessos'])->name('nome_da_rota');
 Route::get('/listarProcesso', [FormProcessoController::class,'ListarProcesso']);
 Route::get('/listarProcesso', [FormProcessoController::class,'ListarProcesso']);
+Route::get('/novoJuiz', [JuizController::class,'index']);
 
 Route::get('/criarProcesso', [ProcessoController::class,'CriarProcesso']);
 
