@@ -132,7 +132,9 @@ class UsuarioController extends Controller
         $usuarioService = new UserService () ;
         $getAllNivelAcesso = Nivelacesso::all();
 
-        return (ControloNivelAcesso::verificarAcessoCliente(ControloNivelAcesso::pegarDadoClienteLogado(),"all")) ? 
-        view('pages.usuario.ListarUsuario',["allUsuarios" => [$usuarioService->BuscarTodosUsuario()],"allNivelAcesso"=>$getAllNivelAcesso ]) : view('pages.AcessoNegado');
+        return 
+        (ControloNivelAcesso::verificarAcessoCliente(ControloNivelAcesso::pegarDadoClienteLogado(),"all")) ? 
+        view('pages.usuario.ListarUsuario',["allUsuarios" => [$usuarioService->BuscarTodosUsuario()],"allNivelAcesso"=>$getAllNivelAcesso ]) : 
+        view('pages.AcessoNegado');
     }
 }
