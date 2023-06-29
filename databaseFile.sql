@@ -164,12 +164,31 @@ CREATE TABLE IF NOT EXISTS `juiz` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `advogado_id_pessoa_foreign` (`id_Pessoa`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- A despejar dados para tabela pgpc.juiz: 0 rows
+-- A despejar dados para tabela pgpc.juiz: 1 rows
 DELETE FROM `juiz`;
 /*!40000 ALTER TABLE `juiz` DISABLE KEYS */;
+INSERT INTO `juiz` (`id`, `nij`, `id_Pessoa`, `created_at`, `updated_at`) VALUES
+	(8, 'POLK794621', 21, '2023-06-28 02:51:50', '2023-06-28 02:51:50');
 /*!40000 ALTER TABLE `juiz` ENABLE KEYS */;
+
+-- A despejar estrutura para tabela pgpc.julgamento
+DROP TABLE IF EXISTS `julgamento`;
+CREATE TABLE IF NOT EXISTS `julgamento` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `dataInicio` datetime NOT NULL,
+  `dataFim` datetime NOT NULL,
+  `estado` varchar(50) NOT NULL,
+  `id_tribunal` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_tribunal_julg` (`id_tribunal`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- A despejar dados para tabela pgpc.julgamento: 0 rows
+DELETE FROM `julgamento`;
+/*!40000 ALTER TABLE `julgamento` DISABLE KEYS */;
+/*!40000 ALTER TABLE `julgamento` ENABLE KEYS */;
 
 -- A despejar estrutura para tabela pgpc.migrations
 DROP TABLE IF EXISTS `migrations`;
@@ -274,9 +293,9 @@ CREATE TABLE IF NOT EXISTS `pessoa` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `pessoa_bi_unique` (`bi`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- A despejar dados para tabela pgpc.pessoa: 15 rows
+-- A despejar dados para tabela pgpc.pessoa: 17 rows
 DELETE FROM `pessoa`;
 /*!40000 ALTER TABLE `pessoa` DISABLE KEYS */;
 INSERT INTO `pessoa` (`id`, `nome`, `email`, `endereco`, `Sexo`, `data_nascimento`, `telefone`, `bi`, `created_at`, `updated_at`) VALUES
@@ -294,7 +313,9 @@ INSERT INTO `pessoa` (`id`, `nome`, `email`, `endereco`, `Sexo`, `data_nasciment
 	(16, 'Torre 30853535', 'leandro@construcode.com', '####', 'masculino', '2023-05-28 22:57:30', '+244922201312', '97644613946461313', '2023-05-28 21:57:30', '2023-05-28 21:57:30'),
 	(17, 'OBRA 005ewrwr', 'tambujenny@gmail.com', '####', 'masculino', '2023-05-28 23:05:08', '925880579', '94631', '2023-05-28 22:05:08', '2023-05-28 22:05:08'),
 	(18, 'Andre Maria José', 'joseMaria@gmail.com', 'Martires do Kifangondo Rua 17', 'masculino', '1996-11-21 00:00:00', '974631258', '974631310258POL', '2023-05-29 00:33:48', '2023-05-29 00:33:48'),
-	(19, 'Andre Maria José Y', 'joseMaria@gmail.com', 'Martires do Kifangondo Rua 17', 'masculino', '2023-05-29 00:00:00', '974631257', '978789465435317PL', '2023-05-29 00:34:44', '2023-05-29 00:34:44');
+	(19, 'Andre Maria José Y', 'joseMaria@gmail.com', 'Martires do Kifangondo Rua 17', 'masculino', '2023-05-29 00:00:00', '974631257', '978789465435317PL', '2023-05-29 00:34:44', '2023-05-29 00:34:44'),
+	(20, 'Massamba Andre', 'andreMassamba@gmail.com', '####', 'masculino', '2023-06-28 03:49:29', '96321455', '97461313LO', '2023-06-28 02:49:29', '2023-06-28 02:49:29'),
+	(21, 'Massamba Andre', 'andreMestre@gmal.com', '####', 'masculino', '2023-06-28 03:51:50', '96321455', '976431258POL', '2023-06-28 02:51:50', '2023-06-28 02:51:50');
 /*!40000 ALTER TABLE `pessoa` ENABLE KEYS */;
 
 -- A despejar estrutura para tabela pgpc.peticao
@@ -432,6 +453,19 @@ INSERT INTO `tipocrime` (`id`, `Nome`, `Classificacao`, `created_at`, `updated_a
 	(19, 'Violência doméstica', NULL, NULL, NULL);
 /*!40000 ALTER TABLE `tipocrime` ENABLE KEYS */;
 
+-- A despejar estrutura para tabela pgpc.tribunal
+DROP TABLE IF EXISTS `tribunal`;
+CREATE TABLE IF NOT EXISTS `tribunal` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `nomes` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- A despejar dados para tabela pgpc.tribunal: 0 rows
+DELETE FROM `tribunal`;
+/*!40000 ALTER TABLE `tribunal` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tribunal` ENABLE KEYS */;
+
 -- A despejar estrutura para tabela pgpc.users
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
@@ -461,6 +495,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `idNivelAcesso` bigint(20) DEFAULT NULL,
+  `estado` enum('Desativo','Ativo') COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `usuarios_id_pessoa_foreign` (`id_Pessoa`),
   KEY `idNivelAcesso` (`idNivelAcesso`)
@@ -469,8 +504,8 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 -- A despejar dados para tabela pgpc.usuarios: 1 rows
 DELETE FROM `usuarios`;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` (`id`, `senha`, `id_Pessoa`, `created_at`, `updated_at`, `idNivelAcesso`) VALUES
-	(1, '2345', 1, '2023-04-18 00:45:05', '2023-04-18 00:45:05', 1);
+INSERT INTO `usuarios` (`id`, `senha`, `id_Pessoa`, `created_at`, `updated_at`, `idNivelAcesso`, `estado`) VALUES
+	(1, '2345', 1, '2023-04-18 00:45:05', '2023-06-28 14:11:22', 1, 'Ativo');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 
 -- A despejar estrutura para tabela pgpc.vitima

@@ -120,7 +120,7 @@ class UserService
     {
         try {
             $pegarDadosUsuario = UsuarioRepository::FindAll();
-            $pessoaDto = new PessoaDTO();
+            $pessoaDto = new UsuarioDTO();
 
             $pessoaDto->bi = $pegarDadosUsuario->pluck('Bi')->first();
             $pessoaDto->email = $pegarDadosUsuario->pluck('Email')->first();
@@ -130,6 +130,8 @@ class UserService
             $pessoaDto->sexo = $pegarDadosUsuario->pluck('Sexo')->first();
             $pessoaDto->telefone = $pegarDadosUsuario->pluck('Telefone')->first();
             $pessoaDto->id = $pegarDadosUsuario->pluck('Id')->first();
+            $pessoaDto->nivelAcesso = $pegarDadosUsuario->pluck('NivelAcesso')->first();
+            $pessoaDto->estado = $pegarDadosUsuario->pluck('Estado')->first();
                 
             return $pessoaDto;
 

@@ -13,6 +13,9 @@ class UsuarioRepository
             ->join('usuarios', function ($join) {
                 $join->on('pessoa.id', '=', 'usuarios.id_Pessoa');
             })
+            ->join('nivelacesso', function ($join) {
+                $join->on('nivelacesso.id', '=', 'usuarios.idNivelAcesso');
+            })
             ->where('usuarios.id', '=', $idUsuario)
             ->select(
                 'pessoa.nome as Nome',
@@ -22,7 +25,9 @@ class UsuarioRepository
                 'pessoa.data_nascimento as DataNascimento',
                 'pessoa.telefone as Telefone',
                 'pessoa.bi as Bi',
-                'usuarios.id as Id'
+                'usuarios.id as Id',
+                'nivelacesso.nivel as NivelAcesso',
+                'usuarios.estado as Estado'
             )->get();
 
             return $verificarDadosLogin;
@@ -34,6 +39,9 @@ class UsuarioRepository
             ->join('usuarios', function ($join) {
                 $join->on('pessoa.id', '=', 'usuarios.id_Pessoa');
             })
+            ->join('nivelacesso', function ($join) {
+                $join->on('nivelacesso.id', '=', 'usuarios.idNivelAcesso');
+            })
             ->select(
                 'pessoa.nome as Nome',
                 'pessoa.email as Email',
@@ -42,7 +50,9 @@ class UsuarioRepository
                 'pessoa.data_nascimento as DataNascimento',
                 'pessoa.telefone as Telefone',
                 'pessoa.bi as Bi',
-                'usuarios.id as Id'
+                'usuarios.id as Id',
+                'nivelacesso.nivel as NivelAcesso',
+                'usuarios.estado as Estado'
             )->get();
 
             return $verificarDadosLogin;
