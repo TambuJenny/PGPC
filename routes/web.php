@@ -10,6 +10,7 @@ use App\Http\Controllers\JuizController;
 use App\Http\Controllers\JulgamentoController;
 use App\Http\Controllers\ReuController;
 use App\Http\Controllers\VitimasController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -51,6 +52,7 @@ Route::get('/pesquisa', 'SeuController@metodoDePesquisa')->name('nome_da_rota');
 Route::get('/detalhesProcesso', [FormProcessoController::class,'DetalhesProcessos'])->name('nome_da_rota');
 Route::get('/listarProcesso', [FormProcessoController::class,'ListarProcesso']);
 Route::get('/listarProcesso', [FormProcessoController::class,'ListarProcesso']);
+Route::get('/dashboard', [DashboardController::class,'Dashboard']);
 Route::get('/novoJuiz', [JuizController::class,'index']);
 
 Route::get('/criarProcesso', [ProcessoController::class,'CriarProcesso']);
