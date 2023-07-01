@@ -46,9 +46,18 @@
           <li class="nav-item menu-items">
           <a href ="{{url("/Reu")}}" class="nav-link" href="index.html">
               <span class="menu-icon">
-              <i class="fa-solid fa-user-tie-hair"></i>
+              <i class="fa-solid fa-user"></i>
               </span>
               <span class="menu-title">Réu</span>
+            </a>
+          </li>
+          
+          <li class="nav-item menu-items">
+          <a href ="{{url("/listarAdvogado")}}" class="nav-link" href="index.html">
+              <span class="menu-icon">
+              <i class="fa-solid fa-user-tie"></i>
+              </span>
+              <span class="menu-title">Advogado</span>
             </a>
           </li>
           <li class="nav-item menu-items">
@@ -60,17 +69,9 @@
             </a>
           </li>
           <li class="nav-item menu-items">
-          <a href ="{{url("/listarAdvogado")}}" class="nav-link" href="index.html">
-              <span class="menu-icon">
-              <i class="fa fa-users"></i>
-              </span>
-              <span class="menu-title">Advogado</span>
-            </a>
-          </li>
-          <li class="nav-item menu-items">
           <a href ="{{url("/listarJuiz")}}" class="nav-link" href="index.html">
               <span class="menu-icon">
-              <i class="fa-duotone fa-user-secret fa-2xs"></i>
+              <i class="fa-solid fa-user-tie"></i>
               </span>
               <span class="menu-title">Juiz</span>
             </a>
@@ -86,9 +87,18 @@
           <li class="nav-item menu-items">
           <a href ="{{url("/listarUsuario")}}" class="nav-link" href="index.html">
               <span class="menu-icon">
-              <i class="fa fa-users"></i>
+              <i class="fa-solid fa-user-group"></i>
               </span>
-              <span class="menu-title">Usuário</span>
+              <span class="menu-title">Usuários</span>
+            </a>
+          </li>
+
+          <li class="nav-item menu-items">
+          <a href ="{{url("/listarSessao")}}" class="nav-link" href="index.html">
+              <span class="menu-icon">
+              <i class="fa-solid fa-users-rectangle"></i>
+              </span>
+              <span class="menu-title">Sessões</span>
             </a>
           </li>
           

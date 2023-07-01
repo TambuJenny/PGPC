@@ -3,13 +3,13 @@
 <div class="card col-md-12">
     <div class="card-body">
     <div class="card-title">
-        <h3 style="color: black;"><i class="fas fa-chalkboard-teacher " style="color: black;"></i> <b>Advogado</b></h3>
+        <h3 style="color: #8F5FE8;"><i class="fas fa-chalkboard-teacher " style="color: #8F5FE8;"></i> <b>Advogado</b></h3>
         <ul class="mb-4 nav nav-underline " style="font-size: 1em;">
             <li class="nav-item" >
-              <a class="nav-link active" style="font-size: 0.8em;"  href="{{url("/listarAdvogado")}}">Listar Advogados</a>
+              <a class="nav-link active" style="font-size: 0.8em; color: #8F5FE8"  href="{{url("/listarAdvogado")}}">Listar Advogados</a>
             </li>
             <li class="nav-item" >
-              <a class="nav-link" style="font-size: 0.8em;"  href="{{url("/cadastrarPeticao")}}">Novo Advogado</a>
+              <a class="nav-link" style="font-size: 0.8em; color: #6c757d"  href="{{url("/cadastrarPeticao")}}">Novo Advogado</a>
             </li>
         </ul>
       </div>
@@ -18,14 +18,14 @@
       <table class="table">
            <thead>
              <tr>
-              <th scope="row">Id</th>
-               <th>Nome</th>
-               <th>BI</th>
-               <th>Email</th>
-               <th>Telefone</th>
-               <th>Sexo</th>
-               <th>Nº de Ident. do Advogado</th>
-               <th scope="row" >Advogado</th>
+              <th style="color: #472f74;" scope="row"><b>Id</b></th>
+               <th style="color: #472f74;"><b>Nome</b></th>
+               <th style="color: #472f74;"><b>BI</b></th>
+               <th style="color: #472f74;"><b>Email</b></th>
+               <th style="color: #472f74;"><b>Telefone</b></th>
+               <th style="color: #472f74;"><b>Sexo</b></th>
+               <th style="color: #472f74;"><b>Nº de Ident. do Advogado</b></th>
+               <th style="color: #472f74;" scope="row" ><b>Advogado<</b>/th>
              </tr>
            </thead>
            <tbody id="tableValue">

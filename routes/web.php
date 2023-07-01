@@ -11,6 +11,7 @@ use App\Http\Controllers\JulgamentoController;
 use App\Http\Controllers\ReuController;
 use App\Http\Controllers\VitimasController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SessaoController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -53,6 +54,7 @@ Route::get('/detalhesProcesso', [FormProcessoController::class,'DetalhesProcesso
 Route::get('/listarProcesso', [FormProcessoController::class,'ListarProcesso']);
 Route::get('/listarProcesso', [FormProcessoController::class,'ListarProcesso']);
 Route::get('/dashboard', [DashboardController::class,'Dashboard']);
+Route::get('/listarSessao', [SessaoController::class,'ListarSessoes']);
 Route::get('/novoJuiz', [JuizController::class,'index']);
 
 Route::get('/criarProcesso', [ProcessoController::class,'CriarProcesso']);

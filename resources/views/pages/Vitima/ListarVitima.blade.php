@@ -3,20 +3,20 @@
 <div class="card col-md-12">
     <div class="card-body">
     <div class="card-title">
-        <h3 style="color: black;"><i class="fas fa-chalkboard-teacher " style="color: black;"></i> <b>Vitima</b></h3>
+        <h3 style="color: #8F5FE8;"><i class="fas fa-chalkboard-teacher " style="color: #8F5FE8;"></i> <b>Vitima</b></h3>
     </div>
     <div class="table-responsive">
    <div class="">
       <table class="table">
            <thead>
              <tr>
-              <th scope="row">Id</th>
-               <th>Vitima</th>
-               <th>BI</th>
-               <th>Endereço</th>
-               <th>data_nascimento</th>
-               <th>telefone</th>
-               <th scope="row" >Processo</th>
+              <th style="color: #472f74;" scope="row"><b>Id</b></th>
+               <th style="color: #472f74;"><b>Vitima</b></th>
+               <th style="color: #472f74;"><b>BI</b></th>
+               <th style="color: #472f74;"><b>Endereço</b></th>
+               <th style="color: #472f74;"><b>Data de nascimento</b></th>
+               <th style="color: #472f74;"><b>Telefone</b></B></th>
+               <th style="color: #472f74;" scope="row" ><b>Processo</b></th>
              </tr>
            </thead>
            <tbody id="tableValue">
