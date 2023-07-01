@@ -5,13 +5,13 @@
 <div class="card col-md-12">
     <div class="card-body">
     <div class="card-title">
-        <h3 style="color: black;"><i class="fas fa-tools " style="color: black;"></i> <b>Processo</b></h3>
+        <h3 style="color: #8F5FE8;"><i class="fas fa-tools " style="color: #8F5FE8;"></i> <b>Processo</b></h3>
         <ul class="mb-4 nav nav-underline " style="font-size: 1em;">
             <li class="nav-item" >
-              <a class="nav-link active" style="font-size: 0.8em;"  href="{{url("/listarProcesso")}}">Listar Processos</a>
+              <a class="nav-link active" style="font-size: 0.8em; color: #8F5FE8;"  href="{{url("/listarProcesso")}}">Listar Processos</a>
             </li>
             <li class="nav-item" >
-              <a class="nav-link" style="font-size: 0.8em;"  href="{{url("/cadastrarPeticao")}}">Novo Processo</a>
+              <a class="nav-link" style="font-size: 0.8em; color: #6c757d"  href="{{url("/cadastrarPeticao")}}">Novo Processo</a>
             </li>
         </ul>
     </div>
@@ -20,10 +20,10 @@
       <table class="table">
            <thead>
              <tr>
-               <th>Nome Processo</th>
-               <th>Peticionário</th>
-               <th>Tipo de Crime</th>
-               <th><center>Opcão</center></th>
+               <th style="color: #472f74;"><b>Nome Processo</b></th>
+               <th style="color: #472f74;"><b>Peticionário</b></th>
+               <th style="color: #472f74;"><b>Tipo de Crime</b></th>
+               <th style="color: #472f74;"><center><b>Opcão</b></center></th>
              </tr>
            </thead>
            <tbody id="tableValueProcesso">

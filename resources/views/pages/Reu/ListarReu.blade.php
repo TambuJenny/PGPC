@@ -3,21 +3,20 @@
 <div class="card col-md-12">
     <div class="card-body">
     <div class="card-title">
-        <h3 style="color: black;"><i class="fas fa-chalkboard-teacher " style="color: black;"></i> <b>Reu</b></h3>
+        <h3 style="color: #8F5FE8;"><i class="fas fa-chalkboard-teacher " style="color: #8F5FE8;"></i> <b>Reu</b></h3>
     </div>
     <div class="table-responsive">
    <div class="">
       <table class="table">
            <thead>
              <tr>
-              <th scope="row">Id</th>
-               <th>Reu</th>
-               <th>BI</th>
-               <th>Endereço</th>
-               <th>data_nascimento</th>
-               <th>telefone</th>
-               <th>Foto</th>
-               <th scope="row" >Processo</th>
+               <th style="color: #472f74;" scope="row"><b>Id</b></th>
+               <th  style="color: #472f74;"><b>Reu</b></th>
+               <th  style="color: #472f74;"><b>BI</b></th>
+               <th  style="color: #472f74;"><b>Endereço</b></th>
+               <th  style="color: #472f74;"><b>Data de nascimento</b></th>
+               <th  style="color: #472f74;"><b>Telefone</b></th>
+               <th  style="color: #472f74;" scope="row" ><b>Processo</b></th>
              </tr>
            </thead>
            <tbody id="tableValue">
@@ -63,7 +62,6 @@
                  <td>${element.endereco}</td>
                  <td>${element.data_nascimento}</td>
                  <td>${element.telefone}</td>
-                 <td>${element.url_imageFoto}</td>
                  <td scope="row"><b>${element.nomeProcesso}</b></td>
             </tr>`
            });

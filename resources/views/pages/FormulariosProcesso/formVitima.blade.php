@@ -22,7 +22,7 @@
 @csrf
 
 <div class="d-flex justify-content-between align-items-center">
-            <h3><i class="fa fa-address-card"></i><b>Vítima</b> </h3>
+            <h3><i class="fa fa-address-card" ></i><b>Vítima</b> </h3>
             <div class="col-md-3">
                 <label for="exampleFormControlInput1" class="col-form-label"><b><small>Número da petição</small></b></label>
                 <input type="text" value="{{$idpeticao}}" disabled="" class="form-control" id="exampleFormControlInput1">

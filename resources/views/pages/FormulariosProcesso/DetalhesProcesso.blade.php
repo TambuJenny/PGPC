@@ -5,12 +5,9 @@
 
 @endif
 <div class="col-md-12 ">
-        <div class="hstack gap-3 text-dark mt-3 mb-5">
-          <div class="p-2">First item</div>
-          <div class="p-2 ms-auto">Second item</div>
-          <div class="vr"></div>
-          <div class="p-2">Third item</div>
-        </div>
+<div class="card-title">
+        <h3 style="color: #8F5FE8;"><i class="fa-solid fa-circle-info" style="color: #8F5FE8;"></i> <b>Detalhes do Processo</b></h3><br>
+    </div>
     <div class="card-group">
     <div class="col-md-6">
         <div class="card border-1 ">

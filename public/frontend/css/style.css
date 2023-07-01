@@ -7624,6 +7624,7 @@ caption {
 th {
   text-align: inherit;
   text-align: -webkit-match-parent; }
+  
 
 label {
   display: inline-block;
@@ -11648,7 +11649,7 @@ input[type="button"].btn-block {
 .page-item.disabled .page-link, .jsgrid .jsgrid-pager .disabled.jsgrid-pager-nav-button .page-link, .jsgrid .jsgrid-pager .disabled.jsgrid-pager-page .page-link, .page-item.disabled .jsgrid .jsgrid-pager .jsgrid-pager-nav-button a, .jsgrid .jsgrid-pager .jsgrid-pager-nav-button .page-item.disabled a, .jsgrid .jsgrid-pager .disabled.jsgrid-pager-nav-button a,
 .page-item.disabled .jsgrid .jsgrid-pager .jsgrid-pager-page a, .jsgrid .jsgrid-pager .jsgrid-pager-page .page-item.disabled a,
 .jsgrid .jsgrid-pager .disabled.jsgrid-pager-page a {
-  color: #6c757d;
+  color: #472f74;
   pointer-events: none;
   cursor: auto;
   background-color: #fff;
