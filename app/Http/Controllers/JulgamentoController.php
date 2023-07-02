@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Helper\ControloNivelAcesso;
 use Illuminate\Http\Request;
 
 class JulgamentoController extends Controller
@@ -14,11 +15,17 @@ class JulgamentoController extends Controller
 
     public function ListarJulgamento ()
     {
-        return view('pages.Julgamento.listarJulgamento');
+        return 
+        (ControloNivelAcesso::verificarAcessoCliente(ControloNivelAcesso::pegarDadoClienteLogado(),"all")) ? 
+        view('pages.Julgamento.listarJulgamento') : 
+        view('pages.AcessoNegado');
     }
     public function MarcarJulgamento ()
     {
-        return view('pages.Julgamento.marcarJulgamento');
+        return 
+        (ControloNivelAcesso::verificarAcessoCliente(ControloNivelAcesso::pegarDadoClienteLogado(),"all")) ? 
+        view('pages.Julgamento.marcarJulgamento') : 
+        view('pages.AcessoNegado');
     }
 
 }

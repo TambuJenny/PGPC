@@ -1,7 +1,7 @@
 @extends('layouts.menu')
 @section('content') 
 <div class=" card p-4 col-md-12 mb-5">
-    <h3><i class="fas fa-tools"></i> <b>Usuário/</b><i>Editar</i></h3>
+    <h3><i class="fas fa-tools" style="color: #8F5FE8;"></i> <b style="color: #8F5FE8;">Usuário/</b><i style="color: #8F5FE8;">Editar</i></h3>
     <hr/>
     <div class="card-body">
            
@@ -9,8 +9,8 @@
                 
 <form action="{{route('User.Edit')}}" method="POST">
           @csrf
-          <div class="d-flex align-items-justify ms-5">
-          <div class="col-md-5">
+          <div class="row">
+          <div class="col-md-5 ms-3">
                
                <label class="form-label">Nome</label> 
                <input type="text" name="nome" value ="{{$response ->nome }}"required class="form-control">
@@ -29,7 +29,7 @@
                    <option value="Feminino" selected>Feminino</option>
                @endif
                </select>
-
+              
                <label class="form-label">Senha</label> 
                <input type="password" name="senha" value ="{{$response ->endereco }}" required class="form-control">
                <label class="form-label">E-mail</label> 

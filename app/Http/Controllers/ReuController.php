@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Repository\ReuRepository;
+use App\Helper\ControloNivelAcesso;
 use Illuminate\Http\Request;
 
 class ReuController extends Controller
@@ -15,6 +16,11 @@ class ReuController extends Controller
 
     public function ListarReu ()
     {
-        return view('pages.Reu.ListarReu');
+        
+        return 
+        (ControloNivelAcesso::verificarAcessoCliente(ControloNivelAcesso::pegarDadoClienteLogado(),"all")) ? 
+        view('pages.Reu.ListarReu') : 
+        view('pages.AcessoNegado');
+        
     }
 }

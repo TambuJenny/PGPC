@@ -180,7 +180,10 @@ class FormProcessoController extends Controller
 
    public function ListarProcesso ()
    {
-      return view('pages.FormulariosProcesso.formProcessoLista');
+      return 
+        (ControloNivelAcesso::verificarAcessoCliente(ControloNivelAcesso::pegarDadoClienteLogado(),"all")) ? 
+        view('pages.FormulariosProcesso.formProcessoLista') : 
+        view('pages.AcessoNegado');
    }
 
    public function CadastrarAdvogado (Request $request)

@@ -43,6 +43,7 @@ Route::get('/logout', [LoginController::class,'Logout']);
 Route::get('/Reu', [ReuController::class,'ListarReu']);
 Route::get('/listarUsuario', [UsuarioController::class,'ListarUsuario']);
 Route::get('/listarAdvogado', [AdvogadoController::class,'listarAdvogado']);
+Route::get('/novoAdvogado', [AdvogadoController::class,'CadastrarAdvogado']);
 Route::get('/listarJuiz', [JuizController::class,'listarJuiz']);
 Route::get('/cadastrarJuiz', [JuizController::class,'cadastrarJuiz']);
 Route::get('/listarJulgamento', [JulgamentoController::class,'ListarJulgamento']);

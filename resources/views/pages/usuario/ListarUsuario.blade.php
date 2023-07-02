@@ -3,24 +3,24 @@
 <div class="card col-md-12">
     <div class="card-body">
     <div class="card-title">
-        <h3 style="color: black;"><i class="fas fa-chalkboard-teacher " style="color: black;"></i> <b>Usuário</b></h3>
+        <h3 style="color: #8F5FE8;"><i class="fas fa-chalkboard-teacher " style="color: #8F5FE8;"></i> <b>Usuário</b></h3>
     </div>
     <div class="table-responsive">
    <div class="">
       <table class="table">
            <thead>
              <tr>
-              <th scope="row">Estado </th>
-              <th scope="row">Id</th>
-               <th>Nome</th>
-               <th>BI</th>
-               <th>Endereço</th>
-               <th>Sexo</th>
-               <th>Email</th>
-               <th>Telefone</th>
-               <th>Data de Nascimento</th>
-               <th>Nivel de Acesso</th>
-               <th>Opções</th>
+              <th style="color: #472f74;" scope="row"><b>Estado</b> </th>
+              <th style="color: #472f74;" scope="row"><b>Id</b></th>
+               <th style="color: #472f74;"><b>Nome</b></th>
+               <th style="color: #472f74;"><b>BI</b></th>
+               <th style="color: #472f74;"><b>Endereço</b></th>
+               <th style="color: #472f74;"><b>Sexo</b></th>
+               <th style="color: #472f74;"><b>Email</b></th>
+               <th style="color: #472f74;"><b>Telefone</b></th>
+               <th style="color: #472f74;"><b>Data de Nascimento</b></th>
+               <th style="color: #472f74;"><b>Nivel de Acesso</b></th>
+               <th style="color: #472f74;">bOpções</th>
              </tr>
            </thead>
            <tbody id="tableValue">
@@ -40,7 +40,7 @@
                  <td>{{$usuarios-> data_nascimento}}</td>
                  <td>{{$usuarios-> nivelAcesso}}</td>
                  <td>
-                  <button type="button" onclick="getIdUsusario({{$usuarios ->id}},'{{$usuarios-> nivelAcesso}}')" class="btn badge badge-success" data-bs-toggle="modal" data-bs-target="#exampleModal">+ Opção</button>
+                  <button type="button" onclick="getIdUsusario({{$usuarios ->id}},'{{$usuarios-> nivelAcesso}}')" class="btn badge" data-bs-toggle="modal" data-bs-target="#exampleModal" style='background-color:#8F5FE8;'>+ Opção</button>
                 </td>
               @endforeach
            </tbody>

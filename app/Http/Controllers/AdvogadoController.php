@@ -23,9 +23,11 @@ class AdvogadoController extends Controller
          view('pages.Advogado.listarAdvogado',["allAdvogado"=>[$advogadoService ->BuscarAdvogado()]]): 
          view('pages.AcessoNegado'); 
     }
-    public function BusacarAdvogados ()
+    public function CadastrarAdvogado ()
     {
-            
+        return ControloNivelAcesso::verificarAcessoCliente(ControloNivelAcesso::pegarDadoClienteLogado(),"advogado") ?
+        view('pages.Advogado.novoAdvogado'): 
+        view('pages.AcessoNegado'); 
     }
 
 }

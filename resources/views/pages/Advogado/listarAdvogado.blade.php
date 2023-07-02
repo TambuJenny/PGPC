@@ -9,7 +9,7 @@
               <a class="nav-link active" style="font-size: 0.8em; color: #8F5FE8"  href="{{url("/listarAdvogado")}}">Listar Advogados</a>
             </li>
             <li class="nav-item" >
-              <a class="nav-link" style="font-size: 0.8em; color: #6c757d"  href="{{url("/cadastrarPeticao")}}">Novo Advogado</a>
+              <a class="nav-link" style="font-size: 0.8em; color: #6c757d"  href="{{url("/novoAdvogado")}}">Novo Advogado</a>
             </li>
         </ul>
       </div>

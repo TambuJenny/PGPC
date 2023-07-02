@@ -9,7 +9,7 @@
         @csrf
 
         <div class="d-flex justify-content-between align-items-center">
-            <h3><i class="fa fa-address-card"></i> <b>Marcar Data do Julgamento</b> </h3>
+            <h3><i class="fa fa-address-card" style="color: #8F5FE8;"></i> <b style="color: #8F5FE8;">Marcar Data do Julgamento</b> </h3>
             <div class="col-md-3">
                 <label for="exampleFormControlInput1" class="col-form-label"><b><small>Número do processo</small></b></label>
                 <input type="text" value= disabled class="form-control" id="exampleFormControlInput1">

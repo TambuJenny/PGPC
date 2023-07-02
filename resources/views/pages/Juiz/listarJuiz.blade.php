@@ -3,13 +3,13 @@
 <div class="card col-md-12">
     <div class="card-body">
     <div class="card-title">
-        <h3 style="color: black;"><i class="fas fa-chalkboard-teacher " style="color: black;"></i> <b>Juiz</b></h3>
+        <h3 style="color: #8F5FE8;"><i class="fas fa-chalkboard-teacher " style="color: #8F5FE8;"></i> <b>Juiz</b></h3>
         <ul class="mb-4 nav nav-underline " style="font-size: 1em;">
             <li class="nav-item" >
-              <a class="nav-link active" style="font-size: 0.8em;"  href="{{url("/listarJuiz")}}">Listar Juiz</a>
+              <a class="nav-link active" style="font-size: 0.8em; color: #8F5FE8"  href="{{url("/listarJuiz")}}">Listar Juiz</a>
             </li>
             <li class="nav-item" >
-              <a class="nav-link" style="font-size: 0.8em;"  href="{{url("/novoJuiz")}}">Novo Juiz</a>
+              <a class="nav-link" style="font-size: 0.8em; color: #6c757d"  href="{{url("/novoJuiz")}}">Novo Juiz</a>
             </li>
         </ul>
       </div>
@@ -18,13 +18,13 @@
       <table class="table">
            <thead>
              <tr>
-               <th scope="row">Id</th>
-               <th>Nome</th>
-               <th>BI</th>
-               <th>Email</th>
-               <th>Telefone</th>
-               <th>Sexo</th>
-               <th>Nº de Ident. do Juiz</th>
+               <th style="color: #472f74;" scope="row"><b>Id</b></th>
+               <th style="color: #472f74;"><b>Nome</b></th>
+               <th style="color: #472f74;"><b>BI</b></th>
+               <th style="color: #472f74;"><b>Email</b></th>
+               <th style="color: #472f74;"><b>Telefone</b></th>
+               <th style="color: #472f74;"><b>Sexo</b></th>
+               <th style="color: #472f74;"><b>Nº de Ident. do Juiz</b></th>
              </tr>
            </thead>
             @if(isset($allJuiz))
