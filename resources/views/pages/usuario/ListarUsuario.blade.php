@@ -40,7 +40,7 @@
                  <td>{{$usuarios-> data_nascimento}}</td>
                  <td>{{$usuarios-> nivelAcesso}}</td>
                  <td>
-                  <button type="button" onclick="getIdUsusario({{$usuarios ->id}},'{{$usuarios-> nivelAcesso}}')" class="btn badge" data-bs-toggle="modal" data-bs-target="#exampleModal" style='background-color:#8F5FE8;'>+ Opção</button>
+                  <button type="button" onclick="getIdUsusario('{{$usuarios ->id}}','{{$usuarios-> nivelAcesso}}')" class="btn badge" data-bs-toggle="modal" data-bs-target="#exampleModal" style='background-color:#8F5FE8;'>+ Opção</button>
                 </td>
               @endforeach
            </tbody>
