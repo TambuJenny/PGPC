@@ -9,13 +9,13 @@
         <form class="mt-1" style="" method="POST" action="{{route('Processo.Create')}}">
 
             <div class=" p-2 col-md-12">
-                <h3 style="color: #8F5FE8;"><i class="fas fa-chalkboard-teacher " style="color: #8F5FE8;"></i> <b>Cadastrar Juiz</b></h3>
+                <h3 style="color: #8F5FE8;"><i class="fas fa-chalkboard-teacher " style="color: #8F5FE8;"></i> <b>Cadastrar Advogado</b></h3>
                 <ul class="mb-4 nav nav-underline " style="font-size: 1em;">
                     <li class="nav-item">
-                        <a class="nav-link " style="font-size: 0.8em; color:#6c757d" href="{{url("/listarJuiz")}}">Listar Juiz</a>
+                        <a class="nav-link " style="font-size: 0.8em; color:#6c757d" href="{{url("/listarAdvogado")}}">Listar Advogado</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" style="font-size: 0.8em; color:#8F5FE8" href="{{url("/novoJuiz")}}">Novo Juiz</a>
+                        <a class="nav-link active" style="font-size: 0.8em; color:#8F5FE8" href="{{url("/novoJuiz")}}">Novo Advogado</a>
                     </li>
                 </ul>
                 <div class="row">
@@ -37,13 +37,13 @@
                         <input type="email" name="email" id="emailAdvogado" class="form-control">
                         <label class="form-label">Telefone</label>
                         <input type="tel" name="telefone" id="telefoneAdvogado" class="form-control">
-                        <label class="form-label mt-2">Num. de Indent. do Juiz</label>
+                        <label class="form-label mt-2">Num. de Indent. do Advogado</label>
                         <input type="text" required name="nia" id="niaAdvogado" class="form-control" required>
                     </div>
                 </div>
             </div>
             <div id="cadastradoAlert"></div>
-            <button class="col-md-2 mt-4 btn bg-primary text-white" onclick="cadastrarJuiz()"><i class="fa-solid fa-sign-in"></i> Cadastrar Juiz</button>
+            <button class="col-md-2 mt-4 btn bg-primary text-white" onclick="cadastrarJuiz()"><i class="fa-solid fa-sign-in"></i> Cadastrar Advogado</button>
             <div class="form-group">
     </div>
 

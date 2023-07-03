@@ -19,7 +19,11 @@ class JuizController extends Controller
 
     public function Index ()
     {
-        return view ('pages.Juiz.NovoJuiz');
+      
+        return 
+        (ControloNivelAcesso::verificarAcessoCliente(ControloNivelAcesso::pegarDadoClienteLogado(),"all")) ? 
+        view('pages.Juiz.NovoJuiz') : 
+        view('pages.AcessoNegado');
     }
 
     public function ListarJuiz ()
@@ -49,7 +53,10 @@ class JuizController extends Controller
     }
     public function CadastrarJuiz ()
     {
-        return view('pages.Juiz.cadastrarJuiz');
+        return 
+        (ControloNivelAcesso::verificarAcessoCliente(ControloNivelAcesso::pegarDadoClienteLogado(),"all")) ? 
+        view('pages.Juiz.cadastrarJuiz') : 
+        view('pages.AcessoNegado');
     }
 
 

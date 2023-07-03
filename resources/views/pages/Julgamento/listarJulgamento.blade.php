@@ -3,13 +3,13 @@
 <div class="card col-md-12">
     <div class="card-body">
     <div class="card-title">
-        <h3 style="color: black;"><i class="fas fa-chalkboard-teacher " style="color: black;"></i> <b>Juiz</b></h3>
+        <h3 style="color: #8F5FE8;"><i class="fas fa-chalkboard-teacher " style="color: #8F5FE8;"></i> <b>Julgamentos</b></h3>
         <ul class="mb-4 nav nav-underline " style="font-size: 1em;">
             <li class="nav-item" >
-              <a class="nav-link active" style="font-size: 0.8em;"  href="{{url("/listarJulgamento")}}">Julgamentos em andamento</a>
+              <a class="nav-link active" style="font-size: 0.8em; color: #8F5FE8"  href="{{url("/listarJulgamento")}}">Julgamentos em andamento</a>
             </li>
             <li class="nav-item" >
-              <a class="nav-link" style="font-size: 0.8em;"  href="{{url("/marcarJulgamento")}}">Marcar Julgamento</a>
+              <a class="nav-link" style="font-size: 0.8em;color: #6c757d"  href="{{url("/marcarJulgamento")}}">Marcar Julgamento</a>
             </li>
         </ul>
       </div>
@@ -18,12 +18,10 @@
       <table class="table">
            <thead>
              <tr>
-              <th scope="row">Id</th>
-               <th>Data de ínicio</th>
-               <th>Data do fim</th>
-               <th>Processo</th>
-               <th>Tribunal</th>
-               <th scope="row" >Juiz</th>
+               <th style="color: #472f74;"><b>Data de ínicio</b></th>
+               <th style="color: #472f74;"><b>Processo</b></th>
+               <th style="color: #472f74;"><b>Tribunal</b></th>
+               <th style="color: #472f74;" scope="row" ><b>Juiz</b></th>
              </tr>
            </thead>
            <tbody id="tableValue">
