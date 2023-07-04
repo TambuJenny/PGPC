@@ -82,6 +82,28 @@
     </div>
 </div>
 
+
+
+<!-- Modal -->
+<div class="bg-opacity-25 modal fade" id="advogadoModal" tabindex="-1" aria-labelledby="advogadoModalLabel" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="advogadoModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <label for="exampleFormControlInput1" class="form-label text-secondary">Digite o N.I do Advogado</label>
+        <input type="text" class="form-control"/>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="{{asset('frontend/js/jquery.js') }}" ></script>
 <script src="{{asset('frontend/js/pages/processo.js')}}" crossorigin="anonymous"></script>
 <script>
@@ -122,12 +144,11 @@
                         <td>${element.telefone}</td>
                         <td>
                            <center>
-                           <button type="button" onclick= "PegarIdVitima(${element.id_vitima})" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#AdvogadoModal" data-bs-whatever="@mdo">+ Advogado</button>
-
+                                <button type="button" onclick= "PegarIdVitima(${element.id_vitima})" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#advogadoModal" data-bs-whatever="@mdo">+ Advogado</button>
                            </center>
                        </td>
                         <td> 
-                          <center> <button class="btn btn-primary" type="button" onclick="buscarDepoimentoVitima(${element.id},${idPeticao})" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-eye"></i></button></center>
+                          <center> <button class="btn btn-primary" type="button" onclick="buscarDepoimentoVitima(${element.id},${idPeticao})" data-bs-toggle="modal" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-eye"></i></button></center>
                         </td>
                    </tr>`
         });
