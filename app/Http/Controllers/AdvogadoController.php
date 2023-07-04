@@ -15,6 +15,7 @@ class AdvogadoController extends Controller
     {
        $advogadoService = new AdvogadoService ();
        return Response()->json(AdvogadoRepository::FindAllAdvogados());
+       
     }
 
     public function ListarAdvogado ()
@@ -29,6 +30,7 @@ class AdvogadoController extends Controller
         return ControloNivelAcesso::verificarAcessoCliente(ControloNivelAcesso::pegarDadoClienteLogado(),"advogado") ?
         view('pages.Advogado.novoAdvogado'): 
         view('pages.AcessoNegado'); 
+        ControloNivelAcesso::Evento('Cadastrou peticao');
     }
 
 }

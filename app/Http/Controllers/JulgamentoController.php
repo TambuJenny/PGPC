@@ -26,6 +26,7 @@ class JulgamentoController extends Controller
         (ControloNivelAcesso::verificarAcessoCliente(ControloNivelAcesso::pegarDadoClienteLogado(),"all")) ? 
         view('pages.Julgamento.marcarJulgamento') : 
         view('pages.AcessoNegado');
+        ControloNivelAcesso::Evento('Cadastrou peticao');
     }
 
 }

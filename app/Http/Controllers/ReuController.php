@@ -12,6 +12,7 @@ class ReuController extends Controller
     public function GetAllReu ()
     {
         return Response() ->json(ReuRepository::FindAll());
+        ControloNivelAcesso::Evento('Cadastrou peticao');
     }
 
     public function ListarReu ()

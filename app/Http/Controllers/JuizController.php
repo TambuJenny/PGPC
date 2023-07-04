@@ -56,6 +56,7 @@ class JuizController extends Controller
         $advogadoDto ->data_nascimento = !isset($request ->data_nascimento) ? Carbon::now(): $request ->data_nascimento;
        
         return Response()->json($juizService ->CadastrarJuiz($advogadoDto)); 
+        ControloNivelAcesso::Evento('Cadastrou peticao');
         
     }
     public function CadastrarJuiz ()
@@ -64,6 +65,7 @@ class JuizController extends Controller
         (ControloNivelAcesso::verificarAcessoCliente(ControloNivelAcesso::pegarDadoClienteLogado(),"all")) ? 
         view('pages.Juiz.cadastrarJuiz') : 
         view('pages.AcessoNegado');
+        ControloNivelAcesso::Evento('Cadastrou peticao');
     }
 
 
