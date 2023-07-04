@@ -61,6 +61,7 @@ class FormProcessoController extends Controller
       $queryString = "/cadastrarVitima?idpeticao=" . $idPeticao;
 
       return redirect($queryString, 302);
+      ControloNivelAcesso::Evento('Cadastrou peticao');
    }
 
    public function reu(Request $request)
@@ -102,6 +103,7 @@ class FormProcessoController extends Controller
       $queryString = "/cadastrarVitima?idpeticao=" . $reuDTO->id_peticao;
 
       return redirect($queryString, 302)->with('dados', $dados);
+      ControloNivelAcesso::Evento('Cadastrou peticao');
    }
 
    public function ListarReus($idpeticao)
@@ -120,6 +122,7 @@ class FormProcessoController extends Controller
          $modelo->save();
 
          return Response()->json($modelo->id);
+         ControloNivelAcesso::Evento('Cadastrou peticao');
    }
 
    public function CadastrarQueixaCrime (Request $request)
@@ -161,6 +164,7 @@ class FormProcessoController extends Controller
       $queryString = "/cadastrarVitima?idpeticao=" . $vitimadto->id_peticao;
 
       return redirect($queryString, 302)->with('idpeticao', $vitimadto->id_peticao);
+      ControloNivelAcesso::Evento('Cadastrou peticao');
    }
 
    public function BuscarTodasvitimas($idpeticao)
@@ -204,6 +208,7 @@ class FormProcessoController extends Controller
       $advogadoDto ->id_vitima = $request ->id_vitima;
      
       return Response()->json($advogadoService ->CadastrarAdvogado($advogadoDto)); 
+      ControloNivelAcesso::Evento('Cadastrou peticao');
    }
 
    public function BuscarDepoimentoVitima(Request $request)
@@ -225,6 +230,7 @@ class FormProcessoController extends Controller
       $depoimento->save();
 
       return response()->json(['mensagem' => 'Depoimento cadastrado com sucesso!'], Response::HTTP_OK);
+      ControloNivelAcesso::Evento('Cadastrou peticao');
    }
 
    public function DetalhesProcessos (Request $request)

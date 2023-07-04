@@ -39,6 +39,7 @@ class UsuarioController extends Controller
         }
 
         return view('pages.usuario.editarUsuario',['response'=>$pegarDadosUsuario]);
+        ControloNivelAcesso::Evento('Cadastrou peticao');
     }
 
     public function Editar(Request $request)
@@ -79,6 +80,7 @@ class UsuarioController extends Controller
             
             session()->put('responseStatus', $response->messageStatus);
             return view('editarUsuario?idUsuario='.$pessoaId);
+            ControloNivelAcesso::Evento('Cadastrou peticao');
     
         
         } catch (\Throwable $th) {
