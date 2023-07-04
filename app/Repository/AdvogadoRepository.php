@@ -8,7 +8,7 @@ class AdvogadoRepository {
     public static function FindAllAdvogados()
     {
         $query = DB::table('pessoa')
-        ->join('Advogado',function($join){
+        ->join('advogado',function($join){
             $join -> on('pessoa.id','=','advogado.id_pessoa');
         })
         ->select(

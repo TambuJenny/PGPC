@@ -25,6 +25,9 @@ Route::get('/buscarProcessos', 'App\Http\Controllers\ProcessoController@BuscarPr
 Route::get('/buscarTipoCrimes', 'App\Http\Controllers\ProcessoController@BuscarTipoCrime');
 Route::get('/buscarTodosReus', 'App\Http\Controllers\ReuController@GetAllReu');
 Route::get('/buscarTodasVitimas', 'App\Http\Controllers\VitimasController@GetAllVitima');
+Route::get('/buscarAdvogado', 'App\Http\Controllers\AdvogadoController@GetAllAdvogado');
+Route::get('/buscarTodosJuiz', 'App\Http\Controllers\JuizController@ListarTodosJuiz');
+Route::get('/buscarTodasAtividades', 'App\Http\Controllers\SessaoController@GetAllAtividades');
 
 
 Route::post('/cadastrardepoimento', 'App\Http\Controllers\FormProcessoController@Cadastrardepoimento');

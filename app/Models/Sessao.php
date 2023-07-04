@@ -8,12 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Sessao extends Model
 {
     use HasFactory;
-    protected $table ='Sessao';
+    protected $table ='sessao';
 
     protected $fillable = [
         'id',
         'nome',
         'accao',
-        'datahora'
+        'dataHora',
+        'created_at',
+        'updated_at'
     ];
 }

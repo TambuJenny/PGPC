@@ -229,7 +229,7 @@ class FormProcessoController extends Controller
 
    public function DetalhesProcessos (Request $request)
    {
-        return ControloNivelAcesso ::verificarAcessoCliente(ControloNivelAcesso::pegarDadoClienteLogado(),"all") ?   View ('Pages.FormulariosProcesso.DetalhesProcesso'):  View ('Pages.AcessoNegado');
+        return ControloNivelAcesso ::verificarAcessoCliente(ControloNivelAcesso::pegarDadoClienteLogado(),"all") ?   View ('Pages.FormulariosProcesso.DetalhesProcesso',['idPeticao'=>$request->query('idpeticao')]):  View ('Pages.AcessoNegado');
    } 
 
 }

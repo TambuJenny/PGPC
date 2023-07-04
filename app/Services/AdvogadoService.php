@@ -5,9 +5,13 @@ namespace App\Services;
 use App\DTO\AdvogadoDTO;
 use App\DTO\PessoaDTO;
 use App\DTO\ResponseDTO;
+use App\Helper\ControloNivelAcesso;
 use App\Models\Advogado;
+use App\Models\AdvogadoProcesso;
+use App\Models\Nivelacesso;
 use App\Models\Pessoa;
 use App\Models\Reu;
+use App\Models\Sessao;
 use App\Models\Vitima;
 use App\Repository\AdvogadoRepository;
 use App\Repository\UsuarioRepository;
@@ -38,28 +42,18 @@ class AdvogadoService
                 $advogadoModel->id_pessoa = $idPessoa;
                 $advogadoModel->save();
 
-                $id_advogado = $advogadoModel->id;
-
-                if ($request->id_reu != 0 && $request->id_vitima == 0) {
-                    $reuModel = Reu::find($request->id_reu);
-                    $reuModel->id_advogado = $id_advogado;
-                    $reuModel->save();
-
-                } else if ($request->id_reu == 0 && $request->id_vitima != 0) {
-                    $reuModel = Vitima::find($request->id_vitima);
-                    $reuModel->id_advogado = $id_advogado;
-                    $reuModel->save();
-                } else if ($request->id_reu == 0 && $request->id_vitima == 0) {
-                    $reuModel = Vitima::find($request->id_vitima);
-                    $reuModel->id_advogado = $id_advogado;
-                    $reuModel->save();
-
-                    $reuModel = Reu::find($request->id_reu);
-                    $reuModel->id_advogado = $id_advogado;
-                    $reuModel->save();
+                if (!isset($request ->id_processo))
+                {
+                    $advogadoProcesso = new AdvogadoProcesso();
+                    $advogadoProcesso -> idprocesso = $request ->id_processo;
+                    $advogadoProcesso -> idadvogado = $advogadoModel ->id;
+                    $advogadoProcesso -> estado = "ativo";
+                    
+                    $advogadoProcesso ->save();
                 }
 
                 $mensagem = "Advogado Cadastrado com sucesso.";
+                ControloNivelAcesso::Evento('Cadastrou advogado');
 
                 return $mensagem;
             }
@@ -75,19 +69,25 @@ class AdvogadoService
         try {
             $pegarDadosUsuario = AdvogadoRepository::FindAllAdvogados();
             $pessoaDto = new AdvogadoDTO();
+            $pessoaDtoArray = [] ;
 
-            $pessoaDto->bi = $pegarDadosUsuario->pluck('bi')->first();
-            $pessoaDto->email = $pegarDadosUsuario->pluck('Email')->first();
-            $pessoaDto->data_nascimento = $pegarDadosUsuario->pluck('DataNascimento')->first();
-            $pessoaDto->endereco = $pegarDadosUsuario->pluck('Endereco')->first();
-            $pessoaDto->nome = $pegarDadosUsuario->pluck('nome')->first();
-            $pessoaDto->sexo = $pegarDadosUsuario->pluck('Sexo')->first();
-            $pessoaDto->telefone = $pegarDadosUsuario->pluck('telefone')->first();
-            $pessoaDto->id = $pegarDadosUsuario->pluck('idAdvogado')->first();
-            $pessoaDto->nia = $pegarDadosUsuario->pluck('nia')->first();
-            $pessoaDto->id_pessoa = $pegarDadosUsuario->pluck('id')->first();
+            foreach ($pegarDadosUsuario as $key ) {
+
+                $pessoaDto->bi = $key->bi;
+                $pessoaDto->email = $key->Email;
+                $pessoaDto->data_nascimento = $key->DataNascimento;
+                $pessoaDto->endereco = $key->Endereco;
+                $pessoaDto->nome = $key->nome;
+                $pessoaDto->sexo = $key->Sexo;
+                $pessoaDto->telefone = $key->telefone;
+                $pessoaDto->id = $key->idAdvogado;
+                $pessoaDto->nia = $key->nia;
+                $pessoaDto->id_pessoa = $key->id;
                 
-            return $pessoaDto;
+                $pessoaDtoArray[] = $pessoaDto;
+            }
+
+            return $pessoaDtoArray;
 
         } catch (\Throwable $th) {
 

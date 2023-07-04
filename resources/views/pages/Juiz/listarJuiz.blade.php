@@ -27,21 +27,9 @@
                <th style="color: #472f74;"><b>Nº de Ident. do Juiz</b></th>
              </tr>
            </thead>
-            @if(isset($allJuiz))
-              <tbody id="tableValue">
-                @foreach($allJuiz as $usuarios)
-                      <th scope="row">{{$usuarios -> id}}</th>
-                      <td>{{$usuarios-> nome}}</td>
-                      <td>{{$usuarios-> bi}}</td>
-                      <td>{{$usuarios-> email}}</td>
-                      <td>{{$usuarios-> telefone}}</td>
-                      <td>{{$usuarios-> sexo}}</td>
-                      <td>{{$usuarios-> nij}}</td>
-                 @endforeach
-          </tbody>
-            @else 
-              <h3>Nenhum Juiz cadastrado</h3>
-            @endif
+           <tbody id="tableValue">
+            <div id="contentReu"></div>
+           </tbody>
        </table>
    </div>                   
 </div>   
@@ -52,5 +40,45 @@
 <script src="{{asset('frontend/js/jquery.js') }}" ></script>
 <script src="{{asset('frontend/js/pages/processo.js')}}" crossorigin="anonymous"></script>
 <script>
+  
+  jQuery("Document").ready(()=>{
+
+    $.ajax({
+        type: "GET",
+        url: "api/buscarTodosJuiz",
+        contentType: "application/json; charset=utf-8",
+        beforeSend : function ()
+        {
+            var dataDescricao =`
+                <div class="d-flex justify-content-center">
+                         <div class="spinner-border" role="status">
+                           <span class="visually-hidden">Loading...</span>
+                         </div>
+                         <p>Carregando dados....</p>
+                </div>
+                `;
+
+                $('#contentReu').html(dataDescricao);
+        },
+        success: function (response) {
+           let table = "";
+           response.forEach(element => {
+            table += `<tr>
+                 <th scope="row">${element.id}</th>
+                 <td>${element.nome}</td>
+                 <td>${element.bi}</td>
+                 <td>${element.Email}</td>
+                 <td>${element.telefone}</td>
+                 <td>${element.Sexo}</td>
+                 <td>${element.nij}</td>
+            </tr>`
+           });
+
+           $('#contentReu').html("");
+           $('#tableValue').html(table);
+        }
+    });
+
+  });
 </script>
 @endsection

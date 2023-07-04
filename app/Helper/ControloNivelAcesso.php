@@ -7,6 +7,7 @@ use App\Models\nivelacesso as ModelsNivelacesso;
 use App\Models\Nivelacesso;
 use App\Models\Sessao;
 use App\Models\Usuario;
+use App\Repository\SessaoRepository;
 use DateTime;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Date;
@@ -32,16 +33,15 @@ class ControloNivelAcesso
 
     public static function pegarDadoClienteLogado()
     {
-        return session()->get('IdUsuario');
+       try {
+                return session()->get('IdUsuario');
+       } catch (\Throwable $th) {
+         return redirect ('/');
+       }
     }
 
-    public static function Sessao($accao)
+    public static function Evento($accao)
     {
-        $date = new DateTime ;
-        $sessao = new Sessao();
-        $sessao -> nome = session()->get('Nome');;
-        $sessao -> accao = $accao;
-        $sessao -> datahora = '['. $date -> format('Y-m-d H:i:s').']';
-        $sessao  ->save();
+        SessaoRepository::AddSessao($accao);
     }
 }

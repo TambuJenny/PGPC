@@ -60,14 +60,14 @@
             nome: $("#nomeAdvogado").val(),
             bi: $("#biAdvogado").val(),
             telefone: $("#telefoneAdvogado").val(),
-            nij: $("#niaAdvogado").val(),
+            nia: $("#niaAdvogado").val(),
             email: $("#emailAdvogado").val(),
             sexo: $("#sexoAdvogado").val(),
         }
 
         $.ajax({
             type: "POST",
-            url: "api/cadastrarjuiz",
+            url: "api/cadastraradvogado",
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify(objAdvogado),
             dataType: 'json',

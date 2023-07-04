@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\DTO\PessoaDTO;
 use App\DTO\ResponseDTO;
+use App\Helper\ControloNivelAcesso;
 use App\Models\Pessoa;
 use App\Repository\UsuarioRepository;
 
@@ -60,7 +61,7 @@ public function EditarPessoa(PessoaDTO $pessoadto)
         if ($pessoadto != null )
         {
             $idPessoa = UsuarioRepository::FindIdPessoa($pessoadto->id);
-            var_dump("aqui!");
+    
             $pessoa = Pessoa::find( $idPessoa -> pluck('IdPessoa')->first());
             $pessoa -> nome = $pessoadto-> nome;
             $pessoa -> data_nascimento = $pessoadto->data_nascimento;
@@ -69,18 +70,13 @@ public function EditarPessoa(PessoaDTO $pessoadto)
             $pessoa -> bi = $pessoadto->bi;
             $pessoa -> email = $pessoadto->email;
             
-            $retorno = $pessoa ->save();
-
-            if ( $retorno) {
-               
-                var_dump("Deu certo o update");
-            }
-
-            $id = $pessoadto->id;
+            $pessoa ->save();
+    
+            $id = $pessoa->id;
+            ControloNivelAcesso::Evento("Editou Pessoa");
         }
-        var_dump("id=".$id);
+    
         return $id;
-
     } catch (\Exception $th) {
 
         $response = new ResponseDTO();

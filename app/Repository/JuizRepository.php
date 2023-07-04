@@ -43,4 +43,46 @@ class JuizRepository {
 
         return $query;
     }
+
+    public function BuscarJuizProcessoAtivo ($idprocesso)
+    {
+        $query = DB::table('pessoa')
+        ->join('juiz',function($join){
+            $join -> on('pessoa.id','=','juiz.id_pessoa');
+        })
+        ->join('juizprocesso',function($join){
+            $join -> on('juiz.id','=','juizprocesso.idjuiz');
+        })
+        ->where('juizprocesso.idprocesso','=',$idprocesso,'&&','juizprocesso.estado','=','ativo')
+        ->select(
+            'pessoa.nome',
+            'pessoa.id',
+            'pessoa.bi',
+            'juiz.nij'
+        )->get();
+
+        return $query;
+    }
+
+    public function BuscarJuizProcessoTodos ($idprocesso)
+    {
+        $query = DB::table('pessoa')
+        ->join('juiz',function($join){
+            $join -> on('pessoa.id','=','juiz.id_pessoa');
+        })
+        ->join('juizprocesso',function($join){
+            $join -> on('juiz.id','=','juizprocesso.idjuiz');
+        })
+        ->where('juizprocesso.idprocesso','=',$idprocesso)
+        ->select(
+            'pessoa.nome',
+            'pessoa.id',
+            'pessoa.bi',
+            'juiz.nij',
+            'juizprocesso.estado',
+
+        )->get();
+
+        return $query;
+    }
 }

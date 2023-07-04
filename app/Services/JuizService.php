@@ -5,7 +5,9 @@ namespace App\Services;
 use App\DTO\JuizDTO;
 use App\DTO\PessoaDTO;
 use App\DTO\ResponseDTO;
+use App\Helper\ControloNivelAcesso;
 use App\Models\Juiz;
+use App\Models\JuizProcesso;
 use App\Models\Pessoa;
 use App\Models\Reu;
 use App\Models\Vitima;
@@ -22,7 +24,7 @@ class JuizService
             if ($request != null) {
 
                 $pessoa = new PessoaDTO;
-                $JuizModel = new Juiz();
+                $juizModel = new Juiz();
                 $pessoaServico = new pessoaService();
 
                 $pessoa->nome = $request->nome;
@@ -34,15 +36,23 @@ class JuizService
 
                 $idPessoa = $pessoaServico->CadastrarPessoa($pessoa);
 
-                $JuizModel->nij = $request->nij;
-                $JuizModel->id_pessoa = $idPessoa;
-                $JuizModel->save();
+                $juizModel->nij = $request->nij;
+                $juizModel->id_pessoa = $idPessoa;
+                $juizModel->save();
 
-                $id_Juiz = $JuizModel->id;
-
+                if (!isset($request ->id_processo))
+                {
+                    $advogadoProcesso = new JuizProcesso();
+                    $advogadoProcesso -> idprocesso = $request ->id_processo;
+                    $advogadoProcesso -> idjuiz = $juizModel ->id;
+                    $advogadoProcesso -> estado = "ativo";
+                    
+                    $advogadoProcesso ->save();
+                }
 
                 $mensagem = "Juiz Cadastrado com sucesso.";
-
+                ControloNivelAcesso::Evento('Cadastrou peticao');
+                
                 return $mensagem;
             }
         } catch (\Throwable $th) {
@@ -73,8 +83,18 @@ class JuizService
 
         } catch (\Throwable $th) {
 
-        }
     }
+    
+
+}
+
+public function AtualizarJuizProcesso ($idProcesso,$idJuiz)
+{
+    /*$juiz = new Juiz();
+    $pegarJuizId = JuizRepository::*/
+
+    
+}
 
     
 

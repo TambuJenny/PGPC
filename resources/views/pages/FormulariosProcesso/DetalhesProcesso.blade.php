@@ -87,10 +87,10 @@
 <script>
   
 
-  var idPeticao  = 0;
+  var idPeticao  = {{$idPeticao}};
   jQuery("Document").ready(()=>{
 
-    idPeticao = 2;
+    //idPeticao = 2;
     $.ajax({
         type: "GET",
         url: `api/buscarvitima/${idPeticao}`,
@@ -110,8 +110,11 @@
         },
         success: function (response) {
             let table = "";
+            console.log(response);
 
-            response.forEach(element => {
+            if(response.length > 0 )
+            {
+              response.forEach(element => {
                table += `<tr>
                         <th scope="row">${element.id}</th>
                         <td>${element.nome}</td>
@@ -128,6 +131,12 @@
                         </td>
                    </tr>`
         });
+
+            }else
+            {
+              table = `<p>Nenhum depoimento encontrado</p>`;
+            }
+
 
            $('#card-vitima').html("");
            $('#card-vitima').html(table);
@@ -162,26 +171,34 @@
         },
         success: function (response) {
 
+           if(response.length >0)
+           {
             response.forEach(element =>{
                 var dataDescricao =`
-                <table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="row"><b>Nome</b></th>
-      <th scope="row"><b>Depoimento</b></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td scope="col">${element.nome}</td>
-      <td colspan="2"> ${element.descricao}</td>
-    </tr>
-  </tbody>
-</table>
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="row"><b>Nome</b></th>
+                        <th scope="row"><b>Depoimento</b></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td scope="col">${element.nome}</td>
+                        <td colspan="2"> ${element.descricao}</td>
+                      </tr>
+                    </tbody>
+                  </table>
             `;
                    
             $('#contentVitima').html(dataDescricao);
             })
+           }else 
+           {
+
+            var dataDescricao =`<p>A vítima não tem depoimento</p>`;
+            $('#contentVitima').html(dataDescricao);
+           }
         }
     });  
 }

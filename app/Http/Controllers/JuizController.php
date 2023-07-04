@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\DTO\JuizDTO;
 use App\Helper\ControloNivelAcesso;
 use App\Http\Controllers\Controller;
+use App\Repository\JuizRepository;
 use App\Services\JuizService;
 use Carbon\Carbon;
+use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
 
 class JuizController extends Controller
@@ -24,6 +26,11 @@ class JuizController extends Controller
         (ControloNivelAcesso::verificarAcessoCliente(ControloNivelAcesso::pegarDadoClienteLogado(),"all")) ? 
         view('pages.Juiz.NovoJuiz') : 
         view('pages.AcessoNegado');
+    }
+
+    public function ListarTodosJuiz ()
+    {
+       return Response()->json(JuizRepository::FindAllJuizs());
     }
 
     public function ListarJuiz ()

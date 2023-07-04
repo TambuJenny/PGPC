@@ -142,31 +142,31 @@ class UserService
 
     public function EditarUsuario(PessoaDTO $pessoaDTO, UsuarioDTO $usuarioDTO)
     {
-        $response = new ResponseDTO();
         try {
-            $pessoaService = new pessoaService();
-            $userId = $pessoaService->EditarPessoa($pessoaDTO);
+            
+        $pessoaService = new pessoaService();
+        $userId = $pessoaService->EditarPessoa($pessoaDTO);
 
-            $usuarioModel = Usuario::find( $userId);
-            $usuarioModel->senha = $usuarioDTO->senha;
+        $usuarioModel = Usuario::find( $userId);
+        $usuarioModel->senha = $usuarioDTO->senha;
 
-           if($usuarioModel->save())
-           {
-                echo '<div class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
-                    <div class="d-flex">
-                      <div class="toast-body">
-                            Dados atualizado com sucesso!
-                      </div>
-                      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-                    </div>
-                </div>';
+       if($usuarioModel->save())
+       {
+            echo '<div class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                  <div class="toast-body">
+                        Dados atualizado com sucesso!
+                  </div>
+                  <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>';
 
-                session()->put('Nome', $pessoaDTO->nome);
-                session()->put('Email', $pessoaDTO->email);
-                session()->put('IdUsuario', $userId);
-           }
+            session()->put('Nome', $pessoaDTO->nome);
+            session()->put('Email', $pessoaDTO->email);
+            session()->put('IdUsuario', $userId);
+       }
 
-            return $userId;
+        return $userId;
 
         } catch (\Exception $th) {
 

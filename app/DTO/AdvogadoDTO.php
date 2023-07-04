@@ -9,4 +9,5 @@ class AdvogadoDTO extends PessoaDTO
     public $id_reu;
     public $id_pessoa;
     public $id_peticao;
+    public $id_processo;
 }

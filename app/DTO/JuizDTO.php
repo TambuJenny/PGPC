@@ -6,4 +6,5 @@ class JuizDTO extends PessoaDTO
 {
     public $nij;
     public $id_pessoa;
+    public $id_processo;
 }

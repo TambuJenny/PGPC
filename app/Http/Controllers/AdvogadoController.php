@@ -7,20 +7,21 @@ use App\Http\Controllers\Controller;
 use App\Repository\AdvogadoRepository;
 use Illuminate\Http\Request;
 use App\Services\AdvogadoService;
-
+use Facade\FlareClient\Http\Response;
 
 class AdvogadoController extends Controller
 {
     public function GetAllAdvogado ()
     {
-       
+       $advogadoService = new AdvogadoService ();
+       return Response()->json(AdvogadoRepository::FindAllAdvogados());
     }
 
     public function ListarAdvogado ()
     {
-        $advogadoService = new AdvogadoService ();
+       
         return ControloNivelAcesso::verificarAcessoCliente(ControloNivelAcesso::pegarDadoClienteLogado(),"advogado") ?
-         view('pages.Advogado.listarAdvogado',["allAdvogado"=>[$advogadoService ->BuscarAdvogado()]]): 
+         view('pages.Advogado.listarAdvogado'): 
          view('pages.AcessoNegado'); 
     }
     public function CadastrarAdvogado ()

@@ -25,19 +25,10 @@
                <th style="color: #472f74;"><b>Telefone</b></th>
                <th style="color: #472f74;"><b>Sexo</b></th>
                <th style="color: #472f74;"><b>Nº de Ident. do Advogado</b></th>
-               <th style="color: #472f74;" scope="row" ><b>Advogado<</b>/th>
              </tr>
            </thead>
            <tbody id="tableValue">
-           @foreach($allAdvogado as $usuarios)
-                 <th scope="row">{{$usuarios -> id}}</th>
-                 <td>{{$usuarios-> nome}}</td>
-                 <td>{{$usuarios-> bi}}</td>
-                 <td>{{$usuarios-> email}}</td>
-                 <td>{{$usuarios-> sexo}}</td>
-                 <td>{{$usuarios-> telefone}}</td>
-                 <td>{{$usuarios-> data_nascimento}}</td>
-              @endforeach
+            <div id="contentReu"></div>
            </tbody>
        </table>
    </div>                   
@@ -50,11 +41,11 @@
 <script src="{{asset('frontend/js/pages/processo.js')}}" crossorigin="anonymous"></script>
 <script>
   
-   /*jQuery("Document").ready(()=>{
+  jQuery("Document").ready(()=>{
 
     $.ajax({
         type: "GET",
-        url: "api/buscarTodosReus",
+        url: "api/buscarAdvogado",
         contentType: "application/json; charset=utf-8",
         beforeSend : function ()
         {
@@ -73,14 +64,13 @@
            let table = "";
            response.forEach(element => {
             table += `<tr>
-                 <th scope="row">${element.idReu}</th>
+                 <th scope="row">${element.id}</th>
                  <td>${element.nome}</td>
                  <td>${element.bi}</td>
-                 <td>${element.endereco}</td>
-                 <td>${element.data_nascimento}</td>
+                 <td>${element.Email}</td>
                  <td>${element.telefone}</td>
-                 <td>${element.url_imageFoto}</td>
-                 <td scope="row"><b>${element.nomeProcesso}</b></td>
+                 <td>${element.Sexo}</td>
+                 <td>${element.nia}</td>
             </tr>`
            });
 
@@ -89,6 +79,6 @@
         }
     });
 
-  });*/
+  });
 </script>
 @endsection

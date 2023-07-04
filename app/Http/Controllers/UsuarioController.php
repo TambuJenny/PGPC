@@ -44,7 +44,7 @@ class UsuarioController extends Controller
     public function Editar(Request $request)
     {
         try {
-          
+
             $response = new ResponseDTO();
             $pessoa = new PessoaDTO();
             $user = new UsuarioDTO();
@@ -78,7 +78,8 @@ class UsuarioController extends Controller
             }
             
             session()->put('responseStatus', $response->messageStatus);
-            return redirect('editarUsuario?idUsuario='.$pessoaId);
+            return view('editarUsuario?idUsuario='.$pessoaId);
+    
         
         } catch (\Throwable $th) {
 

@@ -5,6 +5,7 @@ namespace App\Services;
 use App\DTO\PessoaDTO;
 use App\DTO\PeticaoDTO;
 use App\DTO\ResponseDTO;
+use App\Helper\ControloNivelAcesso;
 use App\Models\AutorPeticao;
 use App\Models\Pessoa;
 use App\Models\Peticao;
@@ -52,6 +53,7 @@ public function CadastrarPeticao(PeticaoDTO $peticao)
             $peticaomodel -> save();
             $idpeticao =  $peticaomodel-> id;
         }
+        ControloNivelAcesso::Evento('Cadastrou peticao');
 
         return $idpeticao;
 
@@ -96,14 +98,14 @@ public function EditarPessoa(PessoaDTO $pessoadto)
             
             $retorno = $pessoa ->save();
 
-            if ( $retorno) {
+            if ($retorno) {
                
-                var_dump("Deu certo o update");
-            }
+             }
 
             $id = $pessoadto->id;
         }
-        var_dump("id=".$id);
+
+       
         return $id;
 
     } catch (\Exception $th) {
