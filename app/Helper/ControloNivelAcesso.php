@@ -16,19 +16,23 @@ class ControloNivelAcesso
 {
     public static function verificarAcessoCliente($idUser,$acesso)
     {
-        $getUser= Usuario::find($idUser);
+       try 
+       {
+
+            $getUser= Usuario::find($idUser);
+            $getaAcesso =  Nivelacesso::find($getUser->idNivelAcesso);
         
-        $getaAcesso =  Nivelacesso::find($getUser->idNivelAcesso);
-       
+            if($getaAcesso->acesso == "all")
+                return true;
 
-        if($getaAcesso->acesso == "all")
-            return true;
+            $getAllAcesso = explode(',',$getaAcesso ->acesso);
+            $returnValue = (in_array($acesso,$getAllAcesso)) ? true : false ;
         
-        $getAllAcesso = explode(',',$getaAcesso ->acesso);
-        $returnValue = (in_array($acesso,$getAllAcesso)) ? true : false ;
+            return $returnValue;
 
-
-        return $returnValue;
+       } catch (\Throwable $th) {
+            return redirect ('/');
+       }
     }
 
     public static function pegarDadoClienteLogado()

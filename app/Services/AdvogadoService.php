@@ -10,6 +10,7 @@ use App\Models\Advogado;
 use App\Models\AdvogadoProcesso;
 use App\Models\Nivelacesso;
 use App\Models\Pessoa;
+use App\Models\Processo;
 use App\Models\Reu;
 use App\Models\Sessao;
 use App\Models\Vitima;
@@ -62,6 +63,48 @@ class AdvogadoService
             return $mensagem;
         }
 
+    }
+
+    public function VincularAdvogadoProcesso(AdvogadoDTO $dto)
+    {
+        
+        if($dto ->nia != null || $dto -> id_peticao != null )
+        {
+            $advogadoProcesso = new AdvogadoProcesso ();
+            $advogado = Advogado::where('nia',$dto ->nia)->get();
+            $processo = Processo::where('id_Peticao',$dto ->id_peticao)->get();
+            
+            $idAdvogado = 0; 
+            $idProcesso = 0;
+
+            foreach ($advogado as $key ) {
+                
+                $idAdvogado = $key ->id;
+            }
+            foreach ($processo as $key ) {
+                
+                $idProcesso = $key ->id;
+            }
+
+            if ( isset($advogado) ) 
+            {
+                 $advogadoProcesso -> idadvogado = $idAdvogado;
+                 $advogadoProcesso -> idprocesso = $idProcesso;
+                 $advogadoProcesso -> idvitima = $dto->id_vitima;
+                 $advogadoProcesso -> idreu = $dto->id_reu;
+                 $advogadoProcesso -> estado = "ativo";
+             
+                 return $advogadoProcesso -> save();
+ 
+            } else 
+            {
+                 return false;
+            }
+        }else
+        {
+            return false;
+        }
+           
     }
 
     public function BuscarAdvogado()

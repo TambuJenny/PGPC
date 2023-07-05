@@ -36,3 +36,4 @@ Route::post('/cadastraradvogado', 'App\Http\Controllers\FormProcessoController@C
 Route::post('/cadastrarjuiz', 'App\Http\Controllers\JuizController@AddJuiz');
 Route::post('/udpadeusuarioestado', 'App\Http\Controllers\UsuarioController@UpdateUserioEstado');
 Route::post('/Updateuserionivelacesso', 'App\Http\Controllers\UsuarioController@UpdateUserioEstado');
+Route::post('/vincularAdvogado', 'App\Http\Controllers\AdvogadoController@VincularAdvogadoProcesso');

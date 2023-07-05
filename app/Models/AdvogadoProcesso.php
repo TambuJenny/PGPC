@@ -16,6 +16,10 @@ class AdvogadoProcesso extends Model
         'id',
         'idadvogado',
         'idprocesso',
-        'estado'
+        'idvitima',
+        'idreu',
+        'estado',
+        'created_at',
+        'updated_at'
     ];
 }

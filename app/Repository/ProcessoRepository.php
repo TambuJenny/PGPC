@@ -25,6 +25,7 @@ class ProcessoRepository {
             'peticao.id as idPeticao',
             'tipocrime.nome as tipoCrime',
             'Processo.nome as nomeProcesso',
+            'Processo.created_at as datacriacao',
             'pessoa.nome as peticionario'
            
         )->get();

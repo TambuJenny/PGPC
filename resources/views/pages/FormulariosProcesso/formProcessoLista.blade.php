@@ -23,6 +23,7 @@
                <th style="color: #472f74;"><b>Nome Processo</b></th>
                <th style="color: #472f74;"><b>Peticionário</b></th>
                <th style="color: #472f74;"><b>Tipo de Crime</b></th>
+               <th style="color: #472f74;"><b>Data Criação</b></th>
                <th style="color: #472f74;"><center><b>Opcão</b></center></th>
              </tr>
            </thead>
@@ -76,6 +77,7 @@ function setDataReus(response)
                  <td>${element.nomeProcesso}</td>
                  <td>${element.peticionario}</td>
                  <td>${element.tipoCrime}</td>
+                 <td>${element.datacriacao}</td>
                  <td>
                         <center>
                           <a class="btn badge badge-success" href="/detalhesProcesso?idpeticao=${element.idPeticao}"><i class="fa fa-eye"></i></a>
