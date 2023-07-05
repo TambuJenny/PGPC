@@ -94,11 +94,13 @@
       </div>
       <div class="modal-body">
         <label for="exampleFormControlInput1" class="form-label text-secondary">Digite o N.I do Advogado</label>
-        <input type="text" class="form-control"/>
+        <input type="text" class="form-control" id="nia"/>
+
+        <div id="contentAdvogado"></div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" onclick="VincularAdvogadoProcesso()">Save changes</button>
       </div>
     </div>
   </div>
@@ -107,6 +109,19 @@
 <script src="{{asset('frontend/js/jquery.js') }}" ></script>
 <script src="{{asset('frontend/js/pages/processo.js')}}" crossorigin="anonymous"></script>
 <script>
+
+  let getIdVitima = 0;
+  let getIdreu = 0;
+
+function PegarIdVitima (id_vitima)
+{
+    getIdVitima = id_vitima;
+} 
+
+function PegarIdReu (id_reu)
+{
+    getIdreu = id_reu;
+} 
   
 
   var idPeticao  = {{$idPeticao}};
@@ -166,10 +181,9 @@
 
   });
 
-
-
   function buscarDepoimentoVitima (idPessoa,idPeticao)
 {
+
         $.ajax({
         type: "GET",
         url: "api/buscarDepoimentoVitima",
@@ -222,6 +236,64 @@
            }
         }
     });  
+}
+
+function VincularAdvogadoProcesso ()
+{
+        var getNia = $('#nia').val();
+
+        var body={
+          nia : getNia,
+          idPeticao : idPeticao,
+          idVitima: getIdVitima,
+          idReu: getIdreu
+        };
+
+        if (getNia != null)
+        {
+                  $.ajax({
+                type: "POST",
+                url: "api/vincularAdvogado",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(body),
+                beforeSend : function ()
+                {
+                    var dataDescricao =`
+                    <div class="d-flex justify-content-center">
+                             <div class="spinner-border" role="status">
+                               <span class="visually-hidden">Loading...</span>
+                             </div>
+                             <p>Carregando dados....</p>
+                    </div>
+                    `;
+                
+                    $('#contentAdvogado').html(dataDescricao);
+                },
+                success: function (response) {
+                
+                  var dataDescricao =`
+                  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                      <strong>Mesangem</strong> ${response.message}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                    `;
+                
+                    $('#contentAdvogado').html(dataDescricao);
+
+                }
+            });  
+        }
+        else
+        {
+          var dataDescricao =`
+                  <div class="alert alert-warning alert-danger fade show" role="alert">
+                      <strong>Mesangem</strong> Campo Vazio
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                    `;
+                
+                    $('#contentVitima').html(dataDescricao);
+        }  
 }
 </script>
 

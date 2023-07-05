@@ -44,14 +44,14 @@ class AdvogadoRepository {
         return $query;
     }
 
-    public static function FindAdvogadoProcesso($id_advogado,$idprocesso)
+    public static function FindAdvogadoProcesso($id_advogado,$id_processo)
     {
         $query = DB::table('pessoa')
         ->join('Advogado',function($join){
             $join -> on('pessoa.id','=','advogado.id_pessoa');
         })
         ->join('advogadoProcesso',function($join){
-            $join -> on('advogadoprocesso.idprocesso','=',$idprocesso);
+            $join -> on('advogadoprocesso.idprocesso','=',$id_processo);
         })
         ->where('Advogado.id','=',$id_advogado)
         ->select(
