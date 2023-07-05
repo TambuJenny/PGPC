@@ -27,12 +27,21 @@
     <div class="container-scroller">
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-          <a class="sidebar-brand brand-logo" href ="{{url("/dashboard")}}" ><i class="fa-sharp fa-solid fa-scale-balanced"></i>&nbsp;&nbsp;PGPC</a>
+          <a class="sidebar-brand brand-logo" href ="{{url("/dashboard")}}" style="color: #8F5FE8;" ><i class="fa-sharp fa-solid fa-scale-balanced" ></i>&nbsp;&nbsp;<b>PGPC</b></a>
           <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="frontend/img/logo-mini.svg" alt="logo" /></a>
         </div>
         <ul class="nav">
         
-            
+        </li>
+          <li class="nav-item menu-items">
+            <a href ="{{url("/dashboard")}}" class="nav-link" href="index.html">
+              <span class="menu-icon">
+              <i class="fa-solid fa-chart-line"></i>
+              </span>
+              <span class="menu-title">Dashboard</span>
+              <i class="menu-arrow"></i>
+            </a>
+          </li> 
           </li>
           <li class="nav-item menu-items">
             <a href ="{{url("/listarProcesso")}}" class="nav-link" href="index.html">
@@ -312,6 +321,7 @@
         <script src="{{asset('frontend/js/vendor.bundle.base.js')}}"></script>
 
         <script src="{{asset('frontend/js/Chart.min.js')}}"></script>
+        <script src="{{asset('frontend/js/chart.js')}}"></script>
         <script src="{{asset('frontend/js/progressbar.min.js')}}"></script>
         <script src="{{asset('frontend/js/jquery-jvectormap.min.js')}}"></script>
         <script src="{{asset('frontend/js/jquery-jvectormap-world-mill-en.js')}}"></script>
